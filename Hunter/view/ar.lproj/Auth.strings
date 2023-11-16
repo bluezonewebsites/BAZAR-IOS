@@ -1,0 +1,381 @@
+
+///* Class = "UILabel"; text = "sdjshadhk"; ObjectID = "04t-zs-POa"; */
+//"04t-zs-POa.text" = "sdjshadhk";
+//
+///* Class = "UILabel"; text = "Region"; ObjectID = "1vx-fi-acl"; */
+//"1vx-fi-acl.text" = "Region";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "29x-77-4bw"; */
+//"29x-77-4bw.text" = "Label";
+//
+///* Class = "UILabel"; text = "0:59"; ObjectID = "2I5-os-rJ3"; */
+//"2I5-os-rJ3.text" = "0:59";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "2K4-nl-pQh"; */
+//"2K4-nl-pQh.text" = "*";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "3fG-yW-A5h"; */
+//"3fG-yW-A5h.text" = "*";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "413-zz-iJo"; */
+//"413-zz-iJo.text" = "*";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "4Mf-2c-jiU"; */
+//"4Mf-2c-jiU.text" = "*";
+//
+///* Class = "UIButton"; normalTitle = "Forget password ?"; ObjectID = "5AR-jz-k0R"; */
+//"5AR-jz-k0R.normalTitle" = "Forget password ?";
+//
+///* Class = "UILabel"; text = "Change Phone Number"; ObjectID = "5C3-Uz-QmD"; */
+//"5C3-Uz-QmD.text" = "Change Phone Number";
+//
+///* Class = "UILabel"; text = "New Password"; ObjectID = "5tJ-EM-vg1"; */
+//"5tJ-EM-vg1.text" = "New Password";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "7hi-IL-YFR"; */
+//"7hi-IL-YFR.text" = "Label";
+//
+///* Class = "UILabel"; text = "Verify Code"; ObjectID = "8a5-OX-E2M"; */
+//"8a5-OX-E2M.text" = "Verify Code";
+//
+///* Class = "UILabel"; text = "sent to"; ObjectID = "8gE-Ce-1JV"; */
+//"8gE-Ce-1JV.text" = "sent to";
+//
+///* Class = "UIButton"; normalTitle = "Login"; ObjectID = "8vS-kF-rsc"; */
+//"8vS-kF-rsc.normalTitle" = "Login";
+//
+///* Class = "UILabel"; text = "sent to"; ObjectID = "9iY-oA-sLz"; */
+//"9iY-oA-sLz.text" = "sent to";
+//
+///* Class = "UITextField"; placeholder = "new password"; ObjectID = "9pS-AB-4dR"; */
+//"9pS-AB-4dR.placeholder" = "new password";
+//
+///* Class = "UILabel"; text = "0:59"; ObjectID = "AB7-tD-neV"; */
+//"AB7-tD-neV.text" = "0:59";
+//
+///* Class = "UILabel"; text = "Phone"; ObjectID = "AY7-bO-sXF"; */
+//"AY7-bO-sXF.text" = "Phone";
+//
+///* Class = "UILabel"; text = "0:59"; ObjectID = "BSs-Kb-WNf"; */
+//"BSs-Kb-WNf.text" = "0:59";
+//
+///* Class = "UILabel"; text = "Password"; ObjectID = "BXz-Yr-1pJ"; */
+//"BXz-Yr-1pJ.text" = "Password";
+//
+///* Class = "UILabel"; text = "New Account"; ObjectID = "BdM-jU-e49"; */
+//"BdM-jU-e49.text" = "New Account";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "Bdq-gw-Qny"; */
+//"Bdq-gw-Qny.text" = "Label";
+//
+///* Class = "UITextField"; placeholder = "Password"; ObjectID = "CQO-Hn-khY"; */
+//"CQO-Hn-khY.placeholder" = "Password";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "Cak-Ob-Vfp"; */
+//"Cak-Ob-Vfp.text" = "*";
+
+///* Class = "UIBarButtonItem"; title = " "; ObjectID = "ChW-Mq-ec2"; */
+//"ChW-Mq-ec2.title" = " ";
+//
+///* Class = "UILabel"; text = "Please, enter phone number"; ObjectID = "DDk-sd-vWn"; */
+//"DDk-sd-vWn.text" = "Please, enter phone number";
+//
+///* Class = "UILabel"; text = "Country"; ObjectID = "Dkw-RT-3hh"; */
+//"Dkw-RT-3hh.text" = "Country";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "EP4-O2-ZVQ"; */
+//"EP4-O2-ZVQ.text" = "*";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "Eun-gM-LNT"; */
+//"Eun-gM-LNT.text" = "Label";
+//
+///* Class = "UITextField"; placeholder = "Password"; ObjectID = "FUa-ZG-i89"; */
+//"FUa-ZG-i89.placeholder" = "Password";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "FY5-6A-HJt"; */
+//"FY5-6A-HJt.text" = "*";
+//
+///* Class = "UILabel"; text = " Phone number"; ObjectID = "GK0-rW-p0w"; */
+//"GK0-rW-p0w.text" = " Phone number";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "GKw-4x-U5Q"; */
+//"GKw-4x-U5Q.text" = "*";
+//
+///* Class = "UILabel"; text = "User name"; ObjectID = "HLT-7V-Lgy"; */
+//"HLT-7V-Lgy.text" = "User name";
+//
+///* Class = "UITextField"; placeholder = "Full Name"; ObjectID = "HUA-Es-Pk1"; */
+//"HUA-Es-Pk1.placeholder" = "Full Name";
+//
+///* Class = "UILabel"; text = "Phone "; ObjectID = "HUG-R9-5zc"; */
+//"HUG-R9-5zc.text" = "Phone ";
+//
+///* Class = "UILabel"; text = "Full name"; ObjectID = "HbY-cA-Op8"; */
+//"HbY-cA-Op8.text" = "Full name";
+//
+///* Class = "UIButton"; normalTitle = "Create new account"; ObjectID = "HkP-dl-JL6"; */
+//"HkP-dl-JL6.normalTitle" = "Create new account";
+//
+///* Class = "UILabel"; text = "Region"; ObjectID = "Ivy-9f-dHm"; */
+//"Ivy-9f-dHm.text" = "Region";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "JfS-S5-SAn"; */
+//"JfS-S5-SAn.text" = "*";
+//
+///* Class = "UILabel"; text = "965"; ObjectID = "JnG-xs-OXC"; */
+//"JnG-xs-OXC.text" = "965";
+//
+///* Class = "UILabel"; text = "Please check your email and phone number to get the activation code"; ObjectID = "K1C-Kb-W61"; */
+//"K1C-Kb-W61.text" = "Please check your email and phone number to get the activation code";
+//
+///* Class = "UILabel"; text = "Your activation code"; ObjectID = "K83-79-NJT"; */
+//"K83-79-NJT.text" = "Your activation code";
+//
+///* Class = "UIButton"; normalTitle = "Login"; ObjectID = "KYL-8d-WSK"; */
+//"KYL-8d-WSK.normalTitle" = "Login";
+//
+///* Class = "UITextField"; placeholder = "New Password"; ObjectID = "KxT-yt-phP"; */
+//"KxT-yt-phP.placeholder" = "New Password";
+//
+///* Class = "UINavigationItem"; title = "Verify Phone Code"; ObjectID = "LTa-YP-2yi"; */
+"LTa-YP-2yi.title" = "تحقق من الرمز";
+//
+///* Class = "UITextField"; placeholder = "password"; ObjectID = "M2O-qQ-opG"; */
+//"M2O-qQ-opG.placeholder" = "password";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "NF4-vB-cYY"; */
+//"NF4-vB-cYY.text" = "Label";
+//
+///* Class = "UIButton"; configuration.title = "Usage agreement"; ObjectID = "NZ1-5m-r4H"; */
+//"NZ1-5m-r4H.configuration.title" = "Usage agreement";
+//
+///* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NZ1-5m-r4H"; */
+//"NZ1-5m-r4H.normalTitle" = "Button";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "Nda-J4-ecc"; */
+//"Nda-J4-ecc.text" = "Label";
+//
+///* Class = "UILabel"; text = "sent to"; ObjectID = "OYC-zC-Fee"; */
+//"OYC-zC-Fee.text" = "sent to";
+//
+///* Class = "UIButton"; normalTitle = "Register"; ObjectID = "OkW-Bn-TNW"; */
+//"OkW-Bn-TNW.normalTitle" = "Register";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "Op8-5x-eJi"; */
+//"Op8-5x-eJi.text" = "Label";
+//
+///* Class = "UILabel"; text = "Password"; ObjectID = "OxT-3T-HpP"; */
+//"OxT-3T-HpP.text" = "Password";
+//
+///* Class = "UILabel"; text = "Confirm New Password"; ObjectID = "QEI-jo-CnX"; */
+//"QEI-jo-CnX.text" = "Confirm New Password";
+//
+///* Class = "UILabel"; text = "Please check your email and phone number to get the activation code"; ObjectID = "R4W-zi-S47"; */
+//"R4W-zi-S47.text" = "Please check your email and phone number to get the activation code";
+//
+///* Class = "UIButton"; normalTitle = "Confirm"; ObjectID = "ROS-xb-4JA"; */
+//"ROS-xb-4JA.normalTitle" = "Confirm";
+//
+///* Class = "UILabel"; text = "Please Fill All Fields"; ObjectID = "Scz-Q0-4Gg"; */
+//"Scz-Q0-4Gg.text" = "Please Fill All Fields";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "Uh8-kU-3FY"; */
+//"Uh8-kU-3FY.text" = "*";
+//
+///* Class = "UIButton"; normalTitle = "Resend Code "; ObjectID = "VS9-D5-Hia"; */
+//"VS9-D5-Hia.normalTitle" = "Resend Code ";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "Vk1-JK-A93"; */
+//"Vk1-JK-A93.text" = "*";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "Vr2-XK-I2p"; */
+//"Vr2-XK-I2p.text" = "*";
+//
+///* Class = "UILabel"; text = "965"; ObjectID = "Waq-xg-t9t"; */
+//"Waq-xg-t9t.text" = "965";
+//
+///* Class = "UINavigationItem"; title = "Verify Phone Code"; ObjectID = "YUP-fU-23g"; */
+"YUP-fU-23g.title" = "تحقق من الرمز";
+//
+///* Class = "UITextField"; placeholder = "Email"; ObjectID = "ZiR-IK-Ewv"; */
+//"ZiR-IK-Ewv.placeholder" = "Email";
+//
+///* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "ZtP-0f-wCw"; */
+//"ZtP-0f-wCw.placeholder" = "Phone number";
+//
+///* Class = "UILabel"; text = "Family name"; ObjectID = "aDP-zo-aKY"; */
+//"aDP-zo-aKY.text" = "Family name";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "aGX-Jj-5dr"; */
+//"aGX-Jj-5dr.text" = "*";
+//
+///* Class = "UIButton"; normalTitle = "verify"; ObjectID = "ayG-SH-bLk"; */
+//"ayG-SH-bLk.normalTitle" = "verify";
+//
+///* Class = "UIButton"; normalTitle = "Resend Code "; ObjectID = "bOO-0G-alR"; */
+//"bOO-0G-alR.normalTitle" = "Resend Code ";
+//
+///* Class = "UILabel"; text = "Your username is how friends add you on Bazar"; ObjectID = "c23-vO-8GU"; */
+//"c23-vO-8GU.text" = "Your username is how friends add you on Bazar";
+//
+///* Class = "UILabel"; text = "965"; ObjectID = "cB0-ju-13j"; */
+//"cB0-ju-13j.text" = "965";
+//
+///* Class = "UINavigationItem"; title = "Register"; ObjectID = "dHc-6n-P4Q"; */
+"dHc-6n-P4Q.title" = "تسجيل مستخدم جديد";
+//
+///* Class = "UILabel"; text = "Please enter your mobile number to be sent"; ObjectID = "drV-u2-oiq"; */
+//"drV-u2-oiq.text" = "Please enter your mobile number to be sent";
+//
+///* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "dyz-SD-5Bd"; */
+//"dyz-SD-5Bd.normalTitle" = "Continue";
+//
+///* Class = "UILabel"; text = "City"; ObjectID = "eXs-RB-4Dk"; */
+//"eXs-RB-4Dk.text" = "City";
+//
+///* Class = "UILabel"; text = "Password"; ObjectID = "eyd-ge-JIR"; */
+//"eyd-ge-JIR.text" = "Password";
+//
+///* Class = "UITextField"; placeholder = " Phone number"; ObjectID = "fAD-uU-0Pu"; */
+//"fAD-uU-0Pu.placeholder" = " Phone number";
+//
+///* Class = "UITextField"; placeholder = "phone number"; ObjectID = "gDf-LE-jRD"; */
+//"gDf-LE-jRD.placeholder" = "phone number";
+//
+///* Class = "UILabel"; text = "New password"; ObjectID = "gKz-4H-6YJ"; */
+//"gKz-4H-6YJ.text" = "New password";
+//
+///* Class = "UIButton"; normalTitle = "Save"; ObjectID = "gSv-ik-UrQ"; */
+//"gSv-ik-UrQ.normalTitle" = "Save";
+//
+///* Class = "UILabel"; text = "Verify Code"; ObjectID = "grF-Os-0v7"; */
+//"grF-Os-0v7.text" = "Verify Code";
+//
+///* Class = "UILabel"; text = "Please check your email and phone number to get the activation code"; ObjectID = "gsa-hZ-PZf"; */
+//"gsa-hZ-PZf.text" = "Please check your email and phone number to get the activation code";
+//
+///* Class = "UILabel"; text = " Phone number"; ObjectID = "gtf-C3-T60"; */
+//"gtf-C3-T60.text" = " Phone number";
+//
+///* Class = "UIButton"; normalTitle = "Verify"; ObjectID = "h7w-6k-7lR"; */
+//"h7w-6k-7lR.normalTitle" = "Verify";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "h9i-BB-Kje"; */
+//"h9i-BB-Kje.text" = "*";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "hbt-oX-Nif"; */
+//"hbt-oX-Nif.text" = "Label";
+//
+///* Class = "UIButton"; normalTitle = "Forget Password"; ObjectID = "hiV-66-I9e"; */
+//"hiV-66-I9e.normalTitle" = "Forget Password";
+//
+///* Class = "UITextField"; placeholder = "Phone Number"; ObjectID = "i0Q-x8-h4q"; */
+//"i0Q-x8-h4q.placeholder" = "Phone Number";
+//
+///* Class = "UILabel"; text = "you accept"; ObjectID = "i0R-TE-bgb"; */
+//"i0R-TE-bgb.text" = "you accept";
+//
+///* Class = "UILabel"; text = "About me"; ObjectID = "i4f-8k-qVY"; */
+//"i4f-8k-qVY.text" = "About me";
+//
+///* Class = "UITextField"; placeholder = "Confirm New Password"; ObjectID = "ipN-Nb-45L"; */
+//"ipN-Nb-45L.placeholder" = "Confirm New Password";
+//
+///* Class = "UITextField"; placeholder = "Full name"; ObjectID = "jRc-iu-cU4"; */
+//"jRc-iu-cU4.placeholder" = "Full name";
+//
+///* Class = "UITextField"; placeholder = "confirm new password"; ObjectID = "jqN-DE-nqC"; */
+//"jqN-DE-nqC.placeholder" = "confirm new password";
+//
+///* Class = "UILabel"; text = "Change Password"; ObjectID = "kWM-M2-qfN"; */
+//"kWM-M2-qfN.text" = "Change Password";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "kiA-nr-9lf"; */
+//"kiA-nr-9lf.text" = "Label";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "lbf-YY-rtw"; */
+//"lbf-YY-rtw.text" = "Label";
+//
+///* Class = "UIButton"; normalTitle = "Resend Code "; ObjectID = "mGy-BW-6ua"; */
+//"mGy-BW-6ua.normalTitle" = "Resend Code ";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "mHI-8E-dTE"; */
+//"mHI-8E-dTE.text" = "Label";
+//
+///* Class = "UIButton"; normalTitle = "Skip"; ObjectID = "mOh-9c-HTE"; */
+//"mOh-9c-HTE.normalTitle" = "Skip";
+//
+///* Class = "UINavigationItem"; title = "Reset Password"; ObjectID = "mpo-QH-ayM"; */
+"mpo-QH-ayM.title" = "اعادة تعين كلمة المرور";
+//
+///* Class = "UITextField"; placeholder = " Phone number"; ObjectID = "n1Y-eC-jaZ"; */
+//"n1Y-eC-jaZ.placeholder" = " Phone number";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "nB1-cM-6Xj"; */
+//"nB1-cM-6Xj.text" = "*";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "oFX-jV-Y8b"; */
+//"oFX-jV-Y8b.text" = "Label";
+//
+///* Class = "UIBarButtonItem"; title = " "; ObjectID = "oXo-1Z-BGP"; */
+//"oXo-1Z-BGP.title" = " ";
+//
+///* Class = "UINavigationItem"; title = "Verify Phone Code"; ObjectID = "pZv-Qu-EiJ"; */
+"pZv-Qu-EiJ.title" = "تحقق من الرمز";
+//
+///* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "poS-kd-m26"; */
+//"poS-kd-m26.normalTitle" = "Continue";
+//
+///* Class = "UILabel"; text = "Verify Code"; ObjectID = "qa1-nm-6RO"; */
+//"qa1-nm-6RO.text" = "Verify Code";
+//
+///* Class = "UILabel"; text = "Country"; ObjectID = "qlf-KS-EJn"; */
+//"qlf-KS-EJn.text" = "Country";
+//
+///* Class = "UILabel"; text = "Label"; ObjectID = "rP6-MO-KJQ"; */
+//"rP6-MO-KJQ.text" = "Label";
+//
+///* Class = "UILabel"; text = "Please type the correct email to receive the activation code"; ObjectID = "rlE-UW-ayf"; */
+//"rlE-UW-ayf.text" = "Please type the correct email to receive the activation code";
+//
+///* Class = "UIButton"; normalTitle = "Verify"; ObjectID = "sMg-4Y-OcU"; */
+//"sMg-4Y-OcU.normalTitle" = "Verify";
+//
+///* Class = "UINavigationItem"; title = "Register"; ObjectID = "sqJ-XM-Xqx"; */
+"sqJ-XM-Xqx.title" = "تسجيل مستخدم جديد";
+//
+///* Class = "UILabel"; text = "or"; ObjectID = "srL-9K-m8t"; */
+//"srL-9K-m8t.text" = "or";
+//
+///* Class = "UILabel"; text = "965"; ObjectID = "u1w-dB-gTJ"; */
+//"u1w-dB-gTJ.text" = "965";
+//
+///* Class = "UIButton"; normalTitle = "Verify"; ObjectID = "u32-om-zah"; */
+//"u32-om-zah.normalTitle" = "Verify";
+//
+///* Class = "UILabel"; text = "or"; ObjectID = "uAY-gS-nX5"; */
+//"uAY-gS-nX5.text" = "or";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "uIi-Dz-1pK"; */
+//"uIi-Dz-1pK.text" = "*";
+//
+///* Class = "UILabel"; text = "Email"; ObjectID = "w58-hx-SPa"; */
+//"w58-hx-SPa.text" = "Email";
+//
+///* Class = "UILabel"; text = "965"; ObjectID = "wyC-oP-nRq"; */
+//"wyC-oP-nRq.text" = "965";
+//
+///* Class = "UITextField"; placeholder = "Choose your username (English letters)"; ObjectID = "yJu-ZX-PUV"; */
+//"yJu-ZX-PUV.placeholder" = "Choose your username (English letters)";
+//
+///* Class = "UINavigationItem"; title = "Login"; ObjectID = "ya0-sh-s4j"; */
+"ya0-sh-s4j.title" = "تسجيل دخول";
+//
+///* Class = "UILabel"; text = "Confirm new password"; ObjectID = "zIr-15-ZsI"; */
+//"zIr-15-ZsI.text" = "Confirm new password";
+//
+///* Class = "UILabel"; text = "Governorate"; ObjectID = "zaB-b5-Wc3"; */
+//"zaB-b5-Wc3.text" = "Governorate";
+//
+///* Class = "UILabel"; text = "*"; ObjectID = "zke-DB-Lya"; */
+//"zke-DB-Lya.text" = "*";

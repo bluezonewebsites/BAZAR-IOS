@@ -1,0 +1,483 @@
+
+//MARK: Home
+"Featured ads" = "الاعلانات المميزة";
+"Most recent ads" = "أحدث الإعلانات";
+"what are you looking for ?" = "ما الذي تبحث عنه ؟";
+"Stores" = "المتاجر";
+"More" = "المزيد";
+"Kuwait" = "الكويت";
+"Home" = "الرئيسية";
+"Categories" = "الأقسام";
+"Add Ad" = "إضافة إعلان";
+"All" = "الكل";
+"Messages" = "الرسائل";
+"Menu" = "القائمة";
+"Notifications" = "الإشعارات";
+"Search" = "البحث";
+"Latest" = "الأحدث";
+"Sort" = "رتب";
+"Highest price" = "الأغلى سعر";
+"Lowest price" = "الأقل سعر";
+"Apply" = "تطبيق";
+"Filter" = "فلتر";
+"choose city" = "اختر المدينة";
+"Back to All" = "رجوع إلى الكل";
+"Categories" = "الأقسام";
+//MARK: Messages
+"you Don't have any messages" = "ليس لديك أية رسائل";
+"Please Login First To Can Uplaod ads" = "الرجاء تسجيل الدخول أولاً لتتمكن من تحميل الإعلانات";
+
+//MARK: Srearch
+"Most popular questions" = "الأسئلة الأكثر شيوعًا";
+"Stores relevant to your search result" = "المتاجر ذات الصلة بنتيجة البحث الخاص بك";
+"Most popular ads" = "الإعلانات الأكثر شعبية";
+"Ads relevant to your search result" = "الإعلانات ذات الصلة بنتيجة البحث الخاصة بك";
+"Most popular persons" = "الأشخاص الأكثر شعبية";
+"Persons relevant to your search result" = "الأشخاص ذوي الصلة بنتيجة البحث الخاصة بك";
+"Peoples" = "الأشخاص";
+"Search result" = "نتائج البحث";
+"Please type in anything you want to search for in Bazar" = "من فضلك اكتب اي شئ تريد البحث عنة في بازار";
+"Most popular Stores" = "المتاجر المناسبة لنتيجة بحثك";
+"Stores" = "المتاجر";
+"Stores relevant to your search result" = "المتاجر ذات الصلة بنتيجة البحث الخاصة بك";
+//MARK: Menu
+"You have no ads. Add your ad now." = "ليس لدك إعلانات قم بإضافة اعلانك الان";
+"Back" = "رجوع";
+"My Profile" = "الملف الشخصي";
+"Add Ad" = "أضف إعلان";
+"Favourites" = "المفضلات";
+"My Ads" = "إعلاناتي";
+"My Asks" = "أسئلتي";
+"Change Country" = "تغيير الدولة";
+"Change Languge" = "تغيير اللغة";
+"Settings" = "الإعدادات";
+"Account Verification" = "توثيق الحساب";
+"Log out" = "تسجيل خروج";
+"Do you want to log out?" = "هل ترغب بتسجبل الخروج";
+"Cancel" = "الغاء";
+"Yes" = "موافق";
+"Login/Register" = "تسجيل الدخول/إنشاء حساب";
+"Guest" = "زائر";
+"Please Login First To Can Go To Profile!" = "الرجاء تسجيل الدخول أولاً لتتمكن من الانتقال إلى الملف الشخصي!";
+"Please Login First To Can Add Post!" = "الرجاء تسجيل الدخول أولاً لتتمكن من إضافة منشور!";
+"Please Login First To Can Go To Favoutites!" = "الرجاء تسجيل الدخول أولا للذهاب إلى المفضلة!";
+"Please Login First To Can Go To Ads !" = "الرجاء تسجيل الدخول أولاً لتتمكن من الانتقال إلى الإعلانات!";
+
+"Please Login First To Can Go To Asks!" = "الرجاء تسجيل الدخول أولاً ليتمكن من الذهاب إلى اسألتي!";
+"Please Login First To Can Go To Verify Account!" = "الرجاء تسجيل الدخول أولاً لتتمكن من توثيق الحساب!";
+"Stores Packages" = "باقات المتاجر";
+"Please Login First" =  "الرجاء تسجيل الدخول أولا";
+
+
+//MARK: Verify Account
+"Verify Account" = "توثيق الحساب";
+"Select the account type" = "حدد نوع الحساب";
+"Company / institution" = "شركة / مؤسسة";
+"Public figure/famous" = "شخصية عامة / مشهور";
+"Country" = "الدولة";
+"Phone" = "هاتف";
+"Phone Number" = "رقم التليفون";
+"Category you belong to" = "الفئة التي تنتمي إليها";
+"Select category" = "إختار الفئة";
+"Confirmation of credibility" = "تأكيد المصدقية";
+"Please add an official document to prove personal identity" = "يرجى إضافة مستند رسمي لاثبات الهويه الشخصية";
+"Document type" = "نوع المستند";
+"Select Document Type" = "حدد نوع المستند";
+"Upload Document" = "تحميل المستند";
+"ID card" = "بطاقة الهوية";
+"passport" = "جواز سفر";
+"Driving License" = "رخصة قيادة";
+"select category" = "اختار الفئة";
+"sports" = "رياضة";
+"music and singing" = "موسيقى وغناء";
+"entertainment" = "ترفيه";
+"acting" = "تمثيل";
+"Fashion" = "موضة وأزياء";
+"Content Creator/Blogger/Influencer" = "منشئ محتوى/مدوّن/شخصية مؤثرة";
+"writer/author" = "كاتب/مؤلف";
+"Government and Politics" = "حكومة وسياسة";
+"business/brand" = "نشاط تجاري/علامة تجارية";
+"Establishment contract" = "عقد تأسيس";
+"Commercial Record" = "سجل تجاري";
+"Commercial license" = "الرخصة التجارية";
+
+//MARK: ADD ADs
+"Add Your Ad" = "أضف إعلانك";
+"You have reached the limit of videos and photos" = "لقد وصلت إلى الحد الأقصى من مقاطع الفيديو والصور";
+"Add Photos or Videos" = "أضف صورًا أو مقاطع فيديو";
+"Add Photo" = "إضافة صورة";
+"Ad Title" = "عنوان الاعلان";
+"Ad title (five words only)" = "عنوان الإعلان (خمس كلمات فقط)";
+"Main Category" = "القسم الرئيسي";
+"Sub Category" = "القسم الفرعي";
+"City" = "المدينة";
+"Region" = "المنطقة";
+"Choose" = "أختر";
+"Ad description" = "وصف الإعلان";
+"Price" = "السعر";
+"Sale or rent price" = "سعر البيع أو الإيجار";
+"Ad type" = "نوع الإعلان";
+"AD FOR SELL" = "إعلان للبيع";
+"AD FOR RENT" = " إعلان للإيجار";
+"Connection type" = "وسائل التواصل";
+"Determine the means by which customers will contact you for this advertisement" = "حدد الوسائل التي سيتصل بك العملاء من خلالها بخصوص هذا الإعلان";
+"Phone Call" = "هاتف";
+"WhatsApp" = "واتساب";
+"Chat" = "محادثة";
+"Please Login First" = "يجب تسجيل الدخول أولا";
+"Use my registered mobile number to communicate" = "استخدم رقم هاتفي المحمول المسجل للتواصل";
+"Enter the mobile number" = "أدخل رقم الهاتف المحمول";
+"YES" = "نعم";
+"NO" = "لا";
+"Mobile" = "الهاتف";
+"ADD AD" = "أضف إعلانك";
+"Open the Gallery" = "افتح المعرض";
+"Open Video Gallery" = "افتح معرض الفيديو";
+"Take a Photo" = "التقاط صورة";
+"Record a Video" = "سجل فيديو";
+"Thank you... Your ad has been added successfully" = "شكرا لك ... تمت إضافة إعلانك بنجاح";
+"Go to Home Page" = "اذهب إلى الصفحة الرئيسية";
+"Please Enter the full description with the advantages" = "الرجاء إدخال الوصف الكامل مع المزايا والعيوب وسعر الشراء والبيع.";
+"The ad title should not exceed five words" = "عنوان الاعلان يجب الا يزيد عن خمس كلمات";
+
+"Post at least one photo for the ad." = "ضع صورة واحدة على الأقل للإعلان";
+"Please select the main Image for your ad" = "الرجاء تحديد الصورة الرئيسية لإعلانك";
+"Enter the title of the ad" = "أدخل عنوان الإعلان";
+"Enter the sale or rental price of the product" = "أدخل سعر البيع أو الإيجار للمنتج";
+"Put your contact phone number" = "ضع رقم هاتف جهة الاتصال الخاصة بك";
+//MARK: Edit Ads
+"Ad Details" = "تفاصيل الإعلان";
+"Ad Images" = "صور الإعلان";
+"Main Image" = "الصورة الرئيسية";
+"Add Image" = "إضافة صورة";
+"Ad Title" = "عنوان الاعلان";
+"Description" = "الوصف";
+ "Use My  Registered Phone Number" = "استخدم رقم هاتفي المسجل";
+"Enter Phone Number" = "أدخل رقم الهاتف";
+"Phone Numnber" = "رقم الهاتف";
+"Call" = "اتصال";
+"Please Choose Ad type" = "الرجاء اختيار نوع الإعلان";
+"Edit Ads" = "تعديل الاعلان";
+"Delete Ad" = "حذف الاعلان";
+//Edit Ads Cell
+"Share" = "شارك";
+"Delete" = "حذف";
+"Edit" = "تعديل";
+
+"Ads Deleted Seccessfully" = "تم حذف اعلانك بنجاح";
+"Please add main Image for your Ad." = "الرجاء إضافة الصورة الرئيسية لإعلانك.";
+//MARK: Chat
+"There are no conversations to delete" = "لا توجد محادثات لحذفها";
+"You did not select any conversation" = "لم تقم بتحديد اي محادثة" ;
+"Select" = "تحديد";
+"Delete The Conversation" = "حذف المحادثة";
+"Report The Conversation" = "أبلغ عن المحادثة";
+"Block" = "حظر";
+"Select the reason for reporting the chat content" = "حدد سبب الإبلاغ  عن محتوى المحادثة";
+"Report" = "إبلاغ";
+"Type here ..." = "اكتب هنا ...";
+"Type Your Message" = "اكتب رسالتك";
+"Confirm Location" = "تأكيد الموقع";
+"Are you sure you want to block?" = "هل تريد حظر بالتاكيد؟";
+"send picture" = "ارسال صورة ";
+"send video" = "ارسال فيديو";
+"send location" = "ارسال الموقع";
+"send contact" = "ارسال جهة الاتصال";
+"ADD RATE" = "إضافة تقييم";
+"Add Rate" = "إضافة تقييم";
+"Confirm" = "تأكيد";
+"User Rate Put your rating" = "قيم المستخدم وضع تعليقك";
+"Please type any text to send" = "الرجاء كتابة أي نص لإرساله";
+"Specify the location, please" = "حدد الموقع من فضلك";
+"Place Name" = "اسم الموقع";
+"Apple Maps" = "خرائط آبل";
+"Google Maps" = "خرائط جوجل";
+"Wrong Link!" = "رابط غير صحيح";
+"month" = "شهر";
+"week" = "أسبوع";
+"day" = "يوم";
+"hours" = "ساعة";
+"minutes" = "دقيقة";
+"seconds" = "ثانية";
+"You Can't chat with yourself" = "لا يمكنك الدردشة مع نفسك";
+
+"Save the contact" = "حفظ جهة الإتصال";
+"Phone call" = "مكالمة هاتفية";
+"Are you sure you want to Delete this Chat?" = "هل تريد حذف هذه المحادثة";
+"You have " = " أنت لديك";
+" Paid ads" = "إعلان مدفوع ";
+"Activated" = "مفعلة";
+"Pending" = "معلقة";
+"Featured Pending" = "مميزة معلقة";
+//MARK: Product Details
+"Description" = "وصف";
+"Comments" = "تعليقات";
+"Reply" = "رد";
+"Like" = "أعجبني";
+"  Call the advertisement owner" = "  اتصل بصاحب الإعلان  ";
+"The owner of the advertisement has hidden the mobile number" = "قام صاحب الإعلان بإخفاء رقم الهاتف المحمول";
+"Add reply" = "إضافة رد";
+"add reply to ..." = "أضف رد على ...";
+"report comment" = "الإبلاغ عن تعليق";
+"what's the reason for reeporting content / comment owner" = "ما سبب الإبلاغ عن مالك المحتوى / التعليق";
+"choose your reason to report content / ad owner" = "اختر سببًا للإبلاغ عن مالك المحتوى / الإعلان";
+
+
+//MARK: Auth
+" Phone number" = "رقم الهاتف";
+"Phone number" = "رقم الهاتف";
+"Password" = "كلمة المرور";
+"Forget password ?" = "نسيت كلمة المرور؟";
+"Login" = "تسجيل الدخول";
+"or" = "أو";
+"Create new account" = "انشاء حساب جديد";
+"Continue" = "استمر";
+"Verify Code" = "التحقق من الكود";
+"Please check your email and phone number to get the activation code" = "يرجى التحقق من بريدك الإلكتروني ورقم هاتفك للحصول على رمز التفعيل";
+"sent to" = "أرسل إلى";
+"Verify" = "تأكيد";
+"Resend Code " = "أعد إرسال الرمز";
+"New password" = "كلمة المرور الجديدة";
+"Confirm new password" = "تأكيد كلمة المرور الجديدة";
+"new password" = "كلمة المرور الجديدة";
+"confirm new password" = "تأكيد كلمة المرور الجديدة";
+"Save" = "حفظ";
+"New Account" = "حساب جديد";
+"Please Fill All Fields" = "إملء كافة الحقول";
+"Make sure your new password matches." = "تأكد من تطابق كلمة المرور الجديدة";
+"Change Password" = "تغيير كلمة المرور";
+"Not have regions" = "لا توجد مناطق";
+"Not have cities" = "لا يوجد مدن";
+//Signup
+
+"User name" = "اسم المستخدم";
+"Your username is how friends add you on Bazar" = "اسم المستخدم الخاص بك هو كيف يضيفك الأصدقاء على مناسبه";
+"Choose your username (English letters)" = "اختر اسم المستخدم الخاص بك (الحروف الانجليزية)";
+"Full name" = "الاسم بالكامل";
+"Family name" = "اسم العائلة";
+"Phone" = "هاتف";
+"Email" = "البريد إلكتروني";
+"Governorate" = "المحافظة";
+"About me" = "ْعَنِّي";
+"Register" = "تسجيل";
+"you accept" = "هل توافق";
+"Usage agreement" = "اتفاقية الاستخدام";
+"Forget Password" = "نسيت كلمة المرور";
+"Please type the correct email to receive the activation code" = "يرجى كتابة البريد الإلكتروني الصحيح لتلقي رمز التفعيل";
+
+//MARK: Change Phone
+"Change Phone Number" = "تغيير رقم الجوال";
+"Please enter your mobile number to be sent" = "من فضلك أدخل رقم جوالك حتى يتم إرسال";
+"Your activation code" = "كود التفعيل إليك";
+
+//MARK: Profile
+"My Profile" = "ملفي الشخصي";
+"Change Photo" = "تغيير الصوره";
+"Ads" = "إعلان";
+"Rate" = "تقييم";
+"Followers " = "متابعون";
+"Followings " = "يتابع";
+"FirstName" = "الاسم الأول";
+"UserName" = "اسم المستخدم";
+"See All" = "مشاهدة الكل";
+"Mobile" = "رقم الهاتف";
+"My Chats" = "دردشاتي";
+"LastName" = "اسم العائلة";
+"Bio" = "السيرة الذاتية";
+"There Are No Ads....!" = "لا توجد اعلانات ....!";
+"Follow" = "تابع";
+"Select the reason why you are reporting the account holder" = "حدد سبب الإبلاغ عن صاحب الحساب";
+
+"advertisements" = "الإعلانات";
+"Rates" = "التقييمات";
+
+"Followings / Followers" = "المتابعين / المتابعون";
+"Followers" = "المتابعون";
+"Followings" = "المتابعين";
+"unfollow" = "الغاء المتابعة";
+"follow" = "متابعة";
+"Added Successfully" = "تمت الاضافة بنجاح";
+"Can't Create Room" = "لا تستطيع انشاء محادثة";
+"Do You want to Block this User?!" = "حقا هل تريد حظر هذا المستخدم";
+"Change" = "تغيير";
+
+"Wirrning ⚠️ " = "⚠️ تحذير";
+"Do you want to delete Cover ?" = "هل تريد حذف صورة الغلاف حقًا؟";
+"Do you want to delete Profile Image ?" = "هل تريد حذف صورة الملف الشخصي حقا؟";
+
+"hello I'm Contct with you from Bazar App" = "مرحبًا، أنا أتواصل معك من تطبيق بازار";
+"Profile" = "حسابي";
+"You have" = "لديك";
+"Free ads" = "إعلان مجاني";
+"Sorry, You have exhausted your free ads this month" = "عذرًا، لقد استنفدت إعلاناتك المجانية هذا الشهر";
+"before" = "قبل";
+"Your ad has been uploaded successfully" = "لقد تم تحميل إعلانك بنجاح";
+//MARK: Edit Profile
+
+"Edit Profile" = "تعديل الحساب";
+"FamilyName" = "اسم العائلة ";
+
+//MARK: Ask
+"Remove" = "حذف";
+"show comments" = "عرض كل التعليقات";
+"Add comment" = "إضافة تعليق";
+"add comment to ad" = "إضافة تعليق علي اعلان";
+"Take Photo" = "إلتقاط صورة";
+"Photo Library" = "معرض الصور";
+ 
+//MARK: Setting
+"Settings" = "الإعدادات";
+"About App" = "عن التطبيق";
+"Share App" = "مشاركة التطبيق";
+"Rate App" = "تقييم التطبيق";
+"Tech Support" = "الدعم الفني";
+"Conditions & terms" = "الشروط والأحكام";
+"Delete Account" = "حذف الحساب";
+"Bazar application" = "تطبيق بازار";
+"What is a Bazar application ?" = "ما هو تطبيق بازار؟";
+"Contacts us" = "تواصل معنا";
+"You can send a message for support and assistance for free" = "يمكنك إرسال رسالة للحصول على الدعم والمساعدة مجانًا";
+"Name" = "الأسم";
+"Descreption" = "الوصف";
+"Do you really want to delete the account All your data will be erased and your membership will be lost" = "هل تريد حقًا حذف الحساب ، سيتم مسح جميع بياناتك وستفقد عضويتك";
+
+//MARK: Favourites
+"There are no favorites here" = "لايوجد مفضلة هنا";
+"Please start adding more to your favourites" = "يرجى إضافة المزيد إلى مفضلاتك";
+"Kuwait" = "الكويت";
+"Please start adding more to your favourites" = "من فضلك باشر في اضافة المزيد الى مفضلتك";
+"the data you entered does not match our data" = "البيانات التي أدخلتها لا تتطابق مع بياناتنا";
+"you have to login first" = "عليك تسجيل الدخول اولا";
+"\ndownload Bazar app from apple store" = "حمل تطبيق مناسبة من المتجر ";
+"I want to talk to you about your advertisement" = "اريد التحدث معك بخصوص اعلانك";
+"on Bazar app" = "على تطبيق بازار";
+"prohibited on Bazar" = "محظور على بازار";
+"Offensive or inappropriate" = "مسيئة أو غير بازار";
+"Identical or imitation product" = "منتج متطابق أو مقلد منتج";
+"Located in the wrong section" = "تقع في القسم الخطأ";
+"Looks like a scam" = "يبدو وكأنه عملية احتيال";
+"The publisher is a fake or stolen account" = "الناشر حساب مزيف أو مسروق";
+
+"enter your comment" = "ادخل تعليقك";
+"enter your reply" = "ادخل ردك";
+"show comments" = "مشاهدة التعليقات";
+"enter valid phone number" = "ادخل رقم هاتف صحيح";
+"password dosen't match" = "كلمة المرور غير متطابقة";
+"password should be greater than 6 digits" = "كلمة المرور يجب الا تقل عن ٦ احروف";
+
+"Confirm password should be greater than 6 digits" = "تاكيد كلمة المرور يجب الا تقل عن ٦ احروف";
+"choose country first" = " اختار الدولة اولا";
+"choose city first" = " اختار المدينة اولا";
+"enter your email address" = "ادخل البريد الالكتروني";
+
+"please enter your name" = "اسم الاسم كاملا";
+
+"please enter your family name" = "ادحل اسم العائلة";
+
+"please enter your username" = "ادحل الاسم المستعار";
+
+"Please Login First To Can Uplaod ads!" = "من فضلك سجل الدخول اولا";
+"choose city" = "اختار المدينة";
+"some thing went wrong" = "حدث شئ خطا";
+"No internet connection" = "لا يوجد انترنت";
+"server error ... try again later" = "حدث خطا بالسيرفر ٠٠٠ حاولا لاحقا";
+"Type" = "النوع";
+"Rent" = "للايجار";
+"Sell" = "للبيع";
+"sell" = "للبيع";
+"rent" = "للايجار";
+"The owner of the advertisement has hidden the mobile number" = "لقد اخفى صاحب الاعلان رقم هاتفه";
+"The owner hid his phone number" = "لقد اخفى صاحب الاعلان رقم هاتفه";
+"Description" = "الوصف";
+"Comments" = "التعليقات";
+
+"Send" = "ارسال";
+"Cancel" = "الغاء";
+"show comments(0)" = "مشاهدة التعليقات (٠)";
+"reply" = "رد";
+"like( " = "اعجبني( ";
+" )" = " (";
+"remove" = "حذف";
+"report" = "ابلاغ";
+"add comment to ask" = "اضافة تعليق لسؤال";
+"Followng" = "متابعة";
+"Cancel following" = "الغاء المتابعة";
+"Follow" = "متابعة";
+"user" = "مستخدم";
+"Search Result" = "نتايج البحث";
+"search ad.. Peoples.. Stores" = "بحث عن اعلان.. شخص.. سؤال";
+"There are no matching results" = "لا يوجد نتائج مظابقة";
+"Search again by selecting different values for the search elements" = "قم بالبحث مجددا باختيار قيم مختلفة لعناصر البحث";
+"Done" = "تم";
+
+
+//MARK: Add Store
+"Commercial" = "تجاري";
+"Add Store" = "Add Store";
+"It will be reviewed by management
+To get free ads" = "سيتم مراجعتة من قبل الإدارة
+للحصول علي الإعلانات المجانية";
+"Your company has been successfully registered" = "لقد تم تسجيل شركتك بنجاح";
+"Your Current plan:" = "باقتك الحالية";
+"Your have" = "لديك";
+"Silver" = "فضي";
+"Paid ads" = "إعلان مدفوع";
+"Ad" = "إعلان";
+"Rating" = "تقييم";
+"My chats" = "دردشاتي";
+"STORES PACKAGES" = "باقات المتاجر";
+"Create Store" = "أضف متجرك الآن";
+"I agree to the " = " أوافق على";
+"Terms and Conditions" = "الأحكام والشروط";
+"Have Account?" = " لديك حساب؟";
+"Write a brief about your company" = "يرجي كتابة نبذة عن نشاطك";
+"About Company" = "نبذة عن نشاطك";
+"The company's trade license" = "الرخصة التجارية للشركة";
+"Enter your Email" = "ادخل البريد الالكتروني";
+"Enter WhatsApp number" = "ادخل رقم الواتساب";
+"WhatsApp number" = " رقم الواتساب";
+"Activity" = "النشاط";
+"Company activity" = "نشاط الشركة";
+"Enter name" = "ادخل الاسم";
+"Company name" = "اسم الشركة";
+"Upload the company logo" = "تحميل شعار الشركة";
+"Add Store" = "إضافة متجر";
+"WhatsApp" = "واتساب";
+//MARK: Edit Store
+"Edit social media" = "تعديل وسائل التواصل";
+"Updated" = "تم التحديث";
+"(Change)" = "(تغيير)";
+"Pay Now" = "ادفع الان";
+
+//MARK: PACKAGES
+"This subscription does not automatically renew" = "لا يتم تجديد هذا الاشتراك تلقائيا";
+"Features" = "الميزات";
+"3 Months" = "٣ أشهر";
+"6 Months" = "٦ أشهر";
+"12 Months" = "١٢ أشهر";
+"Choose your premium package" = "اختر باقتك المميزة";
+"Stores packages" = "باقات المتاجر";
+"Best Seller" = "الأكثر مبيعًا";
+"BUY NOW" = "اشتري الأن";
+
+"One step left to post your ad" = "بقي لك خطوة واحدة لإضافة لإعلانك";
+"Choose ad type" = "أختر نوع الاعلان";
+"Featured ad" = "إعلان مميز";
+"50 times more contacts and views About free advertising" = "اتصالات ومشاهدات اكثر بـ 50 ضعف عن الإعلان المجاني";
+"Pinned to the top of the home page" = "مثبت في أعلى  الصفحة الرئيسية";
+"Priority to appear in search results" = "اولوية الظهور في نتائج البحث";
+"Normal ad" = "اعلان مجاني";
+"Appearing with other ads according to the date of publication" = "الظهور مع باقي الإعلانات حسب تاريخ النشر";
+"Unpinned to the top of the home page" = " غير مثبت في أعلى  الصفحة الرئيسية";
+"Appear in general search results" = "الظهور  في نتائج البحث العامة";
+"The package has been successfully subscribed" = "تم الاشتراك في الباقة بنجاح";
+"Congratulations" = "تهانينا";
+
+"Upload a new ad" = "تحميل إعلان جديد";
+"Go To Home" = "اذهب إلى الرئيسية";
+"Go to Your Ads " = "اذهب إلى إعلاناتك";
+"Go to Your Profile" = "انتقل إلى ملف الشخصي" ;
+"You can modify it at any time from the My Ads page" = "ويمكنك تعديله في أي وقت من صفحة إعلاناتي";
+"we received your report" = "تم ارسال بلاغك الي الادارة";
+"reason for reporting this chat" = "من فضلك أدخل سبب الابلاغ عن المحادثة";
+"Enter a 4-digit number" = "أدخل رقمًا مكونًا من 4 أرقام";

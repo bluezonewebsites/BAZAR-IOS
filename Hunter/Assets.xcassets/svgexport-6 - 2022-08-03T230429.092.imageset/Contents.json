@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "svgexport-6 - 2022-08-03T230429.092.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "svgexport-6 - 2022-08-03T230429.092@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "svgexport-6 - 2022-08-03T230429.092@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

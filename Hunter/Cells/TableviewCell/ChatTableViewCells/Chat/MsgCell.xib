@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Tajawal-Regular.ttf">
+            <string>Almarai-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="MsgCell" rowHeight="272" id="vKV-ST-8oF" customClass="MsgCell" customModule="Hunter" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="636" height="272"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vKV-ST-8oF" id="ooT-2X-L8q">
+                <rect key="frame" x="0.0" y="0.0" width="636" height="272"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4VZ-6Y-WaQ">
+                        <rect key="frame" x="0.0" y="262" width="636" height="10"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="V8D-sA-zfm"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="kF4-Z4-J4F">
+                        <rect key="frame" x="150" y="0.0" width="486" height="262"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfN-XF-7Wd" customClass="EdgeInsetLabel" customModule="Hunter" customModuleProvider="target">
+                                <rect key="frame" x="421" y="0.0" width="65" height="235"/>
+                                <color key="backgroundColor" name="#0093F5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14.5"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightTextInset">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topTextInset">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomTextInset">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9P-aJ-m92" customClass="EdgeInsetLabel" customModule="Hunter" customModuleProvider="target">
+                                <rect key="frame" x="434" y="242" width="52" height="20"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="iXy-cC-pfW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="11.5"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightTextInset">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftTextInset">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="topTextInset">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="bottomTextInset">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" red="0.96513074639999996" green="0.97211986780000004" blue="0.99608308079999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="4VZ-6Y-WaQ" secondAttribute="trailing" id="6Ye-4X-ddY"/>
+                    <constraint firstItem="kF4-Z4-J4F" firstAttribute="leading" secondItem="ooT-2X-L8q" secondAttribute="leading" constant="150" id="Zsm-bb-GWb"/>
+                    <constraint firstItem="4VZ-6Y-WaQ" firstAttribute="top" secondItem="kF4-Z4-J4F" secondAttribute="bottom" id="arx-c1-7od"/>
+                    <constraint firstItem="kF4-Z4-J4F" firstAttribute="top" secondItem="ooT-2X-L8q" secondAttribute="top" id="h6d-ob-Wdi"/>
+                    <constraint firstAttribute="trailing" secondItem="kF4-Z4-J4F" secondAttribute="trailing" id="hdA-oG-iNh"/>
+                    <constraint firstItem="4VZ-6Y-WaQ" firstAttribute="leading" secondItem="ooT-2X-L8q" secondAttribute="leading" id="tNJ-EG-ssN"/>
+                    <constraint firstAttribute="bottom" secondItem="4VZ-6Y-WaQ" secondAttribute="bottom" id="wDI-kU-YuH"/>
+                </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <real key="value" value="0.0"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="number" keyPath="ShadowHeight">
+                        <integer key="value" value="0"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="number" keyPath="ShadowOpacity">
+                        <real key="value" value="0.0"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                        <real key="value" value="0.0"/>
+                    </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                        <color key="value" red="0.97254901959999995" green="0.97254901959999995" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lbl_date" destination="Y9P-aJ-m92" id="e7C-WF-Zja"/>
+                <outlet property="lbl_msg" destination="XfN-XF-7Wd" id="mP0-sn-YQW"/>
+                <outletCollection property="stackViewContainers" destination="kF4-Z4-J4F" collectionClass="NSMutableArray" id="i5Q-h6-as0"/>
+            </connections>
+            <point key="canvasLocation" x="356.52173913043481" y="41.517857142857139"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="XfN-XF-7Wd">
+            <size key="intrinsicContentSize" width="65" height="46.5"/>
+        </designable>
+        <designable name="Y9P-aJ-m92">
+            <size key="intrinsicContentSize" width="52" height="37"/>
+        </designable>
+    </designables>
+    <resources>
+        <namedColor name="#0093F5">
+            <color red="0.0" green="0.57599997520446777" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

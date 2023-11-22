@@ -14,6 +14,7 @@ class SideCategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var CategoryImageView: UIImageView!
     
     func setData(category: Category){
+        CategoryImageView.setImageWithLoadingFromMainDomain(url: category.image ?? "")
         if  MOLHLanguage.currentAppleLanguage() == "en" {
             nameLbl.text = category.nameEn ?? category.nameAr ?? ""
         }

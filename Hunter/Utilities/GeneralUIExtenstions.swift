@@ -725,11 +725,18 @@ extension UIImageView{
         self.sd_imageIndicator = SDWebImageActivityIndicator.gray
         print("\(Constants.IMAGE_URL)\(url)")
         let placeholderImage = (placeholder != nil) ? UIImage(named: placeholder!) : UIImage(named: "placeHolderImage")
+        print("\(Constants.IMAGE_URL)\(url)")
         self.sd_setImage(with: URL(string: "\(Constants.IMAGE_URL)\(url)"),placeholderImage: placeholderImage)
     }
     
     
-    
+    func setImageWithLoadingFromMainDomain(url: String,placeholder:String? = "placeHolderImage"){
+        self.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        print("\(Constants.IMAGE_URL)\(url)")
+        let placeholderImage = (placeholder != nil) ? UIImage(named: placeholder!) : UIImage(named: "placeHolderImage")
+        print("\(Constants.IMAGE_URL)\(url)")
+        self.sd_setImage(with: URL(string: "\(Constants.MAIN_DOMAIN)\(url)"),placeholderImage: placeholderImage)
+    }
     
     func localImg(src:String){
         if(src == ""){

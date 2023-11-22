@@ -318,7 +318,7 @@ class HomeViewController: UIViewController {
     @IBAction func didTapMoreFeatureAds(_ sender: UIButton) {
         let homeDetailsVC = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "homeDetails") as! HomeDetailsViewController
         homeDetailsVC.selectedCategoryIndex = 0
-        homeDetailsVC.categoryId = categories[0].id ?? 0
+//        homeDetailsVC.categoryId = categories[0].id ?? 0
         homeDetailsVC.isComeToFeatureAds = true
         homeDetailsVC.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(homeDetailsVC, animated: true)

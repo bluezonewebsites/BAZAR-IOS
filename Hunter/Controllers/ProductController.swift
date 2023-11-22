@@ -107,11 +107,11 @@ class ProductController{
             guard let data = data else { return }
             
             do {
-                let productArray = try JSONDecoder().decode(ProductFeatureObject.self, from: data)
+                let productArray = try JSONDecoder().decode(ProductArrayPaging.self, from: data)
                 
                 if productArray.code == 200{
-                    
-                    completion(productArray.data, 0,"")
+                    print(productArray.data.data.count)
+                    completion(productArray.data.data, 0,"")
                 }
                 else {
                     completion([Product](),1,productArray.msg ?? "")

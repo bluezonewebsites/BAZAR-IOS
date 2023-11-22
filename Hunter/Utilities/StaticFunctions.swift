@@ -145,7 +145,7 @@ class StaticFunctions {
             
         }
     }
-    static func call(phone : String, vc: UIViewController){
+    static func call(phone:String, vc: UIViewController){
         if phone.isEmpty{
             StaticFunctions.createErrorAlert(msg: "No phone number".localize)
             return

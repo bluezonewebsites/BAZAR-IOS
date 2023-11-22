@@ -364,11 +364,11 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
             self.getSubCats(catId:self.mainCatID )
             self.mainCatButton.setTitle(self.mainCatName, for: .normal)
             
-            if self.mainCatID == 74 || self.mainCatID == 75 {
-                self.rentViewContainer.isHidden = false
-            }else {
-                self.rentViewContainer.isHidden = true
-            }
+//            if self.mainCatID == 74 || self.mainCatID == 75 {
+//                self.rentViewContainer.isHidden = false
+//            }else {
+//                self.rentViewContainer.isHidden = true
+//            }
         }
         
         self.present(vc, animated: false, completion: nil)
@@ -830,11 +830,11 @@ extension AddAdvsVC {
                 self.mainCatID = self.mainCatsIDsList[0]
             }
             
-            if self.mainCatID == 74 || self.mainCatID == 75 {
-                self.rentViewContainer.isHidden = false
-            }else {
-                self.rentViewContainer.isHidden = true
-            }
+//            if self.mainCatID == 74 || self.mainCatID == 75 {
+//                self.rentViewContainer.isHidden = false
+//            }else {
+//                self.rentViewContainer.isHidden = true
+//            }
             
                         self.setupMainCategoryDropDown()
             self.getSubCats(catId: self.mainCatID)
@@ -880,11 +880,11 @@ extension AddAdvsVC {
         }else{
             mainCatButton.setTitle(mainCatsList[0], for: .normal)
         }
-        if self.mainCatID == 74 || self.mainCatID == 75{
-            self.rentViewContainer.isHidden = false
-        }else {
-            self.rentViewContainer.isHidden = true
-        }
+//        if self.mainCatID == 74 || self.mainCatID == 75{
+//            self.rentViewContainer.isHidden = false
+//        }else {
+//            self.rentViewContainer.isHidden = true
+//        }
         mainCatDropDwon.selectionAction = { [weak self] (index: Int, item: String) in
             guard let self = self else {return}
             self.mainCatID = self.mainCatsIDsList[index]
@@ -899,11 +899,11 @@ extension AddAdvsVC {
             }else {
                 self.mainCatButton.setTitle(self.mainCatsList[0], for: .normal)
             }
-            if self.mainCatID == 74 || self.mainCatID == 75 {
-                self.rentViewContainer.isHidden = false
-            }else {
-                self.rentViewContainer.isHidden = true
-            }
+//            if self.mainCatID == 74 || self.mainCatID == 75 {
+//                self.rentViewContainer.isHidden = false
+//            }else {
+//                self.rentViewContainer.isHidden = true
+//            }
         }
         
         

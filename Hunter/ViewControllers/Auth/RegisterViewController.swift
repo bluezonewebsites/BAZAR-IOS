@@ -11,7 +11,6 @@ import MOLH
 
 class RegisterViewController: UIViewController {
     @IBOutlet var textFields: [UITextField]!
-
     @IBOutlet weak var loginiBtn: UIButton!
     @IBOutlet weak var usageAggrementBtn: UIButton!
     @IBOutlet weak var registerBtn: TransitionButton!
@@ -216,7 +215,6 @@ extension RegisterViewController{
            if (phoneTF.text!.count != 0 ){
                 if StaticFunctions.checkValidPhonNumber(Phone: countryCode + phoneTF.text!) {
                    return (true ,nil )
-                   
                 }
                 else {
                     return (false ,NSLocalizedString("enter valid phone number".lowercased(),comment:"") )                               }
@@ -322,10 +320,8 @@ extension RegisterViewController{
                  check, msg in
                  self.registerBtn.stopAnimation(animationStyle: .normal, revertAfterDelay: 0, completion: nil)
                  StaticFunctions.enableBtnWithoutAlpha(btn: self.registerBtn, status: true)
-
                  if check == 0{
 //                     UtilitiesController.shared.SendPlayerId(playerID: AppDelegate.playerID)
-                     
                      StaticFunctions.createSuccessAlert(msg: msg)
                      NotificationsController.shared.saveToken( token: AppDelegate.playerId)
                      self.basicNavigation(storyName: Auth_STORYBOARD, segueId: SIGNUP_CODE_VCID)

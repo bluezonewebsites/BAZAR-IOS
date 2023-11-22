@@ -386,7 +386,7 @@ extension ProductViewController{
             locationLbl.text = product.cityNameAr
             
         }
-        self.viewsLabel.text = "\(product.views ?? 0)"
+//        self.viewsLabel.text = "\(product.views ?? 0)"    
         self.descriptionLbl.text = product.description
         self.descriptionLbl.sizeToFit()
         if product.userVerified == 1{
@@ -463,7 +463,7 @@ extension ProductViewController{
             chatBtn.isHidden = true
         }
         
-        
+        self.viewsLabel.text = "\(product.views ?? 0) " + "views".localize
         self.priceLbl.text = "\(product.price ?? 0)"
         
         
@@ -486,7 +486,6 @@ extension ProductViewController{
         let fullScreenController = imageSlider.presentFullScreenController(from: self)
            // set the activity indicator for full screen controller (skipping the line will show no activity indicator)
            fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: .medium, color: nil)
-        
     }
 }
 extension ProductViewController : UITableViewDelegate, UITableViewDataSource{

@@ -456,13 +456,16 @@ extension HomeDetailsViewController{
     }
     
     func getCategory(){
-        CategoryController.shared.getCategoories(completion: {
+        CategoryController.shared.getCategoories(completion: {[weak self]
             categories, check, msg in
-            
+            guard let self else {return}
             self.categories = categories
             //            self.categories.insert(Category(nameAr: "الكل", nameEn: "All",id: -1, hasSubCat: 0), at: 0)
             self.mainCategoryCollectionView.reloadData()
-            self.mainCategoryCollectionView.selectItem(at: [0,self.selectedCategoryIndex], animated: false, scrollPosition: .centeredHorizontally)
+            if !self.isComeToFeatureAds {
+                self.mainCategoryCollectionView.selectItem(at: [0,self.selectedCategoryIndex], animated: false, scrollPosition: .centeredHorizontally)
+            }
+            
             
         })
     }

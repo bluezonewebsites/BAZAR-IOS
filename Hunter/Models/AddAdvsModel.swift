@@ -18,7 +18,8 @@ struct AddAdvsModel: Codable {
 // MARK: - DataClass
 struct Advs: Codable {
     let id: Int?
-    let catID, subCatID, uid, name: String?
+    let uid:Int?
+    let catID, subCatID, name: String?
     let createdAt: String?
 
     enum CodingKeys: String, CodingKey {

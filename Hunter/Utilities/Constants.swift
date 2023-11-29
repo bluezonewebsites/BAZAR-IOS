@@ -119,6 +119,8 @@ class Constants {
     static let PAYING_FEATURED_AD_CALLBACK_URL = DOMAIN + "prods/callback"
     static let PAYING_PLAN_SUBSCRIPE_URL = DOMAIN + "plans/subscribe"
     static let PAYING_PLAN_CALLBACK_URL = DOMAIN + "plans/callback"
+    static let REPOST_PRODUCT_URL = DOMAIN + "prods_repost"
+
 
 //delete_comment_on_rates
     
@@ -152,6 +154,8 @@ class Constants {
     static let EDIT_STORE_URL = DOMAIN + "stores/"
     static let FOLLOW_USER = DOMAIN + "make_follow"
     static let BLOCK_USER = DOMAIN + "blocked"
+    static let GET_BLOCKED_USERS = DOMAIN + "getBlockedUsersForUser"
+    
     //Notifications
     static let SAVE_TOKEN_URL = DOMAIN + "notifications/save_token"
     static let GET_NOTIFICATIONS_URL = DOMAIN + "notifications"

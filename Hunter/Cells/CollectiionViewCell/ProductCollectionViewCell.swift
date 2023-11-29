@@ -58,7 +58,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         }
         
         if let tajeerOrSell = product.type  {
-            
+            print(tajeerOrSell)
             if( tajeerOrSell == 1){
                 sellLbl.text = "rent".localize
                 sellLbl.textColor = .black

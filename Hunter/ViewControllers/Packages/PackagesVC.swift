@@ -52,7 +52,8 @@ class PackagesVC: UIViewController {
         super.viewDidLoad()
         configureView()
         fetchAllPlans()
-        startFlashAnimation()
+//        startFlashAnimation()
+        dropAndUpAnimation()
         
         //        // Set the rowHeight to automaticDimension
         //            tableView.rowHeight = UITableView.automaticDimension
@@ -132,6 +133,15 @@ class PackagesVC: UIViewController {
         RunLoop.main.add(timer, forMode: .common)
     }
     
+    func dropAndUpAnimation() {
+        let originalPosition = bestSellerFlag.frame.origin.y
+               let upPosition = originalPosition + 20    // Move up by 50 points
+
+               // Animate the move up and down with repeat and autoreverse options
+               UIView.animate(withDuration: 1.0, delay: 0, options: [.autoreverse, .repeat], animations: {
+                   self.bestSellerFlag.frame.origin.y = upPosition
+               }, completion: nil)
+       }
     
     func fetchAllPlans(){
         PackagesController.shared.fetchAllPlans(completion: { plan, check, message in
@@ -139,6 +149,21 @@ class PackagesVC: UIViewController {
                 self.silverList = plan[0]
                 self.goldList = plan[1]
                 self.diamondList = plan[2]
+                
+                // Append new feature to each list
+                        let newFeature = Feature(id: 0,
+                                                 titleEn: "This Subscription Doesn't Automatically Renew",
+                                                 titleAr: "لا يتم تجديد هذا الاشتراك تلقائيا",
+                                                 descriptionEn: "",
+                                                 descriptionAr: "",
+                                                 value: "",
+                                                 planID: 0,
+                                                 createdAt: "",
+                                                 updatedAt: "")
+                        self.goldList?.features?.append(newFeature)
+                        self.silverList?.features?.append(newFeature)
+                        self.diamondList?.features?.append(newFeature)
+                
                 self.tableView.reloadData()
                 self.tableView.layoutIfNeeded()
                 self.tableViewHeightConstraint.constant = self.tableView.contentSize.height
@@ -259,16 +284,19 @@ extension PackagesVC : UITableViewDataSource,UITableViewDelegate{
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PackagesFeatureCell", for: indexPath) as? PackagesFeatureCell else {return UITableViewCell()}
         
         if isGold {
+            
             if let features = goldList?.features, indexPath.row < features.count {
                 cell.setData(from: features[indexPath.row], index: indexPath.row)
             }
             //            cell.setData(from: silverFeature[indexPath.row], index: indexPath.row)
         }else if isDiamond {
+
             if let features = diamondList?.features, indexPath.row < features.count {
                 cell.setData(from: features[indexPath.row], index: indexPath.row)
             }
             //            cell.setData(from: silverFeature[indexPath.row], index: indexPath.row)
         }else{
+          
             if let features = silverList?.features, indexPath.row < features.count {
                 cell.setData(from: features[indexPath.row], index: indexPath.row)
             }

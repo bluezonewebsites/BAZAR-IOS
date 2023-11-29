@@ -87,6 +87,18 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
     
     @IBOutlet weak var AddAdvsButton: TransitionButton!
     
+    //Donation & Buying
+    @IBOutlet weak var donationViewContainer: UIView!
+    @IBOutlet weak var donationButton: UIButton!
+    @IBOutlet weak var donationImage: UIImageView!
+    @IBOutlet weak var donationLabel: UILabel!
+    
+    
+     @IBOutlet weak var buyingViewContainer: UIView!
+     @IBOutlet weak var buyingButton: UIButton!
+     @IBOutlet weak var buyingImage: UIImageView!
+     @IBOutlet weak var buyingLabel: UILabel!
+     
     
     
     //MARK: Poropreties
@@ -407,8 +419,18 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
     @IBAction func rentBtnAction(_ sender: UIButton) {
         setupRentViewUI()
     }
+    
     @IBAction func sellBtnAction(_ sender: UIButton) {
         setupSellViewUI()
+    }
+    
+    @IBAction func didTapDonationButton(_ sender: UIButton) {
+        setupDonationViewUI()
+    }
+    
+    
+    @IBAction func didTapBuyingButton(_ sender: UIButton) {
+        setupBuyingViewUI()
     }
     
     @IBAction func phoneBtnAction(_ sender: UIButton) {
@@ -580,7 +602,7 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
             }
             
             
-        },to:Constants.ADDADVS_URL)
+        },to:Constants.ADDADVS_URL,headers: Constants.headerProd)
         .responseDecodable(of:AddAdvsModel.self){ response in
             //            Loading().finishProgress(self)
             self.AddAdvsButton.stopAnimation()
@@ -713,17 +735,27 @@ extension AddAdvsVC {
     private func setupSellViewUI() {
         tajeer = 0
         sellViewContainer.borderWidth = 1.2
-        rentViewContainer.borderWidth = 0.7
-        sellViewContainer.backgroundColor = UIColor(named: "#0093F5")
-        rentViewContainer.backgroundColor = .white
-        sellViewContainer.borderColor = .white
-        rentViewContainer.borderColor = .gray
-        setImage(to: sellButtonImageView, from: "radiobtn")
-        sellButtonImageView.isHidden = false
-        rentButtonImageView.isHidden = true
         sellButtonLabel.textColor = .white
+        sellViewContainer.backgroundColor = UIColor(named: "#0093F5")
+        setImage(to: sellButtonImageView, from: "checkbox")
+        sellButtonImageView.isHidden = false
+        sellViewContainer.borderColor = .white
+        rentViewContainer.borderWidth = 0.7
+        rentViewContainer.backgroundColor = .white
+        rentViewContainer.borderColor = .gray
         rentButtonLabel.textColor = .black
-        
+        rentButtonImageView.isHidden = true
+        donationLabel.textColor = .black
+        donationViewContainer.borderWidth = 0.7
+        donationViewContainer.backgroundColor = .white
+        donationViewContainer.borderColor = .gray
+        donationImage.isHidden = true
+        donationLabel.textColor = .black
+        buyingViewContainer.borderWidth = 0.7
+        buyingViewContainer.backgroundColor = .white
+        buyingViewContainer.borderColor = .gray
+        buyingImage.isHidden = true
+        buyingLabel.textColor = .black
     }
     private func setupHasPhoneViewUI(){
         //        has_phone = "on"
@@ -737,18 +769,82 @@ extension AddAdvsVC {
     
     private func setupRentViewUI() {
         tajeer = 1
-        sellViewContainer.borderWidth = 0.7
         rentViewContainer.borderWidth = 1.2
         rentViewContainer.backgroundColor = UIColor(named: "#0093F5")
+        rentViewContainer.borderColor = .white
+        rentButtonImageView.isHidden = false
+        setImage(to: rentButtonImageView, from: "checkbox")
+        rentButtonLabel.textColor = .white
+        sellViewContainer.borderWidth = 0.7
         sellViewContainer.backgroundColor = .white
         sellViewContainer.borderColor = .gray
-        rentViewContainer.borderColor = .white
         sellButtonImageView.isHidden = true
-        rentButtonImageView.isHidden = false
-        setImage(to: rentButtonImageView, from: "radiobtn")
         sellButtonLabel.textColor = .black
-        rentButtonLabel.textColor = .white
+        donationViewContainer.borderWidth = 0.7
+        donationViewContainer.backgroundColor = .white
+        donationViewContainer.borderColor = .gray
+        donationImage.isHidden = true
+        donationLabel.textColor = .black
+        buyingViewContainer.borderWidth = 0.7
+        buyingViewContainer.backgroundColor = .white
+        buyingViewContainer.borderColor = .gray
+        buyingImage.isHidden = true
+        buyingLabel.textColor = .black
+        
+        
     }
+    
+    private func setupBuyingViewUI() {
+        tajeer = 2
+        buyingViewContainer.borderWidth = 1.2
+        buyingViewContainer.backgroundColor = UIColor(named: "#0093F5")
+        buyingViewContainer.borderColor = .white
+        buyingImage.isHidden = false
+        setImage(to: buyingImage, from: "checkbox")
+        buyingLabel.textColor = .white
+        sellViewContainer.borderWidth = 0.7
+        sellViewContainer.backgroundColor = .white
+        sellViewContainer.borderColor = .gray
+        sellButtonImageView.isHidden = true
+        sellButtonLabel.textColor = .black
+        donationViewContainer.borderWidth = 0.7
+        donationViewContainer.backgroundColor = .white
+        donationViewContainer.borderColor = .gray
+        donationImage.isHidden = true
+        donationLabel.textColor = .black
+        rentViewContainer.borderWidth = 0.7
+        rentViewContainer.backgroundColor = .white
+        rentViewContainer.borderColor = .gray
+        rentButtonImageView.isHidden = true
+        rentButtonLabel.textColor = .black
+    }
+    private func setupDonationViewUI() {
+        tajeer = 3
+        donationViewContainer.borderWidth = 1.2
+        donationViewContainer.backgroundColor = UIColor(named: "#0093F5")
+        donationViewContainer.borderColor = .white
+        donationImage.isHidden = false
+        setImage(to: donationImage, from: "checkbox")
+        donationLabel.textColor = .white
+        sellViewContainer.borderWidth = 0.7
+        sellViewContainer.backgroundColor = .white
+        sellViewContainer.borderColor = .gray
+        sellButtonImageView.isHidden = true
+        sellButtonLabel.textColor = .black
+        rentViewContainer.borderWidth = 0.7
+        rentViewContainer.backgroundColor = .white
+        rentViewContainer.borderColor = .gray
+        rentButtonImageView.isHidden = true
+        rentButtonLabel.textColor = .black
+        buyingViewContainer.borderWidth = 0.7
+        buyingViewContainer.backgroundColor = .white
+        buyingViewContainer.borderColor = .gray
+        buyingImage.isHidden = true
+        buyingLabel.textColor = .black
+        
+        
+    }
+    
     
     
 }

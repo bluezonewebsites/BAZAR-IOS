@@ -222,12 +222,10 @@ class MenuVC: UIViewController {
         
         if StaticFunctions.isLogin() {
             
-            let vc = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "MyAsksVC") as! MyAsksVC
-            vc.modalPresentationStyle = .fullScreen
-    //        presentDetail(vc)
+            let vc = UserBlockedVC.instantiate()
             navigationController?.pushViewController(vc, animated: true)
         }else {
-            StaticFunctions.createErrorAlert(msg: "Please Login First To Can Go To Asks!".localize)
+            StaticFunctions.createErrorAlert(msg: "Please Login First To Can Go To Blocked Users!".localize)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                 self.basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
             }

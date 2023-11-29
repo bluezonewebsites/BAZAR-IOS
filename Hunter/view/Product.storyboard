@@ -907,7 +907,7 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="Wft-LI-yhv"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="dCY-p3-LNN"/>
                             </scrollView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMo-0k-x4l">
+                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMo-0k-x4l">
                                 <rect key="frame" x="0.0" y="668" width="393" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="TvP-FD-FdY">
@@ -1976,10 +1976,10 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmV-qs-MnO">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="150.33333333333334"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="140.33333333333334"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xkJ-Wi-6hO">
-                                                <rect key="frame" x="15" y="14.999999999999993" width="363" height="120.33333333333331"/>
+                                                <rect key="frame" x="15" y="14.999999999999993" width="363" height="110.33333333333331"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jni-jQ-ZrD">
                                                         <rect key="frame" x="0.0" y="0.0" width="363" height="50"/>
@@ -2018,7 +2018,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="WjU-j8-YNj" customClass="EdgeInsetLabel" customModule="NewBazar" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="58.000000000000007" width="363" height="29.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="58.000000000000007" width="363" height="19.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                         <color key="textColor" name="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2044,7 +2044,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="P5o-0T-0ZT">
-                                                        <rect key="frame" x="0.0" y="95.333333333333343" width="363" height="25"/>
+                                                        <rect key="frame" x="0.0" y="85.333333333333343" width="363" height="25"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ShowCommentsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="n3c-97-3pL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="25"/>
@@ -2116,7 +2116,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <tableView clipsSubviews="YES" tag="3" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qEc-PF-mZH">
-                                        <rect key="frame" x="30" y="152.33333333333331" width="353" height="520.66666666666674"/>
+                                        <rect key="frame" x="30" y="142.33333333333331" width="353" height="530.66666666666674"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="183" id="ZCv-Yz-ctY" customClass="CommentReplyTableViewCell" customModule="NewBazar" customModuleProvider="target">
@@ -2863,16 +2863,16 @@
             <size key="intrinsicContentSize" width="38" height="32"/>
         </designable>
         <designable name="MbQ-lW-q07">
-            <size key="intrinsicContentSize" width="16.333333333333332" height="26.333333333333332"/>
+            <size key="intrinsicContentSize" width="6.333333333333333" height="16.333333333333332"/>
         </designable>
         <designable name="WjU-j8-YNj">
-            <size key="intrinsicContentSize" width="17.333333333333332" height="29.333333333333332"/>
+            <size key="intrinsicContentSize" width="7.333333333333333" height="19.333333333333332"/>
         </designable>
         <designable name="oBl-Hq-9cb">
             <size key="intrinsicContentSize" width="38" height="32"/>
         </designable>
         <designable name="xnO-ht-3id">
-            <size key="intrinsicContentSize" width="34" height="16.333333333333332"/>
+            <size key="intrinsicContentSize" width="44" height="26.333333333333332"/>
         </designable>
         <designable name="zB4-Jc-N8F">
             <size key="intrinsicContentSize" width="42" height="34"/>
@@ -2939,10 +2939,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

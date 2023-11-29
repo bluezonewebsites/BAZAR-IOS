@@ -496,4 +496,38 @@ class ProductController{
             
         }, link: Constants.DELETE_REPLY_URL , param: param)
     }
+    
+    func repostProduct(completion: @escaping(RepostProductObject?, Int, String)->(), id: Int,countryId:Int){
+        
+        let param = ["id": id ,"country_id":countryId]
+        
+       
+            
+        APIConnection.apiConnection.postConnection(completion: {
+            data  in
+            guard let data = data else { return }
+            
+            do {
+                let productObject = try JSONDecoder().decode(RepostProductModel.self, from: data)
+                
+                if productObject.statusCode == 200{
+                    
+                    if let data = productObject.data {
+                        completion(data, 0 ,"")
+                    }
+                }
+                else {
+                    completion(nil,1,productObject.message ?? "")
+                }
+                
+            } catch (let jerrorr){
+                
+                print(jerrorr)
+                completion(nil,1,SERVER_ERROR)
+                
+                
+            }
+            
+        }, link: Constants.REPOST_PRODUCT_URL , param: param)
+    }
 }

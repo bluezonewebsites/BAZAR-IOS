@@ -590,7 +590,7 @@ extension EditAdVC{
         tajeerView.borderColor = .white
         sellButtonImage.isHidden = true
         tajeerButtonImage.isHidden = false
-    StaticFunctions.setImageFromAssets(tajeerButtonImage, "radiobtn")
+    StaticFunctions.setImageFromAssets(tajeerButtonImage, "checkbox")
     StaticFunctions.setTextColor(sellLabel, UIColor.black)
     StaticFunctions.setTextColor(tajeerLabel, UIColor.white)
         
@@ -607,7 +607,7 @@ extension EditAdVC{
         tajeerView.backgroundColor = .white
         sellView.borderColor = .white
         tajeerView.borderColor = .gray
-        StaticFunctions.setImageFromAssets(sellButtonImage, "radiobtn")
+        StaticFunctions.setImageFromAssets(sellButtonImage, "checkbox")
         sellButtonImage.isHidden = false
         tajeerButtonImage.isHidden = true
         StaticFunctions.setTextColor(sellLabel, UIColor.white)

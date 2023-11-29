@@ -9,6 +9,7 @@ import UIKit
 //import ImageSlideshow
 import MOLH
 import MediaSlideshow
+import CircleMenu
 
 class ProductViewController: UIViewController {
     
@@ -34,6 +35,10 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userVerifieddImage: UIImageView!
     @IBOutlet weak var viewsLabel: UILabel!
+    
+    @IBOutlet weak var contactWaysButton: CircleMenu!
+    
+    
     let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "full_screen") as! FullScreenViewController
     var product = Product()
     var images = [ProductImage]()
@@ -52,6 +57,12 @@ class ProductViewController: UIViewController {
         
         return tableView.contentSize.height
     }
+    private var fanMenuView: FanMenuView!
+
+ 
+    
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         if let navigationBar = navigationController?.navigationBar {
@@ -64,9 +75,35 @@ class ProductViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateData(_:)), name: NSNotification.Name(rawValue: "updateData"), object: nil)
-       
+        setupCircleMenu()
         getData()
     }
+    
+
+    
+    func setupCircleMenu(){
+        var circleMenu = CircleMenu(frame: .zero, normalIcon: "", selectedIcon: "")
+        if MOLHLanguage.isArabic() {
+            circleMenu  = CircleMenu(frame: CGRect(x:view.frame.width - 100, y: view.frame.height - 200, width: 50, height: 50),
+                            normalIcon:"phone_icon",
+                            selectedIcon:"close_icon",
+                            buttonsCount: 3,
+                                     duration: 1.5,
+                            distance: 100,isArabic: true)
+        }else {
+            circleMenu  = CircleMenu(frame: CGRect(x:20, y: view.frame.height - 200, width: 50, height: 50),
+                            normalIcon:"phone_icon",
+                            selectedIcon:"close_icon",
+                            buttonsCount: 3,
+                                     duration: 1.5,
+                            distance: 100,isArabic: false)
+        }
+        circleMenu.delegate = self
+        view.addSubview(circleMenu)
+        circleMenu.layoutIfNeeded()
+        view.layoutIfNeeded()
+    }
+    
     @objc func updateData(_ notification: NSNotification) {
 //        comments.removeAll()
         getData()
@@ -543,5 +580,57 @@ extension ProductViewController : UITableViewDelegate, UITableViewDataSource{
 //        self.present(vc, animated: true)
         self.navigationController?.pushViewController(vc, animated: true)
         
+    }
+}
+
+extension ProductViewController : CircleMenuDelegate {
+    // configure buttons
+    func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int){
+        if atIndex == 0 {
+            button.setImage(UIImage(named: "phone_icon"), for: .normal)
+        }else if atIndex == 1 {
+            button.setImage(UIImage(named: "phone_icon"), for: .normal)
+        }else if atIndex == 2 {
+            button.setImage(UIImage(named: "phone_icon"), for: .normal)
+        }
+    }
+    
+    // call before animation
+    func circleMenu(_ circleMenu: CircleMenu, buttonWillSelected button: UIButton, atIndex: Int) {
+        
+    }
+
+    // call after animation
+    func circleMenu(_ circleMenu: CircleMenu, buttonDidSelected button: UIButton, atIndex: Int){
+        
+//        let txt1 = "I want to talk to you about your advertisement".localize
+//        let txt2 = "on Bazar app".localize
+//        var link = "\(txt1) \(product.name ?? "")\n\(txt2)"
+//        let escapedString = link.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
+//        let url  = URL(string: "whatsapp://send?phone=\(product.whatsappPhone ?? "")&text=\(escapedString!)")
+//        if UIApplication.shared.canOpenURL(url! as URL){
+//            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+//        }
+        if atIndex == 0 {
+            print(atIndex)
+        }else if atIndex == 1 {
+            print(atIndex)
+        }else if atIndex == 2 {
+            print(atIndex)
+        }
+    }
+
+    // call upon cancel of the menu - fires immediately on button press
+    func menuCollapsed(_ circleMenu: CircleMenu){}
+
+    // call upon opening of the menu - fires immediately on button press
+    func menuOpened(_ circleMenu: CircleMenu){
+            
+    }
+}
+
+extension ProductViewController : FanMenuDelegate {
+    func didTapButton1() {
+        print("Hello Button 1")
     }
 }

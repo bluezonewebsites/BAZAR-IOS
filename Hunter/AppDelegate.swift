@@ -12,11 +12,10 @@ import Firebase
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
+import CircleMenu
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
-    
-    
     
     static var currentUser = User()
     static var unVerifiedUserUser = User()

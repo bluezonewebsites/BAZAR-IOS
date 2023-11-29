@@ -47,6 +47,7 @@ class PayingController {
                 "invoice_id": invoiceId,
                 "paymentId":paymentId
             ] as [String : Any]
+        print(params)
             APIConnection.apiConnection.postConnection(completion: { data in
                 guard let data = data else { return }
                 

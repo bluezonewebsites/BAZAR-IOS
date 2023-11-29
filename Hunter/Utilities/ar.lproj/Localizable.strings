@@ -68,6 +68,9 @@
 "Stores Packages" = "باقات المتاجر";
 "Please Login First" =  "الرجاء تسجيل الدخول أولا";
 
+"Archives" = "الأرشيف";
+
+
 
 //MARK: Verify Account
 "Verify Account" = "توثيق الحساب";
@@ -117,8 +120,10 @@
 "Price" = "السعر";
 "Sale or rent price" = "سعر البيع أو الإيجار";
 "Ad type" = "نوع الإعلان";
-"AD FOR SELL" = "إعلان للبيع";
-"AD FOR RENT" = " إعلان للإيجار";
+"SELL" = "للبيع";
+"RENT" = "للإيجار";
+"BUYING" = "للشراء";
+"DONATION" = "للتبرع";
 "Connection type" = "وسائل التواصل";
 "Determine the means by which customers will contact you for this advertisement" = "حدد الوسائل التي سيتصل بك العملاء من خلالها بخصوص هذا الإعلان";
 "Phone Call" = "هاتف";
@@ -163,6 +168,7 @@
 "Share" = "شارك";
 "Delete" = "حذف";
 "Edit" = "تعديل";
+"Repost" = "إعادة نشر";
 
 "Ads Deleted Seccessfully" = "تم حذف اعلانك بنجاح";
 "Please add main Image for your Ad." = "الرجاء إضافة الصورة الرئيسية لإعلانك.";
@@ -206,9 +212,10 @@
 "Are you sure you want to Delete this Chat?" = "هل تريد حذف هذه المحادثة";
 "You have " = " أنت لديك";
 " Paid ads" = "إعلان مدفوع ";
-"Activated" = "مفعلة";
-"Pending" = "معلقة";
+"Current" = "الحالية";
+"Pending" = "المعلقة";
 "Featured Pending" = "مميزة معلقة";
+"Blocked Accounts" = "قائمة المحظورين";
 //MARK: Product Details
 "Description" = "وصف";
 "Comments" = "تعليقات";

@@ -23,10 +23,13 @@ class MyAdsVC: UIViewController {
     @IBOutlet weak var noAdsStackView: UIStackView!
     private  let cellIdentifier = "MyAdsCollectionViewCell"
     private var products = [Product]()
+    private var productId = 0
     private var page = 1
     private var isTheLast = false
             var userId = 0
-    
+    private var invoiceURL = ""
+    private var isRepostProduct = false
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
@@ -91,7 +94,7 @@ class MyAdsVC: UIViewController {
     }
     @IBAction func didTapPendingBtnAction(_ sender: Any) {
         products = []
-        getProductsByUser(with: "unpaid_normal")
+        getProductsByUser(with: "pending")
         
         activatedLbl.textColor = UIColor(named: "#929292")
         activatedView.backgroundColor = UIColor(named: "#929292")
@@ -108,7 +111,7 @@ class MyAdsVC: UIViewController {
     }
     @IBAction func didTapFeaturedPendingBtnAction(_ sender: Any) {
         products = []
-        getProductsByUser(with: "unpaid_feature")
+        getProductsByUser(with: "finished")
         
         activatedLbl.textColor = UIColor(named: "#929292")
         activatedView.backgroundColor = UIColor(named: "#929292")
@@ -195,17 +198,45 @@ extension MyAdsVC:MyAdsCollectionViewCellDelegate {
     func shareAdCell(buttonDidPressed indexPath: IndexPath) {
         if products[indexPath.row].status == "unpaid_feature" {
             //GO To Pay
-            PayingController.shared.payingFeaturedAd(completion: { payment, check, message in
+            PayingController.shared.payingFeaturedAd(completion: {[weak self] payment, check, message in
+                guard let self else {return}
                 if check == 0{
                     let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
                     vc.urlString = payment?.data.invoiceURL ?? ""
+                    self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
+                    vc.isFeaturedAd = true
+                    vc.delegate = self
                     self.navigationController?.pushViewController(vc, animated: true)
                 }else{
                     StaticFunctions.createErrorAlert(msg: message)
                 }
             }, countryId: AppDelegate.currentUser.countryId ?? 5, productId: products[indexPath.item].id ?? 0)
-        }else{
+        }else if products[indexPath.row].status == "finished" {
+            //TODO: Repost Ads
+            self.productId = products[indexPath.item].id ?? 0
+            if products[indexPath.row].isFeature ?? false {
+                self.isRepostProduct = true
+                PayingController.shared.payingFeaturedAd(completion: {[weak self] payment, check, message in
+                    guard let self else {return}
+
+                    if check == 0{
+                        let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
+                        vc.delegate  = self
+                        vc.isFeaturedAd = true
+                        vc.urlString = payment?.data.invoiceURL ?? ""
+                        self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }else{
+                        StaticFunctions.createErrorAlert(msg: message)
+                    }
+                }, countryId: AppDelegate.currentUser.countryId ?? 0, productId: products[indexPath.row].id ?? 0)
+            }else {
+                
+            }
+            
+        }else {
             shareContent(text:Constants.DOMAIN + "\(products[indexPath.row].id ?? 0)")
+
         }
         
         
@@ -224,8 +255,9 @@ extension MyAdsVC:MyAdsCollectionViewCellDelegate {
 }
 extension MyAdsVC {
     private func getProductsByUser(with status:String){
-         ProfileController.shared.getProductsByUser(completion: {
+         ProfileController.shared.getProductsByUser(completion: { [weak self]
              products, check, msg in
+             guard let self else {return}
              print(products.count)
              if check == 0{
                  if self.page == 1 {
@@ -246,7 +278,9 @@ extension MyAdsVC {
                      self.page = self.page == 1 ? 1 : self.page - 1
                      self.isTheLast = true
                  }
-                 self.myAdsCollectionView.reloadData()
+                 DispatchQueue.main.async {
+                     self.myAdsCollectionView.reloadData()
+                 }
              }else{
                  StaticFunctions.createErrorAlert(msg: msg)
                  self.page = self.page == 1 ? 1 : self.page - 1
@@ -256,5 +290,43 @@ extension MyAdsVC {
          }, userId: userId , page: page, countryId:6 ,status: status)
      }
     
+    func repostAds(with id:Int){
+        ProductController.shared.repostProduct(completion: { [weak self]
+            product, check, msg in
+            guard let self else {return}
+            if check == 0{
+                self.getProductsByUser(with: "finished")
+            }else{
+                StaticFunctions.createErrorAlert(msg: msg)
+            }
+            
+        }, id: id ,countryId: AppDelegate.currentUser.id ?? 0)
+    }
 }
 
+extension MyAdsVC:PayingDelegate {
+    func passPaymentId(with paymentId: String) {
+        PayingController.shared.callBackFeaturedAds(completion: {[weak self] payment, check, message in
+            guard let self else {return}
+            if check == 0{
+                print(message)
+            }else{
+                print(message)
+                StaticFunctions.createErrorAlert(msg: message)
+            }
+        }, invoiceId: invoiceURL, paymentId: paymentId)
+    }
+    func didPayingSuccess() {
+        if isRepostProduct {
+            //wehen back form repay finishing ads
+            repostAds(with: productId)
+            isRepostProduct = false
+        }else {
+            // when back form repay pensing ads
+            getProductsByUser(with: "pending")
+        }
+        
+    }
+    
+    
+}

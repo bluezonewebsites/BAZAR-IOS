@@ -33,7 +33,7 @@ struct PackageObject: Codable {
     let adsCount: Int?
     let bestSeller: String?
     let createdAt, updatedAt: String?
-    let features: [Feature]?
+    var features: [Feature]?
 
     enum CodingKeys: String, CodingKey {
         case id

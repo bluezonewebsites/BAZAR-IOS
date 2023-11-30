@@ -184,7 +184,8 @@ class Constants {
 
     //packages
     static let GET_PLANS_URL = DOMAIN + "plans"
-    
+    static let GET_PLANS_CATEGORY_URL = DOMAIN + "plan/categories"
+
     
     static var COUNTRIES = [Country]()
     static var CITIES = [Country]()

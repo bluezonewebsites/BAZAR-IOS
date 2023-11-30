@@ -181,16 +181,22 @@
                                                 <rect key="frame" x="0.0" y="7.6666666666666856" width="107" height="120"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uc1-Tp-ebI">
-                                                        <rect key="frame" x="38" y="39.666666666666657" width="31" height="40.666666666666657"/>
+                                                        <rect key="frame" x="39.333333333333336" y="37.999999999999972" width="28.666666666666664" height="44"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300 K.D" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhh-Z2-K4i">
-                                                                <rect key="frame" x="0.0" y="0.0" width="31" height="40.666666666666664"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhh-Z2-K4i">
+                                                                <rect key="frame" x="0.0" y="0.0" width="28.666666666666668" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                                                 <color key="textColor" name="blackColor"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="Localize" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K.D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9t2-bU-1Tf">
+                                                                <rect key="frame" x="0.0" y="26" width="28.666666666666668" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" name="blackColor"/>
+                                                                <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
@@ -271,16 +277,22 @@
                                                 <rect key="frame" x="0.0" y="7.6666666666666856" width="107" height="120"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uyq-kK-k1p">
-                                                        <rect key="frame" x="38" y="39.666666666666657" width="31" height="40.666666666666657"/>
+                                                        <rect key="frame" x="38.333333333333343" y="37.999999999999972" width="30.333333333333329" height="44"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="600 K.D" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5Y-Tn-921">
-                                                                <rect key="frame" x="0.0" y="0.0" width="31" height="40.666666666666664"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="600" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5Y-Tn-921">
+                                                                <rect key="frame" x="0.0" y="0.0" width="30.333333333333332" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <color key="textColor" name="blackColor"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="Localize" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K.D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N9u-pC-ghf">
+                                                                <rect key="frame" x="0.0" y="26" width="30.333333333333332" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
@@ -361,16 +373,22 @@
                                                 <rect key="frame" x="0.0" y="7.6666666666666856" width="107" height="120"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="NdU-89-23Z">
-                                                        <rect key="frame" x="27.666666666666682" y="39.666666666666657" width="51.666666666666657" height="40.666666666666657"/>
+                                                        <rect key="frame" x="35" y="37.999999999999972" width="37" height="44"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200.0 K.D" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FL-Yo-gum">
-                                                                <rect key="frame" x="0.0" y="0.0" width="51.666666666666664" height="40.666666666666664"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FL-Yo-gum">
+                                                                <rect key="frame" x="0.0" y="0.0" width="37" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <color key="textColor" name="blackColor"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="Localize" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K.D" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvc-GK-jcK">
+                                                                <rect key="frame" x="0.0" y="26" width="37" height="18"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
@@ -550,6 +568,9 @@
                     </view>
                     <connections>
                         <outlet property="bestSellerFlag" destination="LlM-ih-Pqq" id="cKe-lS-Yeg"/>
+                        <outlet property="currancySixPlan" destination="N9u-pC-ghf" id="ZY8-3N-agc"/>
+                        <outlet property="currancyThreePlan" destination="9t2-bU-1Tf" id="fiA-S3-I6D"/>
+                        <outlet property="currancyTwelvePlan" destination="Cvc-GK-jcK" id="MRd-VX-bfN"/>
                         <outlet property="diamondButton" destination="V9x-bz-ifU" id="yuf-a6-bcM"/>
                         <outlet property="goldButton" destination="OCx-2Z-Avw" id="KYQ-SU-MJN"/>
                         <outlet property="silverButton" destination="Rgk-D5-ygg" id="yfM-Jf-Gum"/>

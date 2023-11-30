@@ -274,6 +274,7 @@
 		C8EAB7CC2A9C99A9009F975C /* CreateStoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EAB7CB2A9C99A9009F975C /* CreateStoreVC.swift */; };
 		C8ECBD542A34535E003178DA /* VerifyAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ECBD532A34535E003178DA /* VerifyAccountVC.swift */; };
 		C8F253CD2AA1C5AA0063C0F5 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F253CC2AA1C5AA0063C0F5 /* BasicViewController.swift */; };
+		C8F374BF2B186FCB00F83674 /* PackagesCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F374BE2B186FCB00F83674 /* PackagesCategoryModel.swift */; };
 		C8FF98042AA50B4F00DBA6CF /* PackagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF98032AA50B4F00DBA6CF /* PackagesModel.swift */; };
 		C8FF98062AA50CD900DBA6CF /* PackagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF98052AA50CD900DBA6CF /* PackagesController.swift */; };
 /* End PBXBuildFile section */
@@ -559,6 +560,7 @@
 		C8EAB7CB2A9C99A9009F975C /* CreateStoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateStoreVC.swift; sourceTree = "<group>"; };
 		C8ECBD532A34535E003178DA /* VerifyAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountVC.swift; sourceTree = "<group>"; };
 		C8F253CC2AA1C5AA0063C0F5 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
+		C8F374BE2B186FCB00F83674 /* PackagesCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesCategoryModel.swift; sourceTree = "<group>"; };
 		C8FF98032AA50B4F00DBA6CF /* PackagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesModel.swift; sourceTree = "<group>"; };
 		C8FF98052AA50CD900DBA6CF /* PackagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesController.swift; sourceTree = "<group>"; };
 		D2935A47F02BDB207D88AACE /* Pods-Monasba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monasba.debug.xcconfig"; path = "Target Support Files/Pods-Monasba/Pods-Monasba.debug.xcconfig"; sourceTree = "<group>"; };
@@ -740,6 +742,7 @@
 				C87DD3A42A485C7000B6B0FB /* SuccessVerifiationModel.swift */,
 				C8205CD12A48913E0039B287 /* SuccessModelChangeMoblie.swift */,
 				C85A5C532A6143610074AF4D /* UploadMediaModel.swift */,
+				C8F374BE2B186FCB00F83674 /* PackagesCategoryModel.swift */,
 				C889ABF62A8CC0DB0088D158 /* StoresModel.swift */,
 				C8FF98032AA50B4F00DBA6CF /* PackagesModel.swift */,
 				C8C6C63A2AAC9DA30049FBFB /* PaymentModels.swift */,
@@ -1700,6 +1703,7 @@
 				659987FE2A1F422C00DBD8EE /* Comment.swift in Sources */,
 				65C7FF0229FD461D0062BFAA /* CounriesViewController.swift in Sources */,
 				658DE51A29F82BE30015D549 /* Category.swift in Sources */,
+				C8F374BF2B186FCB00F83674 /* PackagesCategoryModel.swift in Sources */,
 				657E70452A006FEB0079C558 /* ForgetPasswordModel.swift in Sources */,
 				65B550592A1C812F002D2264 /* SearchAdsViewController.swift in Sources */,
 				C85FFCE62A260D21000C426D /* AllRoomsSuccessModel.swift in Sources */,

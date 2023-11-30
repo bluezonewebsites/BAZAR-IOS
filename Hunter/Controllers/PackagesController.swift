@@ -38,5 +38,38 @@ class PackagesController {
             }, link: Constants.GET_PLANS_URL,param:[:])
         }
     
+    func getPlaCategory(completion: @escaping([PackageCategoryObject]?, Int, String)->(), planId: Int){
+        
+        var param = [
+            "plan_id": planId,
+        ]
+
+        
+        APIConnection.apiConnection.postConnection(completion: {
+            data  in
+            guard let data = data else { return }
+            
+            do {
+                let countryArray = try JSONDecoder().decode(PackagesCategoryModel.self, from: data)
+                
+                if countryArray.statusCode == 200{
+                    
+                    completion(countryArray.data ?? [], 0,"")
+                }
+                else {
+                    completion(nil,1,countryArray.message ?? "")
+                }
+                
+            } catch (let jerrorr){
+                
+                print(jerrorr)
+                completion(nil,1,SERVER_ERROR)
+                
+                
+            }
+            
+        }, link: Constants.GET_PLANS_CATEGORY_URL , param: param)
+    }
+    
     
 }

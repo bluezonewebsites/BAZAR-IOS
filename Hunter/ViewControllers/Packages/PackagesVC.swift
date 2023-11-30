@@ -36,6 +36,9 @@ class PackagesVC: UIViewController {
     @IBOutlet weak var sixLabel: UILabel!
     @IBOutlet weak var twelveLabel: UILabel!
     
+    @IBOutlet weak var currancyThreePlan: UILabel!
+    @IBOutlet weak var currancySixPlan: UILabel!
+    @IBOutlet weak var currancyTwelvePlan: UILabel!
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     //MARK: PROPERTIES
@@ -48,30 +51,24 @@ class PackagesVC: UIViewController {
     private var invoiceURL = ""
     private var planId = 1
     private var monthCount = 3
+    private var categoryPlanId = 1
+    private var plans = [PackageCategoryObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         fetchAllPlans()
 //        startFlashAnimation()
         dropAndUpAnimation()
-        
-        //        // Set the rowHeight to automaticDimension
-        //            tableView.rowHeight = UITableView.automaticDimension
-        //            tableView.estimatedRowHeight = 60 // Provide an estimated row height
-        
-        //        tableViewHeightConstraint.constant = 200
+        getPlanCategory(planId: 1)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -143,6 +140,46 @@ class PackagesVC: UIViewController {
                }, completion: nil)
        }
     
+    
+    private func getPlanCategory(planId:Int){
+        PackagesController.shared.getPlaCategory(completion: {[weak self] plans, check, message in
+            guard let self else {return}
+            if check == 0 {
+                if let plans = plans {
+                    self.plans = plans
+                    self.setupPlanCtegory(from: plans, planId: planId)
+                }
+                
+            }else {
+                StaticFunctions.createErrorAlert(msg: message)
+            }
+        }, planId: planId)
+        
+    }
+    
+    private func setupPlanCtegory(from plans:[PackageCategoryObject] , planId:Int){
+           
+           for (index, plan) in plans.enumerated() where plan.planID == planId {
+               let pricePerMonth = (plan.price ?? 0.0) / Double(plan.monthNumber.safeValue)
+                      let roundedPricePerMonth = roundToPlaces(value: pricePerMonth, places: 2)
+               switch index {
+               case 0:
+                   threeLabel.text = "\(roundedPricePerMonth)"
+               case 1:
+                   sixLabel.text = "\(roundedPricePerMonth)"
+               case 2:
+                   twelveLabel.text = "\(roundedPricePerMonth)"
+               default:
+                   break
+               }
+           }
+    }
+    
+    func roundToPlaces(value: Double, places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return round(value * divisor) / divisor
+    }
+    
     func fetchAllPlans(){
         PackagesController.shared.fetchAllPlans(completion: { plan, check, message in
             if check  == 0 {
@@ -203,6 +240,7 @@ class PackagesVC: UIViewController {
         setupButton(for: silverButton, isTapped: true)
         setupButton(for: goldButton, isTapped: false)
         setupButton(for: diamondButton, isTapped: false)
+        getPlanCategory(planId: 1)
         self.tableView.reloadData()
     }
     
@@ -213,6 +251,7 @@ class PackagesVC: UIViewController {
         setupButton(for: silverButton, isTapped: false)
         setupButton(for: goldButton, isTapped: true)
         setupButton(for: diamondButton, isTapped: false)
+        getPlanCategory(planId: 2)
         self.tableView.reloadData()
     }
     
@@ -223,25 +262,38 @@ class PackagesVC: UIViewController {
         setupButton(for: silverButton, isTapped: false)
         setupButton(for: goldButton, isTapped: false)
         setupButton(for: diamondButton, isTapped: true)
+        getPlanCategory(planId: 3)
         self.tableView.reloadData()
     }
     
     @IBAction func didTapThreeMonthButton(_ sender: UIButton) {
-        monthCount = 3
+        
+        if let planCategoryId = plans[0].id, let monthCount = plans[0].monthNumber {
+            categoryPlanId = planCategoryId
+            self.monthCount = monthCount
+        }
         handlePackegesPlanSelected(for: threeMonthViewContainer, label: threeLabel, rondedView: threeMonthRoundedView)
         handlePackegesPlanNotSelected(for: sixMonthViewContainer, label: sixLabel, rondedView: sixMonthRoundedView)
         handlePackegesPlanNotSelected(for: twelveMonthViewContainer, label: twelveLabel, rondedView: twelveMonthRoundedView)
     }
     
     @IBAction func didTapSixMonthButton(_ sender: UIButton) {
-        monthCount = 6
+        if let planCategoryId = plans[1].id, let monthCount = plans[1].monthNumber {
+            categoryPlanId = planCategoryId
+            self.monthCount = monthCount
+        }
+
         handlePackegesPlanSelected(for: sixMonthViewContainer, label: sixLabel, rondedView: sixMonthRoundedView)
         handlePackegesPlanNotSelected(for: threeMonthViewContainer, label: threeLabel, rondedView: threeMonthRoundedView)
         handlePackegesPlanNotSelected(for: twelveMonthViewContainer, label: twelveLabel, rondedView: twelveMonthRoundedView)
     }
     
     @IBAction func didTapTwelveutton(_ sender: UIButton) {
-        monthCount = 12
+        
+        if let planCategoryId = plans[2].id, let monthCount = plans[2].monthNumber {
+            categoryPlanId = planCategoryId
+            self.monthCount = monthCount
+        }
         handlePackegesPlanSelected(for: twelveMonthViewContainer, label: twelveLabel, rondedView: twelveMonthRoundedView)
         handlePackegesPlanNotSelected(for: threeMonthViewContainer, label: threeLabel, rondedView: threeMonthRoundedView)
         handlePackegesPlanNotSelected(for: sixMonthViewContainer, label: sixLabel, rondedView: sixMonthRoundedView)
@@ -261,7 +313,7 @@ class PackagesVC: UIViewController {
             }else{
                 StaticFunctions.createErrorAlert(msg: message)
             }
-        }, countryId: AppDelegate.currentUser.countryId ?? 5, planId:planId,month: monthCount)
+        }, categoryPlanId: categoryPlanId,month: monthCount)
     }
     
     

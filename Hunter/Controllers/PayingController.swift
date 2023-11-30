@@ -74,12 +74,11 @@ class PayingController {
     
     
     
-    func payingPlan(completion: @escaping(PayingAdModel?, Int, String)->(),countryId:Int,planId:Int,month:Int){
+    func payingPlan(completion: @escaping(PayingAdModel?, Int, String)->(),categoryPlanId:Int,month:Int){
             
             let params = [
-                "plan_id":planId,
                 "month":month,
-                "country_id": countryId
+                "category_plan_id": categoryPlanId
             ]
             APIConnection.apiConnection.postConnection(completion: { data in
                 guard let data = data else { return }

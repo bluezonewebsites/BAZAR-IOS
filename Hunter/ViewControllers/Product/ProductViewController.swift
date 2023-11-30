@@ -587,11 +587,14 @@ extension ProductViewController : CircleMenuDelegate {
     // configure buttons
     func circleMenu(_ circleMenu: CircleMenu, willDisplay button: UIButton, atIndex: Int){
         if atIndex == 0 {
-            button.setImage(UIImage(named: "phone_icon"), for: .normal)
+            button.backgroundColor = .green
+            button.setImage(UIImage(named: "callNewIcon"), for: .normal)
         }else if atIndex == 1 {
-            button.setImage(UIImage(named: "phone_icon"), for: .normal)
+            
+            button.setImage(UIImage(named: "ChatNewIcon"), for: .normal)
         }else if atIndex == 2 {
-            button.setImage(UIImage(named: "phone_icon"), for: .normal)
+            button.backgroundColor = .green.withAlphaComponent(0.8)
+            button.setImage(UIImage(named: "whatsNewIcon"), for: .normal)
         }
     }
     
@@ -603,20 +606,42 @@ extension ProductViewController : CircleMenuDelegate {
     // call after animation
     func circleMenu(_ circleMenu: CircleMenu, buttonDidSelected button: UIButton, atIndex: Int){
         
-//        let txt1 = "I want to talk to you about your advertisement".localize
-//        let txt2 = "on Bazar app".localize
-//        var link = "\(txt1) \(product.name ?? "")\n\(txt2)"
-//        let escapedString = link.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
-//        let url  = URL(string: "whatsapp://send?phone=\(product.whatsappPhone ?? "")&text=\(escapedString!)")
-//        if UIApplication.shared.canOpenURL(url! as URL){
-//            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
-//        }
+
         if atIndex == 0 {
-            print(atIndex)
+            let callPhone = "+\(product.phone ?? "")"
+                        guard let number = URL(string: "telprompt://" + callPhone) else { return }
+                        UIApplication.shared.open(number, options: [:], completionHandler: nil)
+                        print(callPhone)
         }else if atIndex == 1 {
-            print(atIndex)
+            ChatController.shared.create_room(completion: {
+                id,check, msg in
+                if check == 0{
+                    if id != -1{
+                        receiver.room_id = "\(id)"
+                    }
+                    if AppDelegate.currentUser.id ?? 0 == self.product.userId ?? 0 {
+                        StaticFunctions.createErrorAlert(msg: "You Can't chat with yourself".localize)
+                    }else {
+                        Constants.otherUserPic = self.product.userPic ?? ""
+                        Constants.otherUserIsStore = self.product.isStore ?? false
+                        Constants.otherUserName = self.product.userName ?? ""
+                        print(self.product.userName ?? "")
+                        self.basicNavigation(storyName: "Chat", segueId: "ChatVC")
+                    }
+                }else{
+                    StaticFunctions.createErrorAlert(msg: msg)
+                }
+                
+            }, id: product.userId ?? 0)
         }else if atIndex == 2 {
-            print(atIndex)
+                    let txt1 = "I want to talk to you about your advertisement".localize
+                    let txt2 = "on Bazar app".localize
+                    var link = "\(txt1) \(product.name ?? "")\n\(txt2)"
+                    let escapedString = link.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)
+                    let url  = URL(string: "whatsapp://send?phone=\(product.whatsappPhone ?? "")&text=\(escapedString!)")
+                    if UIApplication.shared.canOpenURL(url! as URL){
+                        UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+                    }
         }
     }
 

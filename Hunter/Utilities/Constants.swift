@@ -155,6 +155,7 @@ class Constants {
     static let FOLLOW_USER = DOMAIN + "make_follow"
     static let BLOCK_USER = DOMAIN + "blocked"
     static let GET_BLOCKED_USERS = DOMAIN + "getBlockedUsersForUser"
+    static let CHECK_USERR_PENDING = DOMAIN + "check_user_pending"
     
     //Notifications
     static let SAVE_TOKEN_URL = DOMAIN + "notifications/save_token"

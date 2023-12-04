@@ -26,7 +26,8 @@ class UserBlockedTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        cImageView.layer.cornerRadius = cImageView.frame.width / 2
     }
 
    

@@ -37,6 +37,7 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var viewsLabel: UILabel!
     
     @IBOutlet weak var contactWaysButton: CircleMenu!
+    @IBOutlet weak var followButton: UIButton!
     
     
     let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "full_screen") as! FullScreenViewController
@@ -70,7 +71,7 @@ class ProductViewController: UIViewController {
                 }
         self.navigationController?.navigationBar.isHidden = true
         setupSlider()
-
+        sellImage.isHidden = true
         // Do any additional setup after loading the view.
         NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
         
@@ -203,6 +204,33 @@ class ProductViewController: UIViewController {
 //        dismissDetail()
         navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func didTapFollowButton(_ sender: UIButton) {
+        
+        if StaticFunctions.isLogin() {
+            
+                ProfileController.shared.followUser(completion: {
+                    check, msg in
+                    if check == 0{
+                        //
+                        
+                    }else{
+                        StaticFunctions.createErrorAlert(msg: msg)
+                    }
+                }, OtherUserId: self.product.userId ?? 0)
+            
+        }else{
+            StaticFunctions.createErrorAlert(msg: "Please Login First".localize)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+                self.basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
+            }
+            
+        }
+
+    }
+    
+    
+    
     @IBAction func flageActiion(_ sender: Any) {
         let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: FLAG_VCID) as! ReportViewController
         vc.id = self.product.id ?? 0
@@ -327,6 +355,7 @@ extension ProductViewController{
                 self.product = product.data
                 self.images = product.images
                 self.comments = product.comments
+                
                 self.tableView.reloadData()
                 print( self.tableViewHeight.constant)
                 self.tableViewHeight.constant = self.tableHeight
@@ -432,22 +461,36 @@ extension ProductViewController{
             userVerifieddImage.isHidden = true
         }
         
-        if let tajeerOrSell = product.type  {
-            
-            if( tajeerOrSell == 1){
+        if let tajeerOrSell = product.adType  {
+            sellImage.isHidden = false
+            if( tajeerOrSell == "rent"){
                 selLbl.text = "rent".localize
-                selLbl.textColor = .black
+                selLbl.textColor = .white
                 sellImage.layer.borderWidth = 1.0
-                sellImage.layer.borderColor = UIColor.black.cgColor
+                sellImage.layer.borderColor = UIColor(named: "#213970")?.cgColor
                 sellImage.clipsToBounds = true
-                sellImage.backgroundColor = .white
-            }else{
+                sellImage.backgroundColor = UIColor(named: "#213970")
+            }else if ( tajeerOrSell == "sell") {
                 selLbl.text = "sell".localize
                 sellImage.layer.borderWidth = 1.0
                 sellImage.layer.borderColor = UIColor(named: "#0093F5")?.cgColor
                 sellImage.clipsToBounds = true
                 selLbl.textColor = .white
                 sellImage.backgroundColor = UIColor(named: "#0093F5")
+            } else if ( tajeerOrSell == "donation") {
+                selLbl.text = "DONATION".localize
+                sellImage.layer.borderWidth = 1.0
+                sellImage.layer.borderColor = UIColor(named: "DonationColor")?.cgColor
+                sellImage.clipsToBounds = true
+                selLbl.textColor = .white
+                sellImage.backgroundColor = UIColor(named: "DonationColor")
+            }else if ( tajeerOrSell == "buying") {
+                selLbl.text = "BUYING".localize
+                sellImage.layer.borderWidth = 1.0
+                sellImage.layer.borderColor = UIColor(named: "buyingColor")?.cgColor
+                sellImage.clipsToBounds = true
+                selLbl.textColor = .white
+                sellImage.backgroundColor = UIColor(named: "buyingColor")
             }
         }
         if product.fav == 1 {

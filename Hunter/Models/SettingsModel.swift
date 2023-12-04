@@ -8,22 +8,24 @@ import Foundation
 
 
 // MARK: - AboutSuccessModel
+// MARK: - AboutSuccessModel
 struct AboutSuccessModel: Codable {
-    let message: String?
-    let data: [About]?
-    let success: Bool?
+    let message: String
+    let data: AboutDataObject?
+    let success: Bool
+    let statusCode: Int
 }
 
-// MARK: - About
-struct About: Codable {
-    let id: Int
-    let about, aboutEn ,conds_en, conds:  String
-  
+// MARK: - DataClass
+struct AboutDataObject: Codable {
+    let id, typeID: Int
+    let descriptionAr, descriptionEn: String
+
     enum CodingKeys: String, CodingKey {
-        case id, about ,conds
-        case aboutEn = "about_en"
-        case conds_en = "conds_en"
-    
+        case id
+        case typeID = "type_id"
+        case descriptionAr = "description_ar"
+        case descriptionEn = "description_en"
     }
 }
 
@@ -38,3 +40,5 @@ struct Success:Codable {
     let success: Bool?
     let statusCode: Int?
 }
+
+

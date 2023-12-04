@@ -10,7 +10,7 @@ import MOLH
 import WoofTabBarController
 
 class MenuVC: UIViewController {
-
+    
     static func instantiate()->MenuVC{
         let controller = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier:MENU_VCID) as! MenuVC
         return controller
@@ -27,7 +27,7 @@ class MenuVC: UIViewController {
     
     @IBOutlet weak var loginViewContainer: UIView!
     @IBOutlet weak var logoutView: UIView!
-  
+    
     @IBOutlet weak var englishButton: UIButton!
     
     @IBOutlet weak var arabicButton: UIButton!
@@ -37,7 +37,7 @@ class MenuVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        ConfigureUI()
+        //        ConfigureUI()
         userImageContainerView.layer.cornerRadius = userImageContainerView.frame.height / 2
         userImageView.layer.cornerRadius = userImageView.frame.height / 2
         
@@ -47,7 +47,7 @@ class MenuVC: UIViewController {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.goHome(_:)), name: NSNotification.Name(rawValue: "goHome"), object: nil)
-
+        
         navigationController?.navigationBar.isHidden = true
         tabBarController?.tabBar.isHidden = false
         ConfigureUI()
@@ -71,11 +71,11 @@ class MenuVC: UIViewController {
     
     private func ConfigureUI(){
         
-//        navigationController?.navigationBar.isHidden = true
-//        tabBarController?.tabBar.isHidden = false
-//        dateLabel.text = FormattedDate()
+        //        navigationController?.navigationBar.isHidden = true
+        //        tabBarController?.tabBar.isHidden = false
+        //        dateLabel.text = FormattedDate()
         
-//        loginButton.shake()
+        //        loginButton.shake()
         if StaticFunctions.isLogin() {
             //logged in
             userNameLabel.text = AppDelegate.currentUser.name ?? ""
@@ -101,7 +101,7 @@ class MenuVC: UIViewController {
             logoutView.isHidden = false
             loginButton.setTitle("Stores Packages".localize, for: .normal)
         }else {
-           // logged out
+            // logged out
             loginButton.shake()
             userNameLabel.text = "Guest".localize
             loginButton.setTitle("Login/Register".localize, for: .normal)
@@ -114,10 +114,10 @@ class MenuVC: UIViewController {
     
     
     
-   
+    
     
     @IBAction func didTapLoginButton(_ sender: UIButton) {
-      //  basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
+        //  basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
         if loginButton.titleLabel?.text == "Stores Packages".localize {
             let packagesVC = PackagesVC.instantiate()
             navigationController?.pushViewController(packagesVC, animated: true)
@@ -129,25 +129,25 @@ class MenuVC: UIViewController {
     
     @IBAction func didTapProfileButton(_ sender: UIButton) {
         print("didTapProfileButton")
-//        if StaticFunctions.isLogin() {
-//            let vc = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: PROFILE_VCID) as! ProfileVC
-//            vc.modalPresentationStyle = .fullScreen
-//           // present(vc, animated: true)
-////            presentDetail(vc)
-//            navigationController?.pushViewController(vc, animated: true)
-//        }else {
-//            StaticFunctions.createErrorAlert(msg: "Please Login First To Can Go To Profile!".localize)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
-//                self.basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
-//            }
-//
-//        }
+        //        if StaticFunctions.isLogin() {
+        //            let vc = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: PROFILE_VCID) as! ProfileVC
+        //            vc.modalPresentationStyle = .fullScreen
+        //           // present(vc, animated: true)
+        ////            presentDetail(vc)
+        //            navigationController?.pushViewController(vc, animated: true)
+        //        }else {
+        //            StaticFunctions.createErrorAlert(msg: "Please Login First To Can Go To Profile!".localize)
+        //            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+        //                self.basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
+        //            }
+        //
+        //        }
         if StaticFunctions.isLogin() {
             print(AppDelegate.currentUser.isStore)
             DispatchQueue.main.async {
                 if AppDelegate.currentUser.isStore ?? false {
                     let storeProfileVC = StoreProfileVC.instantiate()
-//                    let nav = UINavigationController(rootViewController: storeProfileVC)
+                    //                    let nav = UINavigationController(rootViewController: storeProfileVC)
                     storeProfileVC.otherUserId = AppDelegate.currentUser.id ?? 0
                     self.navigationController?.pushViewController(storeProfileVC, animated: true)
                 }else{
@@ -162,11 +162,11 @@ class MenuVC: UIViewController {
                 self.basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
             }
         }
-
+        
     }
     
     @IBAction func didTapAddAdButton(_ sender: Any) {
-
+        
         if StaticFunctions.isLogin() {
             let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: ADDADVS_VCID) as! AddAdvsVC
             vc.modalPresentationStyle = .fullScreen
@@ -174,7 +174,7 @@ class MenuVC: UIViewController {
             vc.isComeFromProfile = true
             navigationController?.pushViewController(vc, animated: true)
             
-
+            
         }else {
             StaticFunctions.createErrorAlert(msg: "Please Login First To Can Add Post!".localize)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
@@ -205,7 +205,7 @@ class MenuVC: UIViewController {
             if let vc = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: MYADS_VCID) as? MyAdsVC {
                 vc.modalPresentationStyle = .fullScreen
                 vc.userId = AppDelegate.currentUser.id ?? 0
-//                presentDetail(vc)
+                //                presentDetail(vc)
                 vc.navigationController?.navigationBar.isHidden = false
                 navigationController?.pushViewController(vc, animated: true)
             }
@@ -230,21 +230,21 @@ class MenuVC: UIViewController {
                 self.basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
             }
         }
-
+        
         
     }
     @IBAction func didTapChangeCountryButton(_ sender: UIButton) {
         
         let vc = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "ChangeCountryVC") as! ChangeCountryVC
         vc.modalPresentationStyle = .fullScreen
-//        presentDetail(vc)
+        //        presentDetail(vc)
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func didTapSettingsButton(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingVC") as! SettingVC
         vc.modalPresentationStyle = .fullScreen
-//        presentDetail(vc)
+        //        presentDetail(vc)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -252,18 +252,15 @@ class MenuVC: UIViewController {
         
         if StaticFunctions.isLogin() {
             let vc = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "VerifyAccountVC") as! VerifyAccountVC
-            vc.modalPresentationStyle = .fullScreen
-//            presentDetail(vc)
-            navigationController?.pushViewController(vc, animated: true)
-            
-            
+                vc.modalPresentationStyle = .fullScreen
+                navigationController?.pushViewController(vc, animated: true)
         }else {
             StaticFunctions.createErrorAlert(msg: "Please Login First To Can Go To Verify Account!".localize)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
                 self.basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
             }
         }
-
+        
     }
     
     //Change Language
@@ -304,7 +301,7 @@ class MenuVC: UIViewController {
     
     @IBAction func didTapLogoutButton(_ sender: UIButton) {
         displayImageActionSheet()
-      //  logout()
+        //  logout()
     }
     
     
@@ -329,29 +326,29 @@ extension MenuVC {
     private func displayImageActionSheet() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let selectAction = UIAlertAction(title: "Log out".localize, style: .default) { (_) in
-                    self.logout()
-                }
+            self.logout()
+        }
         // Customize the color of the actions
         selectAction.setValue(UIColor.red, forKey: "titleTextColor")
-                alertController.addAction(selectAction)
+        alertController.addAction(selectAction)
         let cancelAction = UIAlertAction(title: "Cancel".localize, style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                let imageView = UIImageView(image: UIImage(named: "log-out"))
-                imageView.contentMode = .scaleAspectFit
-                imageView.clipsToBounds = true
-                let imageWidth: CGFloat = 20
-                let imageHeight: CGFloat = 20
-                let padding: CGFloat = 16.0
-                let customView = UIView(frame: CGRect(x: padding, y: padding, width: imageWidth, height: imageHeight))
-                imageView.frame = customView.bounds
-                customView.addSubview(imageView)
-                alertController.view.addSubview(customView)
-                alertController.view.bounds.size.height += (imageHeight + padding * 2)
-                present(alertController, animated: true, completion: nil)
-       }
+        alertController.addAction(cancelAction)
+        let imageView = UIImageView(image: UIImage(named: "log-out"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        let imageWidth: CGFloat = 20
+        let imageHeight: CGFloat = 20
+        let padding: CGFloat = 16.0
+        let customView = UIView(frame: CGRect(x: padding, y: padding, width: imageWidth, height: imageHeight))
+        imageView.frame = customView.bounds
+        customView.addSubview(imageView)
+        alertController.view.addSubview(customView)
+        alertController.view.bounds.size.height += (imageHeight + padding * 2)
+        present(alertController, animated: true, completion: nil)
+    }
     
     func logout(){
-       
+        
         AppDelegate.currentUser.id = nil
         AppDelegate.currentUser.toke = nil
         AppDelegate.currentUser.pic = "-"
@@ -362,11 +359,14 @@ extension MenuVC {
         UserDefaults.standard.synchronize()
         
         self.basicPresentation(storyName: MAIN_STORYBOARD, segueId: "TabBarVC")
-      
+        
     }
+    
+    
+    
 }
 //extension MenuVC:WoofTabBarControllerDataSource, WoofTabBarControllerDelegate {
-//    
+//
 //    func woofTabBarItem() -> WoofTabBarItem {
 //        return WoofTabBarItem(title: "Profile".localize, image: "userProfile", selectedImage: "ProfileButtonIcon")
 //    }

@@ -76,3 +76,26 @@ struct BlockUser: Codable {
         case availableAdsCountStoreInCurrentMonth = "available_ads_count_store_in_current_month"
     }
 }
+
+
+
+
+//MARK: CheckPendingModel
+
+
+// MARK: - CheckPendingModel
+struct CheckPendingModel: Codable {
+    let message: String?
+    let data: CheckPendingData?
+    let success: Bool?
+    let statusCode: Int?
+}
+
+// MARK: - CheckPendingData
+struct CheckPendingData: Codable {
+    let pendingUser: Bool?
+
+    enum CodingKeys: String, CodingKey {
+        case pendingUser = "pending_user"
+    }
+}

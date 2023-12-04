@@ -99,8 +99,9 @@ extension UserBlockedVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         true
     }
+   
     
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         // Create a UIContextualAction for each action you want to perform
         let deleteAction = UIContextualAction(style: .destructive, title: "Unblock") {[weak self] (action, view, completionHandler) in
             guard let self else {return }

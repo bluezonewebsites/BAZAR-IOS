@@ -488,3 +488,7 @@ To get free ads" = "سيتم مراجعتة من قبل الإدارة
 "we received your report" = "تم ارسال بلاغك الي الادارة";
 "reason for reporting this chat" = "من فضلك أدخل سبب الابلاغ عن المحادثة";
 "Enter a 4-digit number" = "أدخل رقمًا مكونًا من 4 أرقام";
+
+
+"Your verification request is still under review. We appreciate your patience and will notify you once the process is complete" = "طلب التحقق الخاص بك لا يزال قيد المراجعة. نحن نقدر سعة صدرك وسنخطرك بمجرد اكتمال العملية";
+"Your account is already verified – no further action is required. Thank you for ensuring your account's security. You can now fully enjoy our services." = "لقد تم التحقق من حسابك بالفعل - لا يلزم اتخاذ أي إجراء آخر. نشكرك على ضمان أمان حسابك. يمكنك الآن الاستمتاع بخدماتنا بشكل كامل.";

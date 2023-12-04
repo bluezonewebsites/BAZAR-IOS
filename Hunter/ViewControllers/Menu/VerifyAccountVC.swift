@@ -44,6 +44,8 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
                 self.documents
             ]
         }()
+    private var isHaveVerificationRequest = false
+    private var isImageSelected = false
         
         var countPhoneNumber: Int {
             if AppDelegate.currentUser.countryId == 5 || AppDelegate.currentUser.countryId  == 10 {
@@ -80,6 +82,8 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
             documents_name = ["ID card".localize,"passport".localize ,"Driving License".localize]
             setupDropDownDocuments()
             
+            //MARK: Check
+            checkUserPending()
         }
         
     
@@ -259,6 +263,17 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
             }
         }
         
+    private func checkUserPending(){
+        PendingUserController.shared.checkUserPending(completion: { data, check, message in
+            
+            if check == 0 {
+                self.isHaveVerificationRequest = data?.pendingUser ?? false
+            }else {
+                StaticFunctions.createErrorAlert(msg: message)
+            }
+        }, userId: AppDelegate.currentUser.id.safeValue)
+    }
+    
         @IBAction func show_countries(_ sender: Any) {
             countries.show()
         }
@@ -266,8 +281,17 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
         
         
         @IBAction func go() {
-            //order.askImage
-//                BG.load(self)
+            
+            if AppDelegate.currentUser.verified == 1 {
+                StaticFunctions.createInfoAlert(msg: "Your account is already verified – no further action is required. Thank you for ensuring your account's security. You can now fully enjoy our services.".localize)
+            }else if isHaveVerificationRequest {
+                  StaticFunctions.createInfoAlert(msg: "Your verification request is still under review. We appreciate your patience and will notify you once the process is complete".localize)
+
+            }else  if !isImageSelected  {
+                
+                    StaticFunctions.createErrorAlert(msg:"Please Select Document Card".localize)
+            }
+            else{
             guard let mobile = phoneNumber.text else{return}
             
             guard let imageData = pic.image?.jpegData(compressionQuality: 0.1) else {return}
@@ -277,9 +301,7 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
                                                "category":cat_name,
                                                "document_type":document_name,
                                            "country_id":AppDelegate.currentUser.countryId ?? 0, "mobile":mobile]
-            if cat_name == "" && country_name == "" && document_name == "" {
-                StaticFunctions.createErrorAlert(msg:"من فضلك ادخل جميع البيانات")
-            }else {
+               
                 guard let url = URL(string: Constants.DOMAIN+"users_pending")else{return}
                 print(params)
                 AF.upload(multipartFormData: {multipartFormData in
@@ -311,6 +333,7 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
                     }
                 }
             }
+                       
         }
         
     
@@ -326,6 +349,7 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
             let vc = UIStoryboard(name: CATEGORRY_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier:ASK_IMAGE_PICKER_VCID ) as! AskImagePickerViewController
             vc.chooseImageBtclosure = {
                 image in
+                self.isImageSelected = true
                 self.pic.image = image
             }
             self.present(vc, animated: false, completion: nil)

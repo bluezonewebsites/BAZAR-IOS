@@ -57,27 +57,64 @@ class ProductCollectionViewCell: UICollectionViewCell {
             subscribeImage.isHidden = true
         }
         
-        if let tajeerOrSell = product.type  {
-            print(tajeerOrSell)
-            if( tajeerOrSell == 1){
-                sellLbl.text = "rent".localize
-                sellLbl.textColor = .black
+//        if let tajeerOrSell = product.type  {
+//            print(tajeerOrSell)
+//            if( tajeerOrSell == 1){
+//                sellLbl.text = "rent".localize
+//                sellLbl.textColor = .black
+//                sellView.layer.borderWidth = 1.0
+//                sellView.layer.borderColor = UIColor.black.cgColor
+//                sellView.clipsToBounds = true
+//                sellView.backgroundColor = .white
+//            }else{
+//                sellLbl.text = "sell".localize
+//                sellView.layer.borderWidth = 1.0
+//                sellView.layer.borderColor = UIColor(named: "#0093F5")?.cgColor
+//                sellView.clipsToBounds = true
+//                sellLbl.textColor = .white
+//                sellView.backgroundColor = UIColor(named: "#0093F5")
+//            }
+//            
+//            
+//            
+//        }
+        
+        
+        if let tajeerOrSell = product.adType  {
+            
+            if( tajeerOrSell == "rent"){
+                sellLbl.text = "RENT".localize
+                sellLbl.textColor = .white
                 sellView.layer.borderWidth = 1.0
-                sellView.layer.borderColor = UIColor.black.cgColor
+                sellView.layer.borderColor = UIColor(named: "#213970")?.cgColor
                 sellView.clipsToBounds = true
-                sellView.backgroundColor = .white
-            }else{
-                sellLbl.text = "sell".localize
+                sellView.backgroundColor = UIColor(named: "#213970")
+            }else if ( tajeerOrSell == "sell") {
+                sellLbl.text = "SELL".localize
                 sellView.layer.borderWidth = 1.0
                 sellView.layer.borderColor = UIColor(named: "#0093F5")?.cgColor
                 sellView.clipsToBounds = true
                 sellLbl.textColor = .white
                 sellView.backgroundColor = UIColor(named: "#0093F5")
+            } else if ( tajeerOrSell == "donation") {
+                sellLbl.text = "DONATION".localize
+                sellView.layer.borderWidth = 1.0
+                sellView.layer.borderColor = UIColor(named: "DonationColor")?.cgColor
+                sellView.clipsToBounds = true
+                sellLbl.textColor = .white
+                sellView.backgroundColor = UIColor(named: "DonationColor")
+            }else if ( tajeerOrSell == "buying") {
+                sellLbl.text = "BUYING".localize
+                sellView.layer.borderWidth = 1.0
+                sellView.layer.borderColor = UIColor(named: "buyingColor")?.cgColor
+                sellView.clipsToBounds = true
+                sellLbl.textColor = .white
+                sellView.backgroundColor = UIColor(named: "buyingColor")
             }
-            
-            
-            
         }
+        
+        
+        
         if let createDate = product.createdAt{
 //            if createDate.count > 11 {
 ////                self.timeLbl.text =  "\(createDate[11..<16])"

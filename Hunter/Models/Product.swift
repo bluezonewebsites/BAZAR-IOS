@@ -85,6 +85,7 @@ struct Product: Codable{
     var cityNameEn: String?
     var createdAt: String?
     var description: String?
+    var adType:String?
     var fav: Int?
     var phone: String?
     var whatsappPhone: String?
@@ -111,6 +112,7 @@ struct Product: Codable{
         case userName = "user_name"
         case userLastName = "user_last_name"
         case userPic = "user_pic"
+        case adType = "ad_type"
 //        case userVerified = "user_verified"
         case countryNameAr = "countries_name_ar"
         case countryNameEn = "countries_name_en"

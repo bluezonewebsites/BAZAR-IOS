@@ -88,6 +88,25 @@ class StaticFunctions {
       
 //        snackbar.show()
     }
+    
+    static func createInfoAlert(msg: String){
+       
+        let banner = NotificationBanner(title: msg, subtitle: "", style: .info)
+        ///banner.backgroundColor = UIColor(rgb: Constant.greenColor)
+        banner.show(bannerPosition: .top)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            banner.dismiss()
+        }
+//        let snackbar = TTGSnackbar(message: msg, duration: .middle)
+//
+//
+//            snackbar.backgroundColor = UIColor.init(hexString: "#0093F5")
+//
+//        snackbar.animationType = .slideFromBottomBackToBottom
+//        snackbar.messageTextAlign = MOLHLanguage.currentAppleLanguage() == "en" ? .left : .right
+      
+//        snackbar.show()
+    }
     static func enableBtn(btn: UIButton, status check: Bool){
         if check{
             btn.alpha = 1

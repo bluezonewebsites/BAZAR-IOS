@@ -1971,7 +1971,7 @@
                                                                                                                             </constraints>
                                                                                                                             <userDefinedRuntimeAttributes>
                                                                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                                                    <real key="value" value="7"/>
+                                                                                                                                    <real key="value" value="2"/>
                                                                                                                                 </userDefinedRuntimeAttribute>
                                                                                                                             </userDefinedRuntimeAttributes>
                                                                                                                         </view>
@@ -1998,7 +1998,7 @@
                                                                                                                     <rect key="frame" x="0.0" y="83.333333333333329" width="374" height="20"/>
                                                                                                                     <subviews>
                                                                                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kVp-v8-ccw">
-                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="80.666666666666671" height="20"/>
+                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="20"/>
                                                                                                                             <subviews>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user3" translatesAutoresizingMaskIntoConstraints="NO" id="6fB-M9-h8g">
                                                                                                                                     <rect key="frame" x="0.0" y="2.6666666666666572" width="12" height="15"/>
@@ -2015,7 +2015,7 @@
                                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                                 </label>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:lRI-8Z-p3x:image" translatesAutoresizingMaskIntoConstraints="NO" id="lRI-8Z-p3x">
-                                                                                                                                    <rect key="frame" x="65" y="2.6666666666666572" width="15.666666666666671" height="15"/>
+                                                                                                                                    <rect key="frame" x="65" y="2.6666666666666572" width="15" height="15"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="height" constant="15" id="7sv-Or-3JO"/>
                                                                                                                                         <constraint firstAttribute="width" constant="15" id="qg9-Z8-b5s"/>
@@ -2024,17 +2024,17 @@
                                                                                                                             </subviews>
                                                                                                                         </stackView>
                                                                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9oM-wx-55V">
-                                                                                                                            <rect key="frame" x="313.33333333333331" y="0.0" width="60.666666666666686" height="20"/>
+                                                                                                                            <rect key="frame" x="325.33333333333331" y="0.0" width="48.666666666666686" height="20"/>
                                                                                                                             <subviews>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="place_black_24dp-gray" translatesAutoresizingMaskIntoConstraints="NO" id="80t-QV-Ofi">
-                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="20"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="width" constant="20" id="Kcb-xi-lAy"/>
                                                                                                                                         <constraint firstAttribute="height" constant="20" id="XJ8-tU-ch2"/>
                                                                                                                                     </constraints>
                                                                                                                                 </imageView>
                                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Egypt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="est-8b-QbY">
-                                                                                                                                    <rect key="frame" x="27.999999999999996" y="0.0" width="32.666666666666657" height="20"/>
+                                                                                                                                    <rect key="frame" x="15.999999999999996" y="0.0" width="32.666666666666657" height="20"/>
                                                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                                                                     <color key="textColor" name="textColor"/>
                                                                                                                                     <nil key="highlightedColor"/>
@@ -2564,7 +2564,7 @@
                                                                                                                             </constraints>
                                                                                                                             <userDefinedRuntimeAttributes>
                                                                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                                                    <real key="value" value="7"/>
+                                                                                                                                    <real key="value" value="2"/>
                                                                                                                                 </userDefinedRuntimeAttribute>
                                                                                                                             </userDefinedRuntimeAttributes>
                                                                                                                         </view>
@@ -2591,7 +2591,7 @@
                                                                                                                     <rect key="frame" x="0.0" y="83.333333333333329" width="374" height="20"/>
                                                                                                                     <subviews>
                                                                                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="B7Z-Al-hJk">
-                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="46.333333333333336" height="20"/>
+                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="47" height="20"/>
                                                                                                                             <subviews>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user3" translatesAutoresizingMaskIntoConstraints="NO" id="h8W-Pr-qvS">
                                                                                                                                     <rect key="frame" x="0.0" y="2.6666666666666572" width="10" height="15"/>
@@ -2611,7 +2611,7 @@
                                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                                 </label>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:837-14-u4B:image" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-MP-IlB">
-                                                                                                                                    <rect key="frame" x="31.333333333333336" y="2.6666666666666572" width="15" height="15"/>
+                                                                                                                                    <rect key="frame" x="31.333333333333339" y="2.6666666666666572" width="15.666666666666668" height="15"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="height" constant="15" id="ZXS-AB-304"/>
                                                                                                                                         <constraint firstAttribute="width" constant="15" id="ygn-IL-uwi"/>
@@ -4819,7 +4819,7 @@
                                                                                                                                             </constraints>
                                                                                                                                             <userDefinedRuntimeAttributes>
                                                                                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                                                                    <real key="value" value="7"/>
+                                                                                                                                                    <real key="value" value="2"/>
                                                                                                                                                 </userDefinedRuntimeAttribute>
                                                                                                                                             </userDefinedRuntimeAttributes>
                                                                                                                                         </view>
@@ -5109,7 +5109,7 @@
                                                                                                                             </constraints>
                                                                                                                             <userDefinedRuntimeAttributes>
                                                                                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                                                                    <real key="value" value="7"/>
+                                                                                                                                    <real key="value" value="2"/>
                                                                                                                                 </userDefinedRuntimeAttribute>
                                                                                                                             </userDefinedRuntimeAttributes>
                                                                                                                         </view>

@@ -275,6 +275,7 @@
 		C8ECBD542A34535E003178DA /* VerifyAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ECBD532A34535E003178DA /* VerifyAccountVC.swift */; };
 		C8F253CD2AA1C5AA0063C0F5 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F253CC2AA1C5AA0063C0F5 /* BasicViewController.swift */; };
 		C8F374BF2B186FCB00F83674 /* PackagesCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F374BE2B186FCB00F83674 /* PackagesCategoryModel.swift */; };
+		C8F374C12B18D0A500F83674 /* PendingUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F374C02B18D0A500F83674 /* PendingUserController.swift */; };
 		C8FF98042AA50B4F00DBA6CF /* PackagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF98032AA50B4F00DBA6CF /* PackagesModel.swift */; };
 		C8FF98062AA50CD900DBA6CF /* PackagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF98052AA50CD900DBA6CF /* PackagesController.swift */; };
 /* End PBXBuildFile section */
@@ -561,6 +562,7 @@
 		C8ECBD532A34535E003178DA /* VerifyAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyAccountVC.swift; sourceTree = "<group>"; };
 		C8F253CC2AA1C5AA0063C0F5 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		C8F374BE2B186FCB00F83674 /* PackagesCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesCategoryModel.swift; sourceTree = "<group>"; };
+		C8F374C02B18D0A500F83674 /* PendingUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingUserController.swift; sourceTree = "<group>"; };
 		C8FF98032AA50B4F00DBA6CF /* PackagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesModel.swift; sourceTree = "<group>"; };
 		C8FF98052AA50CD900DBA6CF /* PackagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesController.swift; sourceTree = "<group>"; };
 		D2935A47F02BDB207D88AACE /* Pods-Monasba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monasba.debug.xcconfig"; path = "Target Support Files/Pods-Monasba/Pods-Monasba.debug.xcconfig"; sourceTree = "<group>"; };
@@ -763,6 +765,7 @@
 				C8CCE33D2A19E33B00FFAFB2 /* ProfileController.swift */,
 				65B5505A2A1C863F002D2264 /* SearchController.swift */,
 				65FFFA152A1E972600B70368 /* NotificationsController.swift */,
+				C8F374C02B18D0A500F83674 /* PendingUserController.swift */,
 				65784C682A27147B0099A293 /* ChatController.swift */,
 				C8C715022A647887006C5AFE /* FollowersController.swift */,
 				C8A27B472A9F91DB0090A9D2 /* StoresController.swift */,
@@ -1682,6 +1685,7 @@
 				65400C5629FB28E8009E07C9 /* Country.swift in Sources */,
 				C86B4AAE2A8933050018D178 /* HomeDetailsViewController.swift in Sources */,
 				659F892F29FD9AED00AFA95C /* User.swift in Sources */,
+				C8F374C12B18D0A500F83674 /* PendingUserController.swift in Sources */,
 				C8CCE33A2A19DE9900FFAFB2 /* ProfileVC.swift in Sources */,
 				C8F253CD2AA1C5AA0063C0F5 /* BasicViewController.swift in Sources */,
 				C87A717A2A87D88A00222085 /* FeaturesProductsCollectionViewCell.swift in Sources */,

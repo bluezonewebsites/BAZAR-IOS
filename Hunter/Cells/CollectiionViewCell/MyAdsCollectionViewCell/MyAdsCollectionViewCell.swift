@@ -67,24 +67,38 @@ class MyAdsCollectionViewCell: UICollectionViewCell {
             verifiedImage.isHidden = false
         }else{
             verifiedImage.isHidden = true
-        }
-        
-        if let tajeerOrSell = product.type  {
+        }  
+
+        if let tajeerOrSell = product.adType  {
             
-            if( tajeerOrSell == 1){
-                sellLabel.text = "rent".localize
-                sellLabel.textColor = .black
+            if( tajeerOrSell == "rent"){
+                sellLabel.text = "RENT".localize
+                sellLabel.textColor = .white
                 sellView.layer.borderWidth = 1.0
-                sellView.layer.borderColor = UIColor.black.cgColor
+                sellView.layer.borderColor = UIColor(named: "#213970")?.cgColor
                 sellView.clipsToBounds = true
-                sellView.backgroundColor = .white
-            }else{
-                sellLabel.text = "sell".localize
+                sellView.backgroundColor = UIColor(named: "#213970")
+            }else if ( tajeerOrSell == "sell") {
+                sellLabel.text = "SELL".localize
                 sellView.layer.borderWidth = 1.0
                 sellView.layer.borderColor = UIColor(named: "#0093F5")?.cgColor
                 sellView.clipsToBounds = true
                 sellLabel.textColor = .white
                 sellView.backgroundColor = UIColor(named: "#0093F5")
+            } else if ( tajeerOrSell == "donation") {
+                sellLabel.text = "DONATION".localize
+                sellView.layer.borderWidth = 1.0
+                sellView.layer.borderColor = UIColor(named: "DonationColor")?.cgColor
+                sellView.clipsToBounds = true
+                sellLabel.textColor = .white
+                sellView.backgroundColor = UIColor(named: "DonationColor")
+            }else if ( tajeerOrSell == "buying") {
+                sellLabel.text = "BUYING".localize
+                sellView.layer.borderWidth = 1.0
+                sellView.layer.borderColor = UIColor(named: "buyingColor")?.cgColor
+                sellView.clipsToBounds = true
+                sellLabel.textColor = .white
+                sellView.backgroundColor = UIColor(named: "buyingColor")
             }
         }
         if let createDate = product.createdAt{

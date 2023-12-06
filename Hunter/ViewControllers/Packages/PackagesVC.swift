@@ -53,6 +53,7 @@ class PackagesVC: UIViewController {
     private var monthCount = 3
     private var categoryPlanId = 1
     private var plans = [PackageCategoryObject]()
+    private var planCost = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -145,8 +146,10 @@ class PackagesVC: UIViewController {
         PackagesController.shared.getPlaCategory(completion: {[weak self] plans, check, message in
             guard let self else {return}
             if check == 0 {
-                if let plans = plans {
+                if let plans = plans , let planCost = plans[0].price{
                     self.plans = plans
+                    self.planCost = "\(planCost)"
+                    self.resetDefaultMonthSelection()
                     self.setupPlanCtegory(from: plans, planId: planId)
                 }
                 
@@ -219,6 +222,12 @@ class PackagesVC: UIViewController {
         }, countryId: 0)
     }
     
+    private func resetDefaultMonthSelection(){
+        handlePackegesPlanSelected(for: threeMonthViewContainer, label: threeLabel, rondedView: threeMonthRoundedView)
+        handlePackegesPlanNotSelected(for: sixMonthViewContainer, label: sixLabel, rondedView: sixMonthRoundedView)
+        handlePackegesPlanNotSelected(for: twelveMonthViewContainer, label: twelveLabel, rondedView: twelveMonthRoundedView)
+    }
+    
     
     private func goToSuccessPlanfullSubscribe(){
         let vc = SuccessPlanSucbscribeVC.instantiate()
@@ -268,8 +277,9 @@ class PackagesVC: UIViewController {
     
     @IBAction func didTapThreeMonthButton(_ sender: UIButton) {
         
-        if let planCategoryId = plans[0].id, let monthCount = plans[0].monthNumber {
+        if let planCategoryId = plans[0].id, let monthCount = plans[0].monthNumber , let planCost = plans[0].price{
             categoryPlanId = planCategoryId
+            self.planCost = "\(planCost)"
             self.monthCount = monthCount
         }
         handlePackegesPlanSelected(for: threeMonthViewContainer, label: threeLabel, rondedView: threeMonthRoundedView)
@@ -278,7 +288,8 @@ class PackagesVC: UIViewController {
     }
     
     @IBAction func didTapSixMonthButton(_ sender: UIButton) {
-        if let planCategoryId = plans[1].id, let monthCount = plans[1].monthNumber {
+        if let planCategoryId = plans[1].id, let monthCount = plans[1].monthNumber ,let planCost = plans[1].price{
+            self.planCost = "\(planCost)"
             categoryPlanId = planCategoryId
             self.monthCount = monthCount
         }
@@ -290,7 +301,8 @@ class PackagesVC: UIViewController {
     
     @IBAction func didTapTwelveutton(_ sender: UIButton) {
         
-        if let planCategoryId = plans[2].id, let monthCount = plans[2].monthNumber {
+        if let planCategoryId = plans[2].id, let monthCount = plans[2].monthNumber,let planCost = plans[2].price{
+            self.planCost = "\(planCost)"
             categoryPlanId = planCategoryId
             self.monthCount = monthCount
         }
@@ -302,18 +314,24 @@ class PackagesVC: UIViewController {
     
     @IBAction func didTapBuyNowButton(_ sender: UIButton) {
         
-        PayingController.shared.payingPlan(completion: { payment, check, message in
-            if check == 0{
-                let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
-                vc.planDelegate  = self
-                vc.isFeaturedAd = false
-                vc.urlString = payment?.data.invoiceURL ?? ""
-                self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
-                self.navigationController?.pushViewController(vc, animated: true)
-            }else{
-                StaticFunctions.createErrorAlert(msg: message)
-            }
-        }, categoryPlanId: categoryPlanId,month: monthCount)
+//        PayingController.shared.payingPlan(completion: { payment, check, message in
+//            if check == 0{
+//                let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
+//                vc.planDelegate  = self
+//                vc.isFeaturedAd = false
+//                vc.urlString = payment?.data.invoiceURL ?? ""
+//                self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }else{
+//                StaticFunctions.createErrorAlert(msg: message)
+//            }
+//        }, categoryPlanId: categoryPlanId,month: monthCount)
+        let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "\(PayingVC.self)") as! PayingVC
+        vc.planDelegate  = self
+        vc.isFeaturedAd = false
+        vc.amountDue = planCost
+        vc.planCategoryId = categoryPlanId
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -358,17 +376,20 @@ extension PackagesVC : UITableViewDataSource,UITableViewDelegate{
     }
 }
 extension PackagesVC:PayingPlanDelegate{
-    func passPaymentId(with paymentId: String) {
-        PayingController.shared.callBackPlanSubscribe(completion: { payment, check, message in
+    func passPaymentStatus(from PaymentStatus: String, invoiceId: String, invoiceURL: String, userId: Int, planCategoryId: Int) {
+        PayingController.shared.callBackPlanSubscribe(completion: {[weak self] payment, check, message in
+            guard let self else{return}
             if check == 0{
                 print(message)
+                goToSuccessPlanfullSubscribe()
             }else{
                 print(message)
                 StaticFunctions.createErrorAlert(msg: message)
             }
-        }, invoiceId: invoiceURL, paymentId: paymentId)
+        }, invoiceId: invoiceId, invoiceURL: invoiceURL, userId: userId, planCategoryId: planCategoryId, status: PaymentStatus)
     }
+    
     func didPayingSuccess() {
-        goToSuccessPlanfullSubscribe()
+//
     }
 }

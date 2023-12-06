@@ -608,7 +608,7 @@ extension HomeDetailsViewController: UICollectionViewDataSource, UICollectionVie
         }else if collectionView == mainCategoryCollectionView {
             return CGSize(width: 110, height: 125)
         }else if collectionView == FeaturesCollectionView {
-             return CGSize(width: (UIScreen.main.bounds.width)-(UIScreen.main.bounds.width*0.2), height: 240)
+             return CGSize(width: (UIScreen.main.bounds.width) - (UIScreen.main.bounds.width*0.45) , height: 280)
 
         }else {
             return CGSize(width: 108, height: 35)

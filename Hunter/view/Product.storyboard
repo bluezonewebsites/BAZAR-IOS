@@ -91,7 +91,7 @@
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="09P-2A-HL1">
-                                                        <rect key="frame" x="10" y="59" width="50" height="50"/>
+                                                        <rect key="frame" x="10" y="315" width="50" height="50"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jvc-e7-jeo">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -109,7 +109,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Pw-kc-31U">
-                                                        <rect key="frame" x="317" y="59" width="70" height="226"/>
+                                                        <rect key="frame" x="317" y="315" width="70" height="226"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dvx-zh-WhY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="226"/>
@@ -863,11 +863,12 @@
                                                                 </constraints>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a80-ja-nca">
-                                                                <rect key="frame" x="273" y="0.0" width="90" height="40"/>
+                                                                <rect key="frame" x="263" y="0.0" width="100" height="40"/>
                                                                 <color key="backgroundColor" name="#0EBFB1"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="90" id="Y02-nI-aJh"/>
+                                                                    <constraint firstAttribute="width" constant="100" id="Y02-nI-aJh"/>
                                                                 </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Follow"/>
                                                                 <userDefinedRuntimeAttributes>
@@ -897,6 +898,9 @@
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="Localize" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cars &gt; Fiat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysh-4E-8If">
                                                                 <rect key="frame" x="309.33333333333331" y="23" width="63.666666666666686" height="14.333333333333336"/>
@@ -1205,6 +1209,7 @@
                     <connections>
                         <outlet property="callBtn" destination="Qz8-i3-9fT" id="ogR-2M-XTf"/>
                         <outlet property="callLbl" destination="7FN-yr-YHq" id="AhD-hJ-85i"/>
+                        <outlet property="categoryLabel" destination="ysh-4E-8If" id="ymo-pn-zBO"/>
                         <outlet property="chatBtn" destination="X4z-55-MY2" id="VVB-dX-prT"/>
                         <outlet property="commentsCountLbl" destination="TU1-GZ-7lT" id="wGo-pa-S6f"/>
                         <outlet property="currencyLbl" destination="Rao-W2-f8a" id="yvP-PB-0JE"/>

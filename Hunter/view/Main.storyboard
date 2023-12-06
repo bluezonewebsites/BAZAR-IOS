@@ -4426,14 +4426,11 @@
                                                         </constraints>
                                                     </view>
                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ClY-Wg-yLK">
-                                                        <rect key="frame" x="0.0" y="275.66666666666669" width="393" height="240.00000000000006"/>
+                                                        <rect key="frame" x="0.0" y="275.66666666666669" width="393" height="320.00000000000006"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Vr-rb-nUa">
-                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="240"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="320"/>
                                                                 <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="240" id="6BG-uX-Gek"/>
-                                                                </constraints>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uOT-7R-eVw" customClass="RTLCollectionViewFlowLayout" customModule="NewBazar" customModuleProvider="target">
                                                                     <size key="itemSize" width="394" height="204"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -4442,7 +4439,7 @@
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell-feature" id="xds-P4-f1e" customClass="FeaturesProductsCollectionViewCell" customModule="NewBazar" customModuleProvider="target">
-                                                                        <rect key="frame" x="10" y="18" width="394" height="204"/>
+                                                                        <rect key="frame" x="10" y="58" width="394" height="204"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DXw-IG-9HM">
                                                                             <rect key="frame" x="0.0" y="0.0" width="394" height="204"/>
@@ -4712,7 +4709,7 @@
                                                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="9Vr-rb-nUa" secondAttribute="trailing" id="1Jx-eQ-SQo"/>
-                                                            <constraint firstAttribute="height" constant="240" id="R65-X5-Vgj"/>
+                                                            <constraint firstAttribute="height" constant="320" id="R65-X5-Vgj"/>
                                                             <constraint firstAttribute="bottom" secondItem="9Vr-rb-nUa" secondAttribute="bottom" id="e0N-dc-oT0"/>
                                                             <constraint firstItem="9Vr-rb-nUa" firstAttribute="leading" secondItem="ClY-Wg-yLK" secondAttribute="leading" id="hNw-qx-Mmw"/>
                                                             <constraint firstItem="9Vr-rb-nUa" firstAttribute="top" secondItem="ClY-Wg-yLK" secondAttribute="top" id="ucJ-lc-rU7"/>

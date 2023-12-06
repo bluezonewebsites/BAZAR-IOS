@@ -37,6 +37,7 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var viewsLabel: UILabel!
     
     @IBOutlet weak var contactWaysButton: CircleMenu!
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
     
     
@@ -59,7 +60,7 @@ class ProductViewController: UIViewController {
         return tableView.contentSize.height
     }
     private var fanMenuView: FanMenuView!
-
+    private var isFollow = false
  
     
     
@@ -209,10 +210,13 @@ class ProductViewController: UIViewController {
         
         if StaticFunctions.isLogin() {
             
-                ProfileController.shared.followUser(completion: {
+                ProfileController.shared.followUser(completion: {[weak self]
                     check, msg in
+                    guard let self else {return}
                     if check == 0{
-                        //
+                        isFollow.toggle()
+                        isFollow ? followButton.setTitle("unfollow".localize, for: .normal) : followButton.setTitle("follow".localize, for: .normal)
+                        
                         
                     }else{
                         StaticFunctions.createErrorAlert(msg: msg)
@@ -348,10 +352,11 @@ class ProductViewController: UIViewController {
 }
 extension ProductViewController{
     func getData(){
-        ProductController.shared.getProducts(completion: {
+        ProductController.shared.getProducts(completion: { [weak self]
             product, check, msg in
-            
+            guard let self else {return}
             if check == 0{
+                self.getUserProfile()
                 self.product = product.data
                 self.images = product.images
                 self.comments = product.comments
@@ -371,6 +376,23 @@ extension ProductViewController{
             }
             
         }, id: product.id ?? 0)
+    }
+    
+    
+    private func getUserProfile(){
+        ProfileController.shared.getOtherProfile(completion: {[weak self] userProfile, msg in
+            guard let self = self else {return}
+            if let userProfile = userProfile {
+                print("======= profile Data ======== ")
+                if userProfile.isFollow == 1 {
+                    isFollow = true
+                }else {
+                    isFollow = false
+                }
+                
+                userProfile.isFollow == 1 ? followButton.setTitle("unfollow".localize, for: .normal) : followButton.setTitle("follow".localize, for: .normal)
+            }
+        }, userId: product.userId ?? 0)
     }
     
     func setData(){
@@ -446,10 +468,12 @@ extension ProductViewController{
         if  MOLHLanguage.currentAppleLanguage() == "en" {
             currencyLbl.text = product.currencyEn
             locationLbl.text = product.cityNameEn
+            categoryLabel.text = product.mainCatNameEn.safeValue + " > " + product.subCatNameEn.safeValue
             
         }else{
             currencyLbl.text = product.currencyAr
             locationLbl.text = product.cityNameAr
+            categoryLabel.text = product.mainCatNameAr.safeValue + " < " + product.subCatNameAr.safeValue
             
         }
 //        self.viewsLabel.text = "\(product.views ?? 0)"    

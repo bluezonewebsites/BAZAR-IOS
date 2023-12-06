@@ -109,6 +109,7 @@ class ProfileController {
             
         }, link: Constants.PROFILE_URL , param: param)
     }
+    
     func flageProfile(completion: @escaping( Int, String)->(), uid: String, reason: String){
         
         let param = ["uid": uid,

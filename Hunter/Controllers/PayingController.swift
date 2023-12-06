@@ -104,12 +104,16 @@ class PayingController {
             }, link: Constants.PAYING_PLAN_SUBSCRIPE_URL,param:params)
         }
     
-    func callBackPlanSubscribe(completion: @escaping(CallBackModel?, Int, String)->(),invoiceId:String,paymentId:String){
+    func callBackPlanSubscribe(completion: @escaping(CallBackModel?, Int, String)->(),invoiceId:String,invoiceURL:String,userId:Int,planCategoryId:Int,status:String){
             
             let params = [
                 "invoice_id": invoiceId,
-                "paymentId":paymentId
+                "invoice_url": invoiceURL,
+                "user_id":userId,
+                "plan_category_id":planCategoryId,
+                "status":status
             ] as [String : Any]
+        print(params)
             APIConnection.apiConnection.postConnection(completion: { data in
                 guard let data = data else { return }
                 

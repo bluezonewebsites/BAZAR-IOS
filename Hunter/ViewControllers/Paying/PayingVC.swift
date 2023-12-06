@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import MFSDK
 
 protocol PayingDelegate:AnyObject{
     func didPayingSuccess()
@@ -15,11 +16,20 @@ protocol PayingDelegate:AnyObject{
 
 protocol PayingPlanDelegate:AnyObject{
     func didPayingSuccess()
-    func passPaymentId(with paymentId:String)
+    func passPaymentStatus(from PaymentStatus:String,invoiceId:String,invoiceURL:String,userId:Int,planCategoryId:Int)
 }
 class PayingVC: UIViewController {
-
+    
+    
+    
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var payButton: UIButton!
+    
+    
+    //MARK: Variables
+    var paymentMethods: [MFPaymentMethod]?
+    var selectedPaymentMethodIndex: Int?
     
     var paymentId = ""
     var urlString:String = ""
@@ -27,110 +37,268 @@ class PayingVC: UIViewController {
     var isFeaturedAd = false
     weak var delegate:PayingDelegate?
     weak var planDelegate:PayingPlanDelegate?
+    var amountDue:String = ""
+    private var invoiceId = ""
+    var planCategoryId = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
-        webView.navigationDelegate = self
-        // Load a URL
-             if let url = URL(string: urlString) {
-                 let request = URLRequest(url: url)
-                 webView.load(request)
-                 
-             }
-         
+        MFSettings.shared.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        initiatePayment()
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+         super.viewDidAppear(animated)
+    }
+    
     // MARK: - Navigation
     @IBAction func didTapBackButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
+    @IBAction func didTapConfirmPayment(_ sender: UIButton) {
+//        getPaymetStatus()
+//        PayingController.shared.callBackPlanSubscribe(completion: { payment, check, message in
+//            if check == 0{
+//                print(message)
+//            }else{
+//                print(message)
+//                StaticFunctions.createErrorAlert(msg: message)
+//            }
+//        }, invoiceId: "3124595", invoiceURL: "invoiceURL", userId: AppDelegate.currentUser.id ?? 0, planCategoryId: planCategoryId, status: "Paid")
+    }
     
-    func fetchInvoiceStatus(from url: URL) {
-//        guard let url = URL(string: urlString) else { return }
-        
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Failed to fetch data: \(error)")
-                return
-            }
-            
-            if let data = data {
-                do {
-                    if let jsonObj = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any],
-                       let dataObj = jsonObj["Data"] as? [String: Any],
-                       let invoiceStatus = dataObj["InvoiceStatus"] as? String {
-                        
-                        print(invoiceStatus)
-                        // Now you have 'invoiceStatus' to check if user actually paid or not
-                        DispatchQueue.main.async {
-                            if invoiceStatus == "Paid" {
-                                // Payment was successful, show SuccessfulVC
-                                if self.isFeaturedAd {
-                                    self.delegate?.didPayingSuccess()
-                                    self.delegate?.passPaymentId(with: self.paymentId )
-                                }else{
-                                    self.planDelegate?.didPayingSuccess()
-                                    self.planDelegate?.passPaymentId(with: self.paymentId)
-                                }
-                                
-                                self.navigationController?.popViewController(animated: true)
-                                
-                            }else{
-                                self.navigationController?.popViewController(animated: true)
-                            }
-                        }
-                    }
-                } catch {
-                    print("Failed to parse JSON: \(error)")
+    @IBAction func didTapPay(_ sender: UIButton) {
+        if let paymentMethods = paymentMethods, !paymentMethods.isEmpty {
+            if let selectedIndex = selectedPaymentMethodIndex {
+                
+                if paymentMethods[selectedIndex].paymentMethodCode == MFPaymentMethodCode.applePay.rawValue {
+                    executeApplePayPayment(paymentMethodId: paymentMethods[selectedIndex].paymentMethodId)
+                } else if paymentMethods[selectedIndex].isDirectPayment {
+                    executeDirectPayment(paymentMethodId: paymentMethods[selectedIndex].paymentMethodId)
+                } else {
+                    executePayment(paymentMethodId: paymentMethods[selectedIndex].paymentMethodId)
                 }
             }
         }
-        
-        task.resume()
+    }
+    
+   
+    
+    private func getPaymetStatus(){
+        let paymentStatusRequest = MFPaymentStatusRequest(invoiceID: invoiceId)
+//        let paymentStatusRequest = MFPaymentStatusRequest(id: "id", keyType: .invoiceId)
+        MFPaymentRequest.shared.getPaymentStatus(paymentStatus: paymentStatusRequest, apiLanguage: .english) { [weak self] (response) in
+            guard let self else {return}
+                switch response {
+                    case .success(let paymentStatusResponse):
+                    planDelegate?.passPaymentStatus(from: paymentStatusResponse.invoiceStatus ?? "", invoiceId: "\(paymentStatusResponse.invoiceID ?? 0)", invoiceURL: "", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
+                  
+                    if paymentStatusResponse.invoiceStatus ?? "" == "Paid"{
+                        planDelegate?.didPayingSuccess()
+                    }else{
+                        StaticFunctions.createInfoAlert(msg: paymentStatusResponse.invoiceStatus ?? "")
+                        print(" Status is : ======>  \(paymentStatusResponse.invoiceStatus ?? "")")
+                    }
+                    case .failure(let failError):
+                        print("\(failError)")
+                }
+        }
     }
     
     
-
-}
-extension PayingVC :WKNavigationDelegate {
-    // MARK: - WKNavigationDelegate
-       
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-
-        print("Navigating to: \(navigationAction.request.url?.absoluteString ?? "Unknown URL")")
-      // Check if the current URL is the "Cancel" URL
+    func sendPayment() {
+        let request = getSendPaymentRequest()
         
-            // MARK: FeaturedAd Payment
-            if let url =  navigationAction.request.url,
-               url.absoluteString.contains("PaymentID")  {
-                   // Parse the URL to get the paymentId
-                   let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
-                   let paymentId = components?.queryItems?.first(where: { $0.name == "PaymentID" })?.value
-    //            delegate?.passPaymentId(with: paymentId ?? "Unknown")
-                self.paymentId = paymentId ?? "Unknown"
-                   print("Payment ID: \(paymentId ?? "Unknown")")
-                   // Cancel the navigation
-                   decisionHandler(.allow)
-                   return
-               }
+        MFPaymentRequest.shared.sendPayment(request: request, apiLanguage: .arabic) { [weak self] (result) in
+            guard let self else {return}
+            switch result {
+            case .success(let sendPaymentResponse):
+                if let invoiceURL = sendPaymentResponse.invoiceURL {
+                    print("Success")
+                    print(invoiceURL)
+                    print("result: send this link to your customers \(invoiceURL)")
+                }
+            case .failure(let failError):
+                print("Error: \(failError)")
+            }
             
-         
+        }
+    }
+    
+    func getSendPaymentRequest() -> MFSendPaymentRequest {
+        let invoiceValue = Decimal(string: amountDue ) ?? 0
+        let request = MFSendPaymentRequest(invoiceValue: invoiceValue, notificationOption: .link, customerName: "Elsayed Ahmed")
+        //request.userDefinedField = ""
+        request.customerEmail = "elsayed1ahmed0@gmail.com"// must be email
+        request.customerMobile = "01116064003"//Required
+        request.customerCivilId = ""
+        request.mobileCountryIsoCode = MFMobileCountryCodeISO.kuwait.rawValue
+        request.customerReference = ""
+        let address = MFCustomerAddress(block: "ddd", street: "sss", houseBuildingNo: "sss", address: "sss", addressInstructions: "sss")
+        request.customerAddress = address
+        request.displayCurrencyIso = .kuwait_KWD
+        let date = Date().addingTimeInterval(1000)
+        request.expiryDate = date
+        return request
+    }
+}
+extension PayingVC: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let paymentMethods = paymentMethods else {
+            return 0
+        }
+        print(paymentMethods.count)
+        return paymentMethods.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PaymentMethodCollectionViewCell
+        if let paymentMethods = paymentMethods, !paymentMethods.isEmpty {
+            let selectedIndex = selectedPaymentMethodIndex ?? -1
+            cell.configure(paymentMethod: paymentMethods[indexPath.row], selected: selectedIndex == indexPath.row)
+        }
+        return cell
+    }
+    
+}
 
-            
-            if !isSuccess {
-                if let url = navigationAction.request.url,
-                   url.absoluteString.contains("callback") {
+extension PayingVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedPaymentMethodIndex = indexPath.row
+        payButton.isEnabled = true
+        
+        if let paymentMethods = paymentMethods {
+            if paymentMethods[indexPath.row].isDirectPayment {
+            } else {
+            }
+        }
+        collectionView.reloadData()
+    }
+}
+
+
+extension PayingVC{
+    private func generateInitiatePaymentModel() -> MFInitiatePaymentRequest {
+        // you can create initiate payment request with invoice value and currency
+        // let invoiceValue = Double(amountTextField.text ?? "") ?? 0
+        // let request = MFInitiatePaymentRequest(invoiceAmount: invoiceValue, currencyIso: .kuwait_KWD)
+        // return request
+        
+        let request = MFInitiatePaymentRequest()
+        return request
+    }
+    
+    func executePayment(paymentMethodId: Int) {
+        let request = getExecutePaymentRequest(paymentMethodId: paymentMethodId)
+        
+        MFPaymentRequest.shared.executePayment(request: request, apiLanguage: .arabic) { [weak self] response, invoiceId  in
+            guard let self else {return}
+            switch response {
+            case .success(let executePaymentResponse):
+                
+                if let invoiceStatus = executePaymentResponse.invoiceStatus {
+                    planDelegate?.passPaymentStatus(from: invoiceStatus, invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "-----------", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
                   
-                    fetchInvoiceStatus(from: url)
-                    
-                  // Cancel the navigation
-                  decisionHandler(.cancel)
-                  return
+                    if invoiceStatus == "Paid"{
+                        planDelegate?.didPayingSuccess()
+                    }else{
+                        StaticFunctions.createInfoAlert(msg: invoiceStatus)
+                        print(" Status is : ======>  \(invoiceStatus)")
+                    }
+                }
+            case .failure(let failError):
+                print(failError)
+            }
+        }
+    }
+
+    func initiatePayment() {
+        let request = generateInitiatePaymentModel()
+        MFPaymentRequest.shared.initiatePayment(request: request, apiLanguage: .english, completion: { [weak self] (result) in
+            switch result {
+            case .success(let initiatePaymentResponse):
+                self?.paymentMethods = initiatePaymentResponse.paymentMethods
+                self?.collectionView.reloadData()
+            case .failure(let failError):
+                print(failError)
+            }
+        })
+    }
+    
+    private func getExecutePaymentRequest(paymentMethodId: Int) -> MFExecutePaymentRequest {
+        let invoiceValue = Decimal(string: amountDue) ?? 0
+        let request = MFExecutePaymentRequest(invoiceValue: invoiceValue , paymentMethod: paymentMethodId)
+        //request.userDefinedField = ""
+        request.customerEmail = AppDelegate.currentUser.email.safeValue
+        request.customerMobile = AppDelegate.currentUser.phone.safeValue
+        request.customerCivilId = "\(AppDelegate.currentUser.id ?? 0)"
+        request.customerName = AppDelegate.currentUser.name.safeValue
+        let address = MFCustomerAddress(block: AppDelegate.currentUser.regionsNameEn.safeValue, street: AppDelegate.currentUser.citiesNameAr.safeValue, houseBuildingNo: "", address: AppDelegate.currentUser.countriesNameEn.safeValue, addressInstructions: "sss")
+        request.customerAddress = address
+        request.customerReference = "BAAZAR_USER_ID_\(AppDelegate.currentUser.id ?? 0)"
+        request.language = .english
+        request.mobileCountryCode = MFMobileCountryCodeISO.kuwait.rawValue
+        request.displayCurrencyIso = .kuwait_KWD
+        return request
+    }
+    
+    func executeDirectPayment(paymentMethodId: Int) {
+        let request = getExecutePaymentRequest(paymentMethodId: paymentMethodId)
+//        let card = getCardInfo()
+        
+//        MFPaymentRequest.shared.executeDirectPayment(request: request, cardInfo: card, apiLanguage: .english) { [weak self] (response, invoiceId) in
+//            
+//            switch response {
+//            case .success(let directPaymentResponse):
+//                if let cardInfoResponse = directPaymentResponse.cardInfoResponse, let card = cardInfoResponse.cardInfo {
+//                  //  self?.resultTextView.text = "Status: with card number: \(card.number ?? "")"
+//                }
+//                if let invoiceId = invoiceId {
+////                    self?.errorCodeLabel.text = "Success with invoice id \(invoiceId)"
+//                } else {
+////                    self?.errorCodeLabel.text = "Success"
+//                }
+//            case .failure(let failError):
+////                self?.resultTextView.text = "Error: \(failError.errorDescription)"
+//                if let invoiceId = invoiceId {
+////                    self?.errorCodeLabel.text = "Fail: \(failError.statusCode) with invoice id \(invoiceId)"
+//                } else {
+////                    self?.errorCodeLabel.text = "Fail: \(failError.statusCode)"
+//                }
+//            }
+//        }
+    }
+    func executeApplePayPayment(paymentMethodId: Int) {
+        let request = getExecutePaymentRequest(paymentMethodId: paymentMethodId)
+        
+        if #available(iOS 13.0, *) {
+            MFPaymentRequest.shared.executeApplePayPayment(request: request, apiLanguage: .arabic) { [weak self] (response, invoiceId) in
+                guard let self else {return}
+                switch response {
+                case .success(let executePaymentResponse):
+                    if let invoiceStatus = executePaymentResponse.invoiceStatus {
+
+                    }
+                case .failure(let failError):
+
+                    print(failError)
                 }
             }
-          
-          // Allow the navigation
-          decisionHandler(.allow)
+        }
+    }
+
+}
+
+extension PayingVC:MFPaymentDelegate {
+    func didInvoiceCreated(invoiceId: String) {
+        print(invoiceId)
+        self.invoiceId = invoiceId
+        
     }
 }
+
+

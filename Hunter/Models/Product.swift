@@ -101,6 +101,11 @@ struct Product: Codable{
     var isFeature:Bool?
     var status:String?
     var views:Int?
+    var mainCatNameAr : String?
+    var mainCatNameEn:String?
+    var subCatNameAr: String?
+    var subCatNameEn: String?
+     
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -137,6 +142,10 @@ struct Product: Codable{
         case isFeature = "is_feature"
         case status = "status"
         case views = "views"
+        case mainCatNameAr = "main_cat_name_ar"
+        case mainCatNameEn = "main_cat_name_en"
+        case subCatNameAr = "sub_cat_name_ar"
+        case subCatNameEn = "sub_cat_name_en"
     }
 }
 struct ProductImage: Codable{

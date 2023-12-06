@@ -276,6 +276,7 @@
 		C8F253CD2AA1C5AA0063C0F5 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F253CC2AA1C5AA0063C0F5 /* BasicViewController.swift */; };
 		C8F374BF2B186FCB00F83674 /* PackagesCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F374BE2B186FCB00F83674 /* PackagesCategoryModel.swift */; };
 		C8F374C12B18D0A500F83674 /* PendingUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F374C02B18D0A500F83674 /* PendingUserController.swift */; };
+		C8F374DA2B1E7E1100F83674 /* PaymentMethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F374D92B1E7E1100F83674 /* PaymentMethodCollectionViewCell.swift */; };
 		C8FF98042AA50B4F00DBA6CF /* PackagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF98032AA50B4F00DBA6CF /* PackagesModel.swift */; };
 		C8FF98062AA50CD900DBA6CF /* PackagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FF98052AA50CD900DBA6CF /* PackagesController.swift */; };
 /* End PBXBuildFile section */
@@ -563,6 +564,7 @@
 		C8F253CC2AA1C5AA0063C0F5 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		C8F374BE2B186FCB00F83674 /* PackagesCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesCategoryModel.swift; sourceTree = "<group>"; };
 		C8F374C02B18D0A500F83674 /* PendingUserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingUserController.swift; sourceTree = "<group>"; };
+		C8F374D92B1E7E1100F83674 /* PaymentMethodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodCollectionViewCell.swift; sourceTree = "<group>"; };
 		C8FF98032AA50B4F00DBA6CF /* PackagesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesModel.swift; sourceTree = "<group>"; };
 		C8FF98052AA50CD900DBA6CF /* PackagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackagesController.swift; sourceTree = "<group>"; };
 		D2935A47F02BDB207D88AACE /* Pods-Monasba.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monasba.debug.xcconfig"; path = "Target Support Files/Pods-Monasba/Pods-Monasba.debug.xcconfig"; sourceTree = "<group>"; };
@@ -693,6 +695,7 @@
 		658DE51529F82AFA0015D549 /* CollectiionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				C8F374D82B1E7DDD00F83674 /* PayingMethods */,
 				C8B257002AA9CFF300317A12 /* searchStoreCell */,
 				C80CC92C2A6DBE4A00B56F54 /* FavsCell */,
 				C8C714FD2A64694C006C5AFE /* Followers&followings */,
@@ -1297,6 +1300,14 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		C8F374D82B1E7DDD00F83674 /* PayingMethods */ = {
+			isa = PBXGroup;
+			children = (
+				C8F374D92B1E7E1100F83674 /* PaymentMethodCollectionViewCell.swift */,
+			);
+			path = PayingMethods;
+			sourceTree = "<group>";
+		};
 		DE02A0323CA247B868BF8A85 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1679,6 +1690,7 @@
 				C806906A2A42E8A9008BB53C /* PickupMediaPopupEditAdsVC.swift in Sources */,
 				6594DE4029FF1E2B00018AF5 /* StateViewController.swift in Sources */,
 				C8051C192AA26E76003EF686 /* EditSocialMediaVC.swift in Sources */,
+				C8F374DA2B1E7E1100F83674 /* PaymentMethodCollectionViewCell.swift in Sources */,
 				C8ECBD542A34535E003178DA /* VerifyAccountVC.swift in Sources */,
 				C8CCE33C2A19E29200FFAFB2 /* LocalizedImage.swift in Sources */,
 				C85FFCD52A260BEF000C426D /* MsgRecordRecieverCell.swift in Sources */,

@@ -29,14 +29,19 @@ class ChooseAdTypeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        countOfPaidAdsLabel.text = "You have ".localize + " (\(countPaidAds)) " + " Paid ads".localize
+        if AppDelegate.currentUser.isStore ?? false {
+            countOfPaidAdsLabel.text = "You have ".localize + " (\(AppDelegate.currentUser.availableAdsCountStoreInCurrentMonth ?? 0)) " + " Paid ads".localize
+        }else {
+            countOfPaidAdsLabel.text = "You have ".localize + " (\(AppDelegate.currentUser.availableAdsCountUserInCurrentMonth ?? 0)) " + " Paid ads".localize
+        }
+        
     }
     
 
     // MARK: - IBACtions
     
     @IBAction func didTapCloseButton(_ sender: UIButton) {
-        
+        dismiss(animated: true)
     }
     @IBAction func didTapChooseFeaturedAdButton(_ sender: UIButton) {
         delegate?.didTapFeaturedAd()

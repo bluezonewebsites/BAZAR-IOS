@@ -614,18 +614,22 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
                     //                    completion(true,data.message ?? "")
                     print(data.message ?? "")
                     if isFeatured == 1 {
-                        PayingController.shared.payingFeaturedAd(completion: { payment, check, message in
-                            if check == 0{
-                                let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
-                                vc.delegate  = self
-                                vc.isFeaturedAd = true
-                                vc.urlString = payment?.data.invoiceURL ?? ""
-                                self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
-                                self.navigationController?.pushViewController(vc, animated: true)
-                            }else{
-                                StaticFunctions.createErrorAlert(msg: message)
-                            }
-                        }, countryId: AppDelegate.currentUser.countryId ?? 5, productId: data.data?.id ?? 0)
+//                        PayingController.shared.payingFeaturedAd(completion: { payment, check, message in
+//                            if check == 0{
+//                                let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
+//                                vc.delegate  = self
+//                                vc.isFeaturedAd = true
+//                                vc.urlString = payment?.data.invoiceURL ?? ""
+//                                self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
+//                                self.navigationController?.pushViewController(vc, animated: true)
+//                            }else{
+//                                StaticFunctions.createErrorAlert(msg: message)
+//                            }
+//                        }, countryId: AppDelegate.currentUser.countryId ?? 5, productId: data.data?.id ?? 0)
+                        let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
+                                                       vc.delegate  = self
+                                                       vc.isFeaturedAd = true
+                                                       self.navigationController?.pushViewController(vc, animated: true)
                     }else {
                         self.goToSuccessfullAddAd()
                     }

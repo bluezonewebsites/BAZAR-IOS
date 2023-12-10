@@ -94,11 +94,11 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
     @IBOutlet weak var donationLabel: UILabel!
     
     
-     @IBOutlet weak var buyingViewContainer: UIView!
-     @IBOutlet weak var buyingButton: UIButton!
-     @IBOutlet weak var buyingImage: UIImageView!
-     @IBOutlet weak var buyingLabel: UILabel!
-     
+    @IBOutlet weak var buyingViewContainer: UIView!
+    @IBOutlet weak var buyingButton: UIButton!
+    @IBOutlet weak var buyingImage: UIImageView!
+    @IBOutlet weak var buyingLabel: UILabel!
+    
     
     
     //MARK: Poropreties
@@ -376,11 +376,11 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
             self.getSubCats(catId:self.mainCatID )
             self.mainCatButton.setTitle(self.mainCatName, for: .normal)
             
-//            if self.mainCatID == 74 || self.mainCatID == 75 {
-//                self.rentViewContainer.isHidden = false
-//            }else {
-//                self.rentViewContainer.isHidden = true
-//            }
+            //            if self.mainCatID == 74 || self.mainCatID == 75 {
+            //                self.rentViewContainer.isHidden = false
+            //            }else {
+            //                self.rentViewContainer.isHidden = true
+            //            }
         }
         
         self.present(vc, animated: false, completion: nil)
@@ -611,25 +611,23 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
                 print("success")
                 print(data)
                 if data.statusCode == 200{
-                    //                    completion(true,data.message ?? "")
+                    //completion(true,data.message ?? "")
                     print(data.message ?? "")
-                    if isFeatured == 1 {
-//                        PayingController.shared.payingFeaturedAd(completion: { payment, check, message in
-//                            if check == 0{
-//                                let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
-//                                vc.delegate  = self
-//                                vc.isFeaturedAd = true
-//                                vc.urlString = payment?.data.invoiceURL ?? ""
-//                                self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
-//                                self.navigationController?.pushViewController(vc, animated: true)
-//                            }else{
-//                                StaticFunctions.createErrorAlert(msg: message)
-//                            }
-//                        }, countryId: AppDelegate.currentUser.countryId ?? 5, productId: data.data?.id ?? 0)
-                        let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
-                                                       vc.delegate  = self
-                                                       vc.isFeaturedAd = true
-                                                       self.navigationController?.pushViewController(vc, animated: true)
+                if isFeatured == 1 {
+                    let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
+                        vc.delegate  = self
+                        vc.isFeaturedAd = true
+                        vc.prodId = data.data?.id ?? 0
+                    if let isStore = AppDelegate.currentUser.isStore {
+                        let userType: UserType = isStore ? .store : .regular
+                        let adType: AdType = isFeatured == 1 ? .featured : .normal
+                        if let cost = StaticFunctions.fetchCost(userType: userType, adType: adType) {
+                            print("Cost of Ads : \(cost)")
+                            vc.amountDue = "\(cost)"
+                        }
+                    }
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }else {
                         self.goToSuccessfullAddAd()
                     }
@@ -930,13 +928,13 @@ extension AddAdvsVC {
                 self.mainCatID = self.mainCatsIDsList[0]
             }
             
-//            if self.mainCatID == 74 || self.mainCatID == 75 {
-//                self.rentViewContainer.isHidden = false
-//            }else {
-//                self.rentViewContainer.isHidden = true
-//            }
+            //            if self.mainCatID == 74 || self.mainCatID == 75 {
+            //                self.rentViewContainer.isHidden = false
+            //            }else {
+            //                self.rentViewContainer.isHidden = true
+            //            }
             
-                        self.setupMainCategoryDropDown()
+            self.setupMainCategoryDropDown()
             self.getSubCats(catId: self.mainCatID)
         }
     }
@@ -957,7 +955,7 @@ extension AddAdvsVC {
                     print(self.subCatsIDsList)
                 }
             }
-                        self.setupSubCategoryDropDown()
+            self.setupSubCategoryDropDown()
         }, categoryId: catId)
     }
     
@@ -980,11 +978,11 @@ extension AddAdvsVC {
         }else{
             mainCatButton.setTitle(mainCatsList[0], for: .normal)
         }
-//        if self.mainCatID == 74 || self.mainCatID == 75{
-//            self.rentViewContainer.isHidden = false
-//        }else {
-//            self.rentViewContainer.isHidden = true
-//        }
+        //        if self.mainCatID == 74 || self.mainCatID == 75{
+        //            self.rentViewContainer.isHidden = false
+        //        }else {
+        //            self.rentViewContainer.isHidden = true
+        //        }
         mainCatDropDwon.selectionAction = { [weak self] (index: Int, item: String) in
             guard let self = self else {return}
             self.mainCatID = self.mainCatsIDsList[index]
@@ -999,11 +997,11 @@ extension AddAdvsVC {
             }else {
                 self.mainCatButton.setTitle(self.mainCatsList[0], for: .normal)
             }
-//            if self.mainCatID == 74 || self.mainCatID == 75 {
-//                self.rentViewContainer.isHidden = false
-//            }else {
-//                self.rentViewContainer.isHidden = true
-//            }
+            //            if self.mainCatID == 74 || self.mainCatID == 75 {
+            //                self.rentViewContainer.isHidden = false
+            //            }else {
+            //                self.rentViewContainer.isHidden = true
+            //            }
         }
         
         
@@ -1079,9 +1077,9 @@ extension AddAdvsVC {
         //  regionsDropDwon.frame = regionButton.bounds
         regionsDropDwon.bottomOffset = CGPoint(x: 0, y: regionButton.bounds.height)
         regionsDropDwon.dataSource = regionsList
-//                if regionsIDsList.count > 0 {
-//                    regionButton.setTitle(regionsList[0], for: .normal)
-//                }
+        //                if regionsIDsList.count > 0 {
+        //                    regionButton.setTitle(regionsList[0], for: .normal)
+        //                }
         
         print(regionId)
         if regionsList.count > 0 && regionsIDsList.count > 0 {
@@ -1255,9 +1253,13 @@ extension AddAdvsVC:UITextViewDelegate {
 }
 extension AddAdvsVC : ChooseAdTyDelegate {
     func didTapNormalAd() {
-        if AppDelegate.currentUser.availableAdsCountUserInCurrentMonth ?? 0 <= 0 {
+        guard let isStore = AppDelegate.currentUser.isStore  else  {return}
+        if !isStore && AppDelegate.currentUser.availableAdsCountUserInCurrentMonth ?? 0 <= 0 {
             StaticFunctions.createErrorAlert(msg: "Sorry, You have exhausted your free ads this month".localize)
-        }else{
+        }else if isStore && AppDelegate.currentUser.availableAdsCountStoreInCurrentMonth ?? 0 <= 0 {
+            StaticFunctions.createErrorAlert(msg: "Sorry, You have exhausted your free ads this month".localize)
+        }
+        else{
             if StaticFunctions.isLogin() {
                 createAds(isFeatured:0)
             }else{
@@ -1282,18 +1284,20 @@ extension AddAdvsVC : ChooseAdTyDelegate {
 }
 extension AddAdvsVC:PayingDelegate{
     
-    func passPaymentId(with paymentId: String) {
-        PayingController.shared.callBackFeaturedAds(completion: { payment, check, message in
+    func passPaymentStatus(from PaymentStatus: String, invoiceId: String, invoiceURL: String, prodId: Int) {
+        PayingController.shared.callBackFeaturedAds(completion: { [weak self] payment, check, message in
+            guard let self else {return}
             if check == 0{
                 print(message)
+                goToSuccessfullAddAd()
             }else{
                 print(message)
                 StaticFunctions.createErrorAlert(msg: message)
             }
-        }, invoiceId: invoiceURL, paymentId: paymentId)
+        }, invoiceId: invoiceId, invoiceURL: invoiceURL, prodId: prodId, status: PaymentStatus)
     }
     func didPayingSuccess() {
-        goToSuccessfullAddAd()
+//        goToSuccessfullAddAd()
     }
 }
 

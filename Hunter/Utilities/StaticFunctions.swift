@@ -14,6 +14,9 @@ import CoreLocation
 import MOLH
 //import TTGSnackbar
 
+
+
+
 class StaticFunctions {
     
     static func enableBtnWithoutAlpha(btn: UIButton, status check: Bool){
@@ -286,5 +289,18 @@ class StaticFunctions {
         }
     }
         
+   
+   static func fetchCost(userType: UserType, adType: AdType) -> Double? {
+        switch (userType, adType) {
+            case (.store, .featured):
+            return AppDelegate.sharedSettings.storePriceFeaturedAds
+            case (.regular, .featured):
+                return AppDelegate.sharedSettings.userPriceFeaturedAds
+            case (.store, .normal):
+                return AppDelegate.sharedSettings.storePriceNormalAds
+            case (.regular, .normal):
+                return AppDelegate.sharedSettings.userPriceNormalAds
+        }
+    }
    
 }

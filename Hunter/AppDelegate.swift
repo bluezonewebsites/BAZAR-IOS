@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
     
     static var currentUser = User()
     static var unVerifiedUserUser = User()
+    static var sharedSettings = SettingObject()
 
     static var currentCountry = Country(nameAr: "الكويت", nameEn: "Kuwait", id: 6,code: "965")
 //    static var currentCountryId = Constants.countryId
@@ -30,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
 
-        let myFatoorahToken = "rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL"
+        let myFatoorahToken = "q3Tkag00mVnNqC2npuUWFzRkZQD5T2tOjSkacpIGLxFLZYFkRDNLrjNMhuGF6Ke7aczsf0ZtuJe3-NdCkHHtnIJDX_1JfidHzf4EqWJABO9JQZ3gN2NZne00JZwSMCQLwO-hAGuJ9huUMNrLtTip5GpFfxc3M2rNupLWAk-wlF5ZC6dyiuLlZc3JVmB4UJ0LJLwFZmZ4clghPmfc_KuEhK_gG5G7nWbB3kVKDDD8T-ktwOH0VUVovVVryGlGPTCAylwF6QHy1XpP-IQSas14LCYonTSDfyILd15fed2cuEWp-dvWZYXEXpoEOAEp3q0ma6KGdnXVH8yf9Wgl2KVNtwUIkelBNgVnIjI_23SU06TgepUq-pPmku9ShkpjDy2OdTF86Isw0oZasHmmUlMjgrTAb9vZWGSFHH4H56YpQ_LEHAxip3Wam3EQ6fevsJUQk2SlHPxFUwUkXPV6hM1Cu45ZX3InxlRadJrXFRcBv67GN7TTnSzlO1BNQn3bhS76YHq4YWJceBCBM2TD5_m5dGO69PalmfcfNKzY8knto-C3iS3tClUfKvALEg6we0VSKlHbh3NIMT4LbD9EzZVNgPCnljoqA5VcHB8O1aiAIfh_eE0RFlYli3NrIVDf7wJTifSmcBUiy8qZ1ZBpyqQCNC0_55-C4UYvj6SMzfvNEAgZa4vG3xHx7RaGNoW3LZB5dVCHT_DqGsJeB9jEeS5AzIxHGL5nGvLNXgUE-V1ptHldBUZ8"
         
-        MFSettings.shared.configure(token: myFatoorahToken, country: .kuwait, environment: .test)
+        MFSettings.shared.configure(token: myFatoorahToken, country: .kuwait, environment: .live)
         // you can change color and title of navigation bar
         if let color = UIColor(named: "#0093F5") {
             let them = MFTheme(navigationTintColor: .white, navigationBarTintColor:color , navigationTitle: "Payment".localize, cancelButtonTitle: "Cancel".localize)
@@ -58,16 +59,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         GMSServices.provideAPIKey(Constants.API_KEY)
         GMSPlacesClient.provideAPIKey(Constants.API_KEY)
         
+        
+      
+        
         if AppDelegate.defaults.string(forKey: "token") != nil &&
             
             AppDelegate.defaults.integer(forKey: "userId") != 0{
             AppDelegate.currentUser.toke = AppDelegate.defaults.string(forKey: "token")
             AppDelegate.currentUser.id = AppDelegate.defaults.integer(forKey: "userId")
-            ProfileController.shared.getProfile(completion: {user,msg in
+            ProfileController.shared.getProfile(completion: { [weak self] user,msg in
+                guard let self else {return}
                     self.checkNotificationToken()
                 AppDelegate.currentCountry = Country(nameAr: AppDelegate.currentUser.countriesNameAr ?? "الكويت", nameEn: AppDelegate.currentUser.countriesNameEn ?? "Kuwait", id: AppDelegate.currentUser.countryId ?? Constants.countryId)
                 Constants.headerProd =  ["Authorization":"Bearer \(AppDelegate.currentUser.toke ?? "")"]
-           
+                getSettings(countryId: user?.countryId ?? 0)
                 
             }, user: AppDelegate.currentUser)
         }else{
@@ -75,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         }
         getCounties()
         getCities()
+        
         
         
         FirebaseApp.configure()
@@ -110,6 +116,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         }
     }
     
+    private func getSettings(countryId:Int){
+        //Get Settings API
+        PayingController.shared.getSettings(completion: {[weak self] settings, check, message in
+            guard let self else {return}
+            if check == 0 {
+                if let settings = settings {
+                    print(settings)
+                    AppDelegate.sharedSettings = settings
+                }
+            }else {
+                print(message)
+            }
+        }, countryId:AppDelegate.currentUser.countryId.safeValue)
+    }
     
     func checkNotificationToken(){
         if AppDelegate.defaults.string(forKey: "playerId") != nil{

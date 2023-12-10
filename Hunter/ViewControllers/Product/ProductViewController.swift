@@ -79,6 +79,7 @@ class ProductViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateData(_:)), name: NSNotification.Name(rawValue: "updateData"), object: nil)
         setupCircleMenu()
         getData()
+        imageSlider.contentScaleMode = .scaleAspectFill
     }
     
 
@@ -356,6 +357,7 @@ extension ProductViewController{
             product, check, msg in
             guard let self else {return}
             if check == 0{
+                print(product.images.count)
                 self.getUserProfile()
                 self.product = product.data
                 self.images = product.images
@@ -396,7 +398,7 @@ extension ProductViewController{
     }
     
     func setData(){
-        print(product.name)
+    
         
          var mainImage = ""
         if product.mainImage != ""  {
@@ -409,43 +411,42 @@ extension ProductViewController{
                 if mainImage.contains(".mp4") || mainImage.contains(".mov"){
                     images.insert(ProductImage(id: -1, prodID: 0, pimage: mainImage, imageType: "VIDEO", createdAt: "", updatedAt: "", image: Constants.IMAGE_URL + mainImage), at: 0)
                 }else{
-                    images.insert(ProductImage(id: -1, prodID: 0, pimage: mainImage, imageType: "IMAGE", createdAt: "", updatedAt: "", image: Constants.IMAGE_URL + mainImage), at: 0)
+                    images.insert(ProductImage(id: -1, prodID: 0, pimage:  mainImage, imageType: "IMAGE", createdAt: "", updatedAt: "", image: Constants.IMAGE_URL + mainImage), at: 0)
                 }
                 
             }
         
-         dataSource = ImageAndVideoSlideshowDataSource(sources:[
-            
-            
-        ])
+         dataSource = ImageAndVideoSlideshowDataSource(sources:[])
         
         for img in images{
             print("imgs count ",images.count)
-            if let image = img.image  {
+            if let image = img.pimage  {
                 print(image)
                 guard let media_type = img.imageType  else {return}
                 // prodC.sources_urls.append("\(user.newUrl)\(timg)")
-                sliderImages.append(image)
+                sliderImages.append(Constants.IMAGE_URL + image)
                 if media_type == "VIDEO"{
                     
                     if image != "" {
                         print(image)
                         dataSource.sources.append(
                             
-                            .av(AVSource(url: URL(string:image)!, autoplay: true)))
+                            .av(AVSource(url: URL(string:Constants.IMAGE_URL + image)!, autoplay: true)))
                         
                     }
                 }else{
                     if image != "" {
                         
                         dataSource.sources.append(
-                            .image(AlamofireSource(urlString:image )!))
+                            .image(AlamofireSource(urlString:Constants.IMAGE_URL + image )!))
+                        print(dataSource.sources)
                     }
                     
                 }
             }}
         
         imageSlider.dataSource = dataSource
+        print(dataSource.sources.count)
         imageSlider.reloadData()
 //        self.imageSlider.setCurrentPage(images.count - 1, animated: true)
 
@@ -465,6 +466,8 @@ extension ProductViewController{
             
             dateLbl.text = pastDate.timeAgoDisplay()
         }
+        commentsCountLbl.text = "(\(product.comments.safeValue))"
+        
         if  MOLHLanguage.currentAppleLanguage() == "en" {
             currencyLbl.text = product.currencyEn
             locationLbl.text = product.cityNameEn

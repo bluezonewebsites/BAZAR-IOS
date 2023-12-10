@@ -37,7 +37,7 @@ class HomeDetailsViewController: UIViewController {
     var coountryVC = CounriesViewController()
     var countryId = AppDelegate.currentCountry.id ?? 6
     var countryName = MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn : AppDelegate.currentCountry.nameAr
-    var categoryId = -1
+    var categoryId = 0
     var subcategoryId = -1
     var page = 1
     var isTheLast = false
@@ -55,6 +55,7 @@ class HomeDetailsViewController: UIViewController {
     var isComeToFeatureAds = false
     var isComeFromCategory = false
     var selectSubCategory = false
+    var comeToMoreAds = false
     
     let titleLabel = UILabel()
     private let shimmerView = ProductsShimmerView.loadFromNib()
@@ -144,26 +145,28 @@ class HomeDetailsViewController: UIViewController {
         //MARK: Right Button
         
         let rightView = UIView()
-        rightView.backgroundColor = .white
+        rightView.backgroundColor = .clear
         rightView.frame = CGRect(x: 0, y: 0, width: 130, height: 30) // Increase the width
         
         let cornerRadius: CGFloat = 16.0
         rightView.layer.cornerRadius = cornerRadius // Apply corner radius
         
-        let dropDownImage = UIImageView(image: UIImage(named: "dropDownIcon")?.withRenderingMode(.alwaysOriginal))
+        let dropDownImage = UIImageView(image: UIImage(named: "dropDownIcon")?.withRenderingMode(.alwaysTemplate))
+        dropDownImage.tintColor = .white
         dropDownImage.contentMode = .scaleAspectFill
         dropDownImage.frame = CGRect(x: 10 , y: 10, width: 14, height: 10) // Adjust the position and size of the image
         
         rightView.addSubview(dropDownImage)
         
-        let locationImage = UIImageView(image: UIImage(named: "locationBlack")?.withRenderingMode(.alwaysOriginal))
+        let locationImage = UIImageView(image: UIImage(named: "locationBlack")?.withRenderingMode(.alwaysTemplate))
+        locationImage.tintColor = .white
         locationImage.contentMode = .scaleAspectFill
         locationImage.frame = CGRect(x: rightView.frame.width - 25, y: 10, width: 14, height: 10) // Adjust the position and size of the image
         
         rightView.addSubview(locationImage)
         
         titleLabel.text = countryName // Assuming you have a "localized" method for localization
-        titleLabel.textColor = .black
+        titleLabel.textColor = .white
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.textAlignment = .center
         rightView.addSubview(titleLabel)
@@ -462,7 +465,7 @@ extension HomeDetailsViewController{
             self.categories = categories
             //            self.categories.insert(Category(nameAr: "الكل", nameEn: "All",id: -1, hasSubCat: 0), at: 0)
             self.mainCategoryCollectionView.reloadData()
-            if !self.isComeToFeatureAds {
+            if !self.isComeToFeatureAds || !comeToMoreAds  {
                 self.mainCategoryCollectionView.selectItem(at: [0,self.selectedCategoryIndex], animated: false, scrollPosition: .centeredHorizontally)
             }
             
@@ -470,8 +473,9 @@ extension HomeDetailsViewController{
         })
     }
     func getSubCategory(){
-        CategoryController.shared.getSubCategories(completion: {
+        CategoryController.shared.getSubCategories(completion: {[weak self]
             categories, check, msg in
+            guard let self else {return}
             self.subCategories.removeAll()
             
             self.subCategories = categories
@@ -488,7 +492,9 @@ extension HomeDetailsViewController{
             }
             
             self.subCategoryCollectionView.reloadData()
-            self.subCategoryCollectionView.selectItem(at: [0,0], animated: false, scrollPosition: .centeredHorizontally)
+            if !self.isComeToFeatureAds || !comeToMoreAds  {
+                self.subCategoryCollectionView.selectItem(at: [0,0], animated: false, scrollPosition: .centeredHorizontally)
+            }
             
         }, categoryId: self.categoryId)
     }
@@ -501,14 +507,17 @@ extension HomeDetailsViewController{
     
     func setupIfSelectedMainCategoryCell(for item:Int) {
         self.subcategoryId = -1
-        self.categoryId = categories[item].id ?? 0
-        if categories[item].hasSubCat == 1{
-            getSubCategory()
-        }else{
-            //                       subCategories.removeAll()
-            self.subCatigoryContainer.isHidden = true
-            subCategoryCollectionView.isHidden = true
+        if !comeToMoreAds {
+            self.categoryId = categories[item].id ?? 0
+            if categories[item].hasSubCat == 1{
+                getSubCategory()
+            }else{
+                // subCategories.removeAll()
+                self.subCatigoryContainer.isHidden = true
+                subCategoryCollectionView.isHidden = true
+            }
         }
+       
         if categoryId == 74 {
             sell = nil
             typeLbl.text = "All".localize
@@ -563,22 +572,24 @@ extension HomeDetailsViewController: UICollectionViewDataSource, UICollectionVie
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cat-cell", for: indexPath) as! MainCategoryCollectionViewCell
             cell.setData(category: categories[indexPath.row])
             if indexPath.item == selectedCategoryIndex {
-                if !isComeFromCategory {
+                if !isComeFromCategory{
                     self.setupIfSelectedMainCategoryCell(for: indexPath.item)
                 }
-                cell.dropDwonImage.isHidden = false
-                UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                    
-                    // HERE
-                    cell.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1) // Scale your image
-                    
-                }) { (finished) in
-                    UIView.animate(withDuration: 0.6, animations: {
+                if !comeToMoreAds {
+                    cell.dropDwonImage.isHidden = false
+                    UIView.animate(withDuration: 0.3, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
                         
-                        cell.transform = CGAffineTransform.identity
-                        // undo in 1 seconds
+                        // HERE
+                        cell.transform = CGAffineTransform.identity.scaledBy(x: 1.1, y: 1.1) // Scale your image
                         
-                    })
+                    }) { (finished) in
+                        UIView.animate(withDuration: 0.6, animations: {
+                            
+                            cell.transform = CGAffineTransform.identity
+                            // undo in 1 seconds
+                            
+                        })
+                    }
                 }
             }
             return cell

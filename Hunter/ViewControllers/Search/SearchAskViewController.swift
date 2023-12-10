@@ -16,6 +16,7 @@ class SearchAskViewController: UIViewController {
     var page = 1
     var isTheLast = false
     var searchText = ""
+    var countryId = AppDelegate.currentCountry.id ?? 0
     var storesList = [StoreObject]()
     @IBOutlet weak var textStackView: UIStackView!
     @IBOutlet weak var searchNoResult: UIStackView!
@@ -162,7 +163,7 @@ extension SearchAskViewController{
             }else{
                 StaticFunctions.createErrorAlert(msg: message)
             }
-        }, countryId: AppDelegate.currentUser.countryId ?? 0,serach:searchText)
+        }, countryId: AppDelegate.currentCountry.id ?? 0,serach:searchText)
     }
 }
 extension SearchAskViewController: ContentDelegate{

@@ -8,17 +8,23 @@
 import UIKit
 import Alamofire
 
+enum AdsStatus{
+    case published
+    case pending
+    case finished
+}
+
 class MyAdsVC: UIViewController {
 
-    @IBOutlet weak var myAdsCollectionView: UICollectionView!
+    @IBOutlet private weak var myAdsCollectionView: UICollectionView!
     
     
-    @IBOutlet weak var featuredPendingView: UIView!
-    @IBOutlet weak var featuredPendingLbl: UILabel!
-    @IBOutlet weak var pendingView: UIView!
-    @IBOutlet weak var pendingLbl: UILabel!
-    @IBOutlet weak var activatedView: UIView!
-    @IBOutlet weak var activatedLbl: UILabel!
+    @IBOutlet private weak var featuredPendingView: UIView!
+    @IBOutlet private weak var featuredPendingLbl: UILabel!
+    @IBOutlet private weak var pendingView: UIView!
+    @IBOutlet private weak var pendingLbl: UILabel!
+    @IBOutlet private weak var activatedView: UIView!
+    @IBOutlet private weak var activatedLbl: UILabel!
     
     @IBOutlet weak var noAdsStackView: UIStackView!
     private  let cellIdentifier = "MyAdsCollectionViewCell"
@@ -29,6 +35,8 @@ class MyAdsVC: UIViewController {
             var userId = 0
     private var invoiceURL = ""
     private var isRepostProduct = false
+    private var adStatus:AdsStatus = .published
+    
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +85,7 @@ class MyAdsVC: UIViewController {
     
     
     @IBAction func didTapActivatedBtnAction(_ sender: Any) {
+        adStatus = .published
         getProductsByUser(with: "published")
         activatedLbl.textColor = UIColor(named: "#0093F5")
         activatedView.backgroundColor = UIColor(named: "#0093F5")
@@ -93,6 +102,7 @@ class MyAdsVC: UIViewController {
         
     }
     @IBAction func didTapPendingBtnAction(_ sender: Any) {
+        adStatus = .pending
         products = []
         getProductsByUser(with: "pending")
         
@@ -110,6 +120,7 @@ class MyAdsVC: UIViewController {
         featuredPendingView.isHidden = true
     }
     @IBAction func didTapFeaturedPendingBtnAction(_ sender: Any) {
+        adStatus = .finished
         products = []
         getProductsByUser(with: "finished")
         
@@ -165,7 +176,15 @@ extension MyAdsVC : UICollectionViewDelegate,UICollectionViewDataSource , UIColl
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == (products.count-1) && !isTheLast{
             page+=1
-            getProductsByUser(with: "")
+            switch self.adStatus {
+                
+            case .published:
+                getProductsByUser(with: "published")
+            case .pending:
+                getProductsByUser(with: "pending")
+            case .finished:
+                getProductsByUser(with: "finished")
+            }
             
         }
     }
@@ -179,14 +198,27 @@ extension MyAdsVC:MyAdsCollectionViewCellDelegate {
         let params : [String: Any]  = ["id":products[indexPath.item].id ?? 0]
         print(params)
         guard let url = URL(string: Constants.DOMAIN+"prods_delete")else{return}
-        AF.request(url, method: .post, parameters: params, encoding:URLEncoding.httpBody).responseDecodable(of:SuccessModel.self){res in
+        AF.request(url, method: .post, parameters: params, encoding:URLEncoding.httpBody).responseDecodable(of:SuccessModel.self){[weak self]res in
+            guard let self else {return}
             switch res.result{
             case .success(let data):
                 if let success = data.success {
                     if success {
                         StaticFunctions.createSuccessAlert(msg:"Ads Deleted Seccessfully".localize)
-                        self.getProductsByUser(with: "")
-                        self.myAdsCollectionView.reloadData()
+                        
+                        switch self.adStatus {
+                            
+                        case .published:
+                            getProductsByUser(with: "published")
+                        case .pending:
+                            getProductsByUser(with: "pending")
+                        case .finished:
+                            getProductsByUser(with: "finished")
+                        }
+                        
+//                        DispatchQueue.main.async {
+//                            self.myAdsCollectionView.reloadData()
+//                        }
                     }
                 }
             case .failure(let error):
@@ -198,41 +230,43 @@ extension MyAdsVC:MyAdsCollectionViewCellDelegate {
     func shareAdCell(buttonDidPressed indexPath: IndexPath) {
         if products[indexPath.row].status == "unpaid_feature" {
             //GO To Pay
-            PayingController.shared.payingFeaturedAd(completion: {[weak self] payment, check, message in
-                guard let self else {return}
-                if check == 0{
-                    let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
-                    vc.urlString = payment?.data.invoiceURL ?? ""
-                    self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
-                    vc.isFeaturedAd = true
-                    vc.delegate = self
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }else{
-                    StaticFunctions.createErrorAlert(msg: message)
+            
+            let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
+            vc.isFeaturedAd = true
+            vc.delegate = self
+            print(AppDelegate.sharedSettings.storePriceFeaturedAds ?? 0.0)
+            let product = products[indexPath.row]
+            if let isStore = AppDelegate.currentUser.isStore {
+                let userType: UserType = isStore ? .store : .regular
+                let adType: AdType = product.isFeature ?? false ? .featured : .normal
+                if let cost = StaticFunctions.fetchCost(userType: userType, adType: adType) {
+                    print("Cost of Ads : \(cost)")
+                    vc.amountDue = "\(cost)"
                 }
-            }, countryId: AppDelegate.currentUser.countryId ?? 5, productId: products[indexPath.item].id ?? 0)
+            }
+            
+            vc.prodId = products[indexPath.row].id.safeValue
+            self.navigationController?.pushViewController(vc, animated: true)
         }else if products[indexPath.row].status == "finished" {
             //TODO: Repost Ads
             self.productId = products[indexPath.item].id ?? 0
-            if products[indexPath.row].isFeature ?? false {
-                self.isRepostProduct = true
-                PayingController.shared.payingFeaturedAd(completion: {[weak self] payment, check, message in
-                    guard let self else {return}
-
-                    if check == 0{
-                        let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
-                        vc.delegate  = self
-                        vc.isFeaturedAd = true
-                        vc.urlString = payment?.data.invoiceURL ?? ""
-                        self.invoiceURL = "\(payment?.data.invoiceID ?? 0)"
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }else{
-                        StaticFunctions.createErrorAlert(msg: message)
-                    }
-                }, countryId: AppDelegate.currentUser.countryId ?? 0, productId: products[indexPath.row].id ?? 0)
-            }else {
-                
+            self.isRepostProduct = true
+            let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
+            vc.isFeaturedAd = true
+            vc.delegate = self
+            
+            let product = products[indexPath.row]
+            if let isStore = AppDelegate.currentUser.isStore {
+                let userType: UserType = isStore ? .store : .regular
+                let adType: AdType = product.isFeature ?? false ? .featured : .normal
+                if let cost = StaticFunctions.fetchCost(userType: userType, adType: adType) {
+                    print("Cost of Ads : \(cost)")
+                    vc.amountDue = "\(cost)"
+                }
             }
+                
+                vc.prodId = products[indexPath.row].id.safeValue
+                self.navigationController?.pushViewController(vc, animated: true)
             
         }else {
             shareContent(text:Constants.DOMAIN + "\(products[indexPath.row].id ?? 0)")
@@ -302,30 +336,84 @@ extension MyAdsVC {
             
         }, id: id ,countryId: AppDelegate.currentUser.id ?? 0)
     }
+    
+    private func goToSuccessfullAddAd(){
+        let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: SUCCESS_ADDING_VCID) as! SuccessAddingVC
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .overFullScreen
+//        vc.isFromHome = self.isFromHome
+        vc.delegate = self
+        self.present(nav, animated: false)
+    }
 }
 
 extension MyAdsVC:PayingDelegate {
-    func passPaymentId(with paymentId: String) {
-        PayingController.shared.callBackFeaturedAds(completion: {[weak self] payment, check, message in
+    func passPaymentStatus(from PaymentStatus: String, invoiceId: String, invoiceURL: String, prodId: Int) {
+        PayingController.shared.callBackFeaturedAds(completion: { [weak self] payment, check, message in
             guard let self else {return}
             if check == 0{
                 print(message)
+                if isRepostProduct {
+                    //wehen back form repay finishing ads
+                    repostAds(with: productId)
+                    isRepostProduct = false
+                }else {
+                    // when back form repay pensing ads
+                    goToSuccessfullAddAd()
+//                    getProductsByUser(with: "pending")
+                }
             }else{
                 print(message)
                 StaticFunctions.createErrorAlert(msg: message)
             }
-        }, invoiceId: invoiceURL, paymentId: paymentId)
+        }, invoiceId: invoiceId, invoiceURL: invoiceURL, prodId: prodId, status: PaymentStatus)
     }
     func didPayingSuccess() {
-        if isRepostProduct {
-            //wehen back form repay finishing ads
-            repostAds(with: productId)
-            isRepostProduct = false
-        }else {
-            // when back form repay pensing ads
-            getProductsByUser(with: "pending")
+//        if isRepostProduct {
+//            //wehen back form repay finishing ads
+//            repostAds(with: productId)
+//            isRepostProduct = false
+//        }else {
+//            // when back form repay pensing ads
+//            getProductsByUser(with: "pending")
+//        }
+        
+    }
+    
+    
+}
+
+
+extension MyAdsVC:SuccessAddingVCDelegate{
+    
+    func navigateToMyAdsPage (){
+        if let vc = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: MYADS_VCID) as? MyAdsVC {
+            print("ViewController instantiated successfully.")
+            
+            vc.modalPresentationStyle = .fullScreen
+            if let currentUserID = AppDelegate.currentUser.id {
+                print("User ID found: \(currentUserID)")
+                vc.userId = currentUserID
+            } else {
+                print("User ID is nil or 0.")
+            }
+            
+            if let navigationController = self.navigationController {
+                navigationController.pushViewController(vc, animated: true)
+                print("Pushing view controller.")
+            } else {
+                print("Navigation controller is nil.")
+            }
+        } else {
+            print("Failed to instantiate ViewController.")
         }
         
+    }
+    func didTapMyAdsButton() {
+        dismiss(animated: true) {
+            // Then navigate to the "my ads" page
+            self.navigateToMyAdsPage()
+        }
     }
     
     

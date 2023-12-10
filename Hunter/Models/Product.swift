@@ -105,7 +105,7 @@ struct Product: Codable{
     var mainCatNameEn:String?
     var subCatNameAr: String?
     var subCatNameEn: String?
-     
+    var comments : Int?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -146,6 +146,7 @@ struct Product: Codable{
         case mainCatNameEn = "main_cat_name_en"
         case subCatNameAr = "sub_cat_name_ar"
         case subCatNameEn = "sub_cat_name_en"
+        case comments
     }
 }
 struct ProductImage: Codable{

@@ -148,6 +148,7 @@ class StoresController {
             "country_id": countryId,
             "search":serach
         ] as [String : Any]
+        print(params)
         APIConnection.apiConnection.getConnectionWithParam(completion: { data in
             guard let data = data else { return }
             

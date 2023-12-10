@@ -145,26 +145,28 @@ class HomeViewController: UIViewController {
         //MARK: Right Button
         
          let rightView = UIView()
-        rightView.backgroundColor = .white
+        rightView.backgroundColor = .clear
         rightView.frame = CGRect(x: 0, y: 0, width: 130, height: 30) // Increase the width
 
         let cornerRadius: CGFloat = 16.0
         rightView.layer.cornerRadius = cornerRadius // Apply corner radius
 
-        let dropDownImage = UIImageView(image: UIImage(named: "dropDownIcon")?.withRenderingMode(.alwaysOriginal))
+        let dropDownImage = UIImageView(image: UIImage(named: "dropDownIcon")?.withRenderingMode(.alwaysTemplate))
+        dropDownImage.tintColor = .white
         dropDownImage.contentMode = .scaleAspectFill
         dropDownImage.frame = CGRect(x: 10 , y: 10, width: 14, height: 10) // Adjust the position and size of the image
 
         rightView.addSubview(dropDownImage)
 
 
-        let locationImage = UIImageView(image: UIImage(named: "locationBlack")?.withRenderingMode(.alwaysOriginal))
+        let locationImage = UIImageView(image: UIImage(named: "locationBlack")?.withRenderingMode(.alwaysTemplate))
+        locationImage.tintColor = .white
         locationImage.contentMode = .scaleAspectFill
         locationImage.frame = CGRect(x: rightView.frame.width - 25, y: 10, width: 14, height: 10) // Adjust the position and size of the image
 
         rightView.addSubview(locationImage)
         titleLabel.text = countryName // Assuming you have a "localized" method for localization
-        titleLabel.textColor = .black
+        titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.adjustsFontSizeToFitWidth = true
         rightView.addSubview(titleLabel)
@@ -317,7 +319,8 @@ class HomeViewController: UIViewController {
     
     @IBAction func didTapMoreFeatureAds(_ sender: UIButton) {
         let homeDetailsVC = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "homeDetails") as! HomeDetailsViewController
-        homeDetailsVC.selectedCategoryIndex = 0
+        homeDetailsVC.comeToMoreAds = true
+      //  homeDetailsVC.selectedCategoryIndex = 0
 //        homeDetailsVC.categoryId = categories[0].id ?? 0
         homeDetailsVC.isComeToFeatureAds = true
         homeDetailsVC.modalPresentationStyle = .fullScreen
@@ -327,8 +330,9 @@ class HomeViewController: UIViewController {
     //More Most recent Ads
     @IBAction func didTapMoreMostRecentAds(_ sender: UIButton) {
         let homeDetailsVC = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "homeDetails") as! HomeDetailsViewController
-        homeDetailsVC.selectedCategoryIndex = 0
-        homeDetailsVC.categoryId = categories[0].id ?? 0
+        homeDetailsVC.comeToMoreAds = true
+        //homeDetailsVC.selectedCategoryIndex = 0
+       // homeDetailsVC.categoryId = categories[0].id ?? 0
         homeDetailsVC.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(homeDetailsVC, animated: true)
     }

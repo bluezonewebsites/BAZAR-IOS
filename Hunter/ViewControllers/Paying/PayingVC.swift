@@ -11,7 +11,7 @@ import MFSDK
 
 protocol PayingDelegate:AnyObject{
     func didPayingSuccess()
-    func passPaymentId(with paymentId:String)
+    func passPaymentStatus(from PaymentStatus:String,invoiceId:String,invoiceURL:String,prodId:Int)
 }
 
 protocol PayingPlanDelegate:AnyObject{
@@ -40,6 +40,7 @@ class PayingVC: UIViewController {
     var amountDue:String = ""
     private var invoiceId = ""
     var planCategoryId = 0
+    var prodId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,8 @@ class PayingVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         initiatePayment()
+        
+        print(prodId)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,15 +61,6 @@ class PayingVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     @IBAction func didTapConfirmPayment(_ sender: UIButton) {
-//        getPaymetStatus()
-//        PayingController.shared.callBackPlanSubscribe(completion: { payment, check, message in
-//            if check == 0{
-//                print(message)
-//            }else{
-//                print(message)
-//                StaticFunctions.createErrorAlert(msg: message)
-//            }
-//        }, invoiceId: "3124595", invoiceURL: "invoiceURL", userId: AppDelegate.currentUser.id ?? 0, planCategoryId: planCategoryId, status: "Paid")
     }
     
     @IBAction func didTapPay(_ sender: UIButton) {
@@ -86,26 +80,32 @@ class PayingVC: UIViewController {
     
    
     
-    private func getPaymetStatus(){
-        let paymentStatusRequest = MFPaymentStatusRequest(invoiceID: invoiceId)
-//        let paymentStatusRequest = MFPaymentStatusRequest(id: "id", keyType: .invoiceId)
-        MFPaymentRequest.shared.getPaymentStatus(paymentStatus: paymentStatusRequest, apiLanguage: .english) { [weak self] (response) in
-            guard let self else {return}
-                switch response {
-                    case .success(let paymentStatusResponse):
-                    planDelegate?.passPaymentStatus(from: paymentStatusResponse.invoiceStatus ?? "", invoiceId: "\(paymentStatusResponse.invoiceID ?? 0)", invoiceURL: "", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
-                  
-                    if paymentStatusResponse.invoiceStatus ?? "" == "Paid"{
-                        planDelegate?.didPayingSuccess()
-                    }else{
-                        StaticFunctions.createInfoAlert(msg: paymentStatusResponse.invoiceStatus ?? "")
-                        print(" Status is : ======>  \(paymentStatusResponse.invoiceStatus ?? "")")
-                    }
-                    case .failure(let failError):
-                        print("\(failError)")
-                }
-        }
-    }
+//    private func getPaymetStatus(){
+//        let paymentStatusRequest = MFPaymentStatusRequest(invoiceID: invoiceId)
+////        let paymentStatusRequest = MFPaymentStatusRequest(id: "id", keyType: .invoiceId)
+//        MFPaymentRequest.shared.getPaymentStatus(paymentStatus: paymentStatusRequest, apiLanguage: .english) { [weak self] (response) in
+//            guard let self else {return}
+//                switch response {
+//                    case .success(let paymentStatusResponse):
+//                    
+//                  
+//                    if paymentStatusResponse.invoiceStatus ?? "" == "Paid"{
+//                        if isFeaturedAd {
+//                        
+//                            delegate?.passPaymentStatus(from: paymentStatusResponse.invoiceStatus ?? "", invoiceId: "\(paymentStatusResponse.invoiceID ?? 0)", invoiceURL: "", prodId:prodId)
+//                        }else {
+////                            planDelegate?.didPayingSuccess()
+//                            planDelegate?.passPaymentStatus(from: paymentStatusResponse.invoiceStatus ?? "", invoiceId: "\(paymentStatusResponse.invoiceID ?? 0)", invoiceURL: "", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
+//                        }
+//                    }else{
+//                        StaticFunctions.createInfoAlert(msg: paymentStatusResponse.invoiceStatus ?? "")
+//                        print(" Status is : ======>  \(paymentStatusResponse.invoiceStatus ?? "")")
+//                    }
+//                    case .failure(let failError):
+//                        print("\(failError)")
+//                }
+//        }
+//    }
     
     
     func sendPayment() {
@@ -201,10 +201,15 @@ extension PayingVC{
             case .success(let executePaymentResponse):
                 
                 if let invoiceStatus = executePaymentResponse.invoiceStatus {
-                    planDelegate?.passPaymentStatus(from: invoiceStatus, invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "-----------", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
-                  
+                   
                     if invoiceStatus == "Paid"{
-                        planDelegate?.didPayingSuccess()
+                        if isFeaturedAd {
+                        
+                            delegate?.passPaymentStatus(from: executePaymentResponse.invoiceStatus ?? "", invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "----------", prodId:prodId)
+                        }else {
+    //                            planDelegate?.didPayingSuccess()
+                            planDelegate?.passPaymentStatus(from: executePaymentResponse.invoiceStatus ?? "", invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "----------", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
+                        }
                     }else{
                         StaticFunctions.createInfoAlert(msg: invoiceStatus)
                         print(" Status is : ======>  \(invoiceStatus)")

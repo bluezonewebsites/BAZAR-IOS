@@ -124,7 +124,7 @@ extension SearchPersonViewController{
                 StaticFunctions.createErrorAlert(msg: msg)
                 self.page = self.page == 1 ? 1 : self.page - 1
             }
-        }, id: AppDelegate.currentUser.id ?? 0, searchText: searchText, page: self.page)
+        }, id: AppDelegate.currentUser.id ?? 0, searchText: searchText, page: self.page,countryId:AppDelegate.currentCountry.id ?? 0)
     }
 }
 extension SearchPersonViewController: ContentDelegate{

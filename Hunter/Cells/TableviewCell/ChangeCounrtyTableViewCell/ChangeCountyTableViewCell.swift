@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 import MOLH
 
 class ChangeCountyTableViewCell: UITableViewCell {
@@ -30,7 +31,12 @@ class ChangeCountyTableViewCell: UITableViewCell {
     }
     func setData(country: Country){
         if cImageView != nil{
-            self.cImageView.setImageWithLoading(url: country.image ?? "")
+            if let url = URL(string:Constants.MAIN_DOMAIN + country.image.safeValue) {
+                print(url)
+                cImageView.kf.setImage(with: url)
+            }
+
+//            self.cImageView.setImageWithLoading(url: country.image ?? "")
         }
         if  MOLHLanguage.currentAppleLanguage() == "en" {
             

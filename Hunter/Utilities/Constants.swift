@@ -86,6 +86,15 @@ let MYADS_VCID  = "MyAdsVC"
 let OTHER_USER_PROFILE_VCID = "OtherUserProfileVC"
 let PROFILE_VCID = "ProfileVC"
 
+
+
+enum UserType {
+    case store, regular
+}
+enum AdType {
+    case featured, normal
+}
+
 //Constants
 
 class Constants {
@@ -102,6 +111,8 @@ class Constants {
     static let GET_CATEGORIES_URL = DOMAIN + "categories"
     static let GET_SUB_CATEGORIES_URL = DOMAIN + "sub_category"
     static let GET_SLIDERS_URL = DOMAIN + "sliders"
+    static let SETTINGS_URL = DOMAIN + "settings"
+
 
     //Product
     static let PRODUCT_URL = DOMAIN + "prods_by_id"

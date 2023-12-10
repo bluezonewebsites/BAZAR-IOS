@@ -18,7 +18,7 @@ class ProductController{
                      "status" : "published",
         ] as [String : Any]
         
-        if categoryId != -1 {
+        if categoryId != -1 && categoryId != 0 {
             param["cat_id"] = categoryId
         }
         
@@ -35,7 +35,7 @@ class ProductController{
         if subCategoryId != -1 {
             param["sub_cat_id"] = subCategoryId
         }
-            
+            print(param)
         APIConnection.apiConnection.postConnection(completion: {
             data  in
             guard let data = data else { return }

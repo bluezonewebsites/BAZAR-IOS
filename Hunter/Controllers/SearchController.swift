@@ -9,12 +9,12 @@ import Foundation
 class SearchController{
     static let shared = SearchController()
     
-    func searchAds(completion: @escaping([Product], Int, String)->(), id: Int, searchText: String, page: Int){
+    func searchAds(completion: @escaping([Product], Int, String)->(), id: Int, searchText: String, page: Int,countryId:Int){
         
         let param = ["uid": id,
                      "page": page,
                      "keyword": searchText,
-                     "country_id": AppDelegate.currentUser.id ?? "6" ] as [String : Any]
+                     "country_id": countryId ] as [String : Any]
        
             
         APIConnection.apiConnection.postConnection(completion: {
@@ -42,12 +42,12 @@ class SearchController{
             
         }, link: Constants.SEARCH_ADS_URL , param: param)
     }
-    func searchPerson(completion: @escaping([User], Int, String)->(), id: Int, searchText: String, page: Int){
+    func searchPerson(completion: @escaping([User], Int, String)->(), id: Int, searchText: String, page: Int,countryId:Int){
         
         let param = ["uid": id,
                      "page": page,
                      "keyword": searchText,
-                     "country_id": AppDelegate.currentUser.id ?? "6" ] as [String : Any]
+                     "country_id": countryId] as [String : Any]
        
             
         APIConnection.apiConnection.postConnection(completion: {

@@ -35,7 +35,13 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
 
-        // Do any additional setup after loading the view.
+        Constants.COUNTRIES.forEach { country in
+            if country.code.safeValue.description.contains("965") {
+                if let url = URL(string:Constants.MAIN_DOMAIN + country.image.safeValue) {
+                    self.countryImage.kf.setImage(with: url)
+                }
+            }
+        }
     }
     @objc func textDidChange(_ notification: Notification){
         enableButton()
@@ -50,8 +56,11 @@ class LoginViewController: UIViewController {
             self.countryCode = country.code ?? ""
             self.coountryCode.text = country.code
             self.countryId = country.id ?? 6
-            self.countryImage.setImageWithLoading(url: country.image ??
-            "")
+            if let url = URL(string:Constants.MAIN_DOMAIN + country.image.safeValue) {
+                print(url)
+                self.countryImage.kf.setImage(with: url)
+            }
+            
             
             self.enableButton()
         }

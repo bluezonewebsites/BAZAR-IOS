@@ -11,10 +11,9 @@ import MOLH
 
 class ChangeCountyTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cImageView: UIImageView!
-    @IBOutlet weak var cNameLbl: UILabel!
-
-    @IBOutlet weak var checkImageView: UIImageView!
+    @IBOutlet private weak var cImageView: UIImageView!
+    @IBOutlet private weak var cNameLbl: UILabel!
+    @IBOutlet  weak var checkImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

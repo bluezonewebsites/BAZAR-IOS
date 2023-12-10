@@ -12,7 +12,7 @@ import IQKeyboardManagerSwift
 import Alamofire
 import TransitionButton
 import WoofTabBarController
-
+import Kingfisher
 
 
 class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
@@ -41,6 +41,8 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
     @IBOutlet weak var rentButtonLabel: UILabel!
     @IBOutlet weak var rentButtonImageView: UIImageView!
     
+    
+    @IBOutlet weak var priceStackView: UIStackView!
     //connection Buttons
     
     @IBOutlet weak var phoneCallViewContainer: UIView!
@@ -190,6 +192,16 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
         } else {
             uploadImageView.image = UIImage(named: "addimageArabic")
         }
+        
+        Constants.COUNTRIES.forEach { country in
+            if country.id.safeValue == AppDelegate.currentUser.countryId.safeValue {
+                if let url = URL(string:Constants.MAIN_DOMAIN + country.image.safeValue) {
+                    self.newPhoneCountryFlag.kf.setImage(with: url)
+                }
+            }
+        }
+        
+        
         advsTitleTF.delegate = self
     }
     
@@ -481,9 +493,9 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
     }
     
     @IBAction func useRegisteredBtnAction(_ sender: UIButton) {
-        hasNewPhone = false
-        addNewPhoneViewContainer.isHidden = true
-        addNewPhoneLabel.isHidden = true
+        hasNewPhone = true
+        addNewPhoneViewContainer.isHidden = false
+        addNewPhoneLabel.isHidden = false
         useRegisteredPhoneButton.backgroundColor = UIColor(named: "#0093F5")
         useRegisteredPhoneButton.setTitleColor(.white, for: .normal)
         useNewPhoneNumButton.backgroundColor = .white
@@ -491,14 +503,13 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
     }
     
     @IBAction func useNewPhoneNumBtnAction(_ sender: UIButton) {
-        hasNewPhone = true
-        addNewPhoneViewContainer.isHidden = false
-        addNewPhoneLabel.isHidden = false
+        hasNewPhone = false
+        addNewPhoneViewContainer.isHidden = true
+        addNewPhoneLabel.isHidden = true
         useNewPhoneNumButton.backgroundColor = UIColor(named: "#0093F5")
         useNewPhoneNumButton.setTitleColor(.white, for: .normal)
         useRegisteredPhoneButton.backgroundColor = .white
         useRegisteredPhoneButton.setTitleColor(.black, for: .normal)
-        
     }
     
     @IBAction func addAdBtnAction(_ sender: UIButton) {
@@ -712,7 +723,7 @@ extension AddAdvsVC {
         }
         
         descTextView.addPlaceholder("Please Enter the full description with the advantages".localize,text: descText)
-        newPhoneTF.text = removeCountryCode(from: "\(AppDelegate.currentUser.phone ?? "")")
+//        newPhoneTF.text = removeCountryCode(from: "\(AppDelegate.currentUser.phone ?? "")")
         configerSelectedButtons()
     }
     
@@ -736,6 +747,8 @@ extension AddAdvsVC {
     
     private func setupSellViewUI() {
         tajeer = 0
+        priceStackView.isHidden = false
+        priceTF.text = ""
         sellViewContainer.borderWidth = 1.2
         sellButtonLabel.textColor = .white
         sellViewContainer.backgroundColor = UIColor(named: "#0093F5")
@@ -771,8 +784,10 @@ extension AddAdvsVC {
     
     private func setupRentViewUI() {
         tajeer = 1
+        priceStackView.isHidden = false
+        priceTF.text = ""
         rentViewContainer.borderWidth = 1.2
-        rentViewContainer.backgroundColor = UIColor(named: "#0093F5")
+        rentViewContainer.backgroundColor = UIColor(named: "#213970")
         rentViewContainer.borderColor = .white
         rentButtonImageView.isHidden = false
         setImage(to: rentButtonImageView, from: "checkbox")
@@ -798,8 +813,10 @@ extension AddAdvsVC {
     
     private func setupBuyingViewUI() {
         tajeer = 2
+        priceStackView.isHidden = false
+        priceTF.text = ""
         buyingViewContainer.borderWidth = 1.2
-        buyingViewContainer.backgroundColor = UIColor(named: "#0093F5")
+        buyingViewContainer.backgroundColor = UIColor(named: "buyingColor")
         buyingViewContainer.borderColor = .white
         buyingImage.isHidden = false
         setImage(to: buyingImage, from: "checkbox")
@@ -822,8 +839,10 @@ extension AddAdvsVC {
     }
     private func setupDonationViewUI() {
         tajeer = 3
+        priceStackView.isHidden = true
+        priceTF.text = "0"
         donationViewContainer.borderWidth = 1.2
-        donationViewContainer.backgroundColor = UIColor(named: "#0093F5")
+        donationViewContainer.backgroundColor = UIColor(named: "DonationColor")
         donationViewContainer.borderColor = .white
         donationImage.isHidden = false
         setImage(to: donationImage, from: "checkbox")

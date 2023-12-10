@@ -62,10 +62,10 @@ class SearchViewController: UIViewController {
         adsLbl.textColor = UIColor(named: "#0093F5")
         adsView.backgroundColor = UIColor(named: "#0093F5")
         
-        personLbl.textColor = UIColor(named: "#929292")
+        personLbl.textColor = .black
         personView.backgroundColor = UIColor(named: "#929292")
         
-        questionLbl.textColor = UIColor(named: "#929292")
+        questionLbl.textColor = .black
         questionView.backgroundColor = UIColor(named: "#929292")
         
         adView.isHidden = false
@@ -74,13 +74,13 @@ class SearchViewController: UIViewController {
         
     }
     @IBAction func personsBtnAction(_ sender: Any) {
-        adsLbl.textColor = UIColor(named: "#929292")
+        adsLbl.textColor = .black
         adsView.backgroundColor = UIColor(named: "#929292")
         
         personLbl.textColor = UIColor(named: "#0093F5")
         personView.backgroundColor = UIColor(named: "#0093F5")
         
-        questionLbl.textColor = UIColor(named: "#929292")
+        questionLbl.textColor = .black
         questionView.backgroundColor = UIColor(named: "#929292")
         
         adView.isHidden = true
@@ -88,10 +88,10 @@ class SearchViewController: UIViewController {
         questionsView.isHidden = true
     }
     @IBAction func questionsBtnAction(_ sender: Any) {
-        adsLbl.textColor = UIColor(named: "#929292")
+        adsLbl.textColor = .black
         adsView.backgroundColor = UIColor(named: "#929292")
         
-        personLbl.textColor = UIColor(named: "#929292")
+        personLbl.textColor = .black
         personView.backgroundColor = UIColor(named: "#929292")
         
         questionLbl.textColor = UIColor(named: "#0093F5")

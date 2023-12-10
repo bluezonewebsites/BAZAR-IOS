@@ -46,7 +46,14 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: nil)
         couontryBtn.setTitle(MOLHLanguage.currentAppleLanguage() == "en" ? "Kuwait" : "الكويت", for: .normal)
-        // Do any additional setup after loading the view.
+        
+        Constants.COUNTRIES.forEach { country in
+            if country.code.safeValue.description.contains("965") {
+                if let url = URL(string:Constants.MAIN_DOMAIN + country.image.safeValue) {
+                    self.countryImageView.kf.setImage(with: url)
+                }
+            }
+        }
     }
     @IBAction func changeCountryAction(_ sender: Any) {
         var coountryVC = CounriesViewController()
@@ -56,8 +63,10 @@ class RegisterViewController: UIViewController {
             (country) in
             self.countryCode = country.code ?? ""
             self.countryCodeLbl.text = country.code
-            self.countryImageView.setImageWithLoading(url: country.image ??
-            "")
+            if let url = URL(string:Constants.MAIN_DOMAIN + country.image.safeValue) {
+                print(url)
+                self.countryImageView.kf.setImage(with: url)
+            }
 
             self.enableButton()
         }

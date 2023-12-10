@@ -35,8 +35,11 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
         @IBOutlet weak var countryImage: UIImageView!
         @IBOutlet weak var phoneCode: UILabel!
         
-        
-        let textField = UITextField()
+    @IBOutlet weak var emptyViewContiner: UIView!
+    
+    @IBOutlet weak var pendingRequestLabel: UILabel!
+    @IBOutlet weak var verfiedAccountStackView: UIStackView!
+    let textField = UITextField()
         lazy var dropDowns: [DropDown] = {
             return [
                 self.countries,
@@ -264,10 +267,19 @@ class VerifyAccountVC: UIViewController, UITextFieldDelegate {
         }
         
     private func checkUserPending(){
-        PendingUserController.shared.checkUserPending(completion: { data, check, message in
-            
+        PendingUserController.shared.checkUserPending(completion: {[weak self] data, check, message in
+            guard let self else {return}
             if check == 0 {
                 self.isHaveVerificationRequest = data?.pendingUser ?? false
+                if let isPending = data?.pendingUser , isPending {
+                    pendingRequestLabel.isHidden = false
+                    verfiedAccountStackView.isHidden = true
+                }else if AppDelegate.currentUser.verified.safeValue == 1 {
+                    pendingRequestLabel.isHidden = true
+                    verfiedAccountStackView.isHidden = false
+                }else {
+                    emptyViewContiner.isHidden = false
+                }
             }else {
                 StaticFunctions.createErrorAlert(msg: message)
             }

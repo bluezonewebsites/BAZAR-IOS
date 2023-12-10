@@ -48,7 +48,7 @@ class TabBarVC: WoofTabBarController {
 //        }
 
     override func viewControllers() -> [WoofTabControllerItem] {
-        return [homeVC,storesVC,addAdsVC,categoryVC,menuVC]
+        return [homeVC,categoryVC,addAdsVC,storesVC,menuVC]
                 //, storesVC, addAdsVC, categoryVC, menuVC]
     }
     

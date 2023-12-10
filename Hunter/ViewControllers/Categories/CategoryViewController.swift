@@ -92,10 +92,10 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             return CGSize(width: 110, height: 82)
         }else {
             if  categoryIndex != (categories.count-1){
-                return CGSize(width: collectionView.frame.width/2 - 11, height: 130)
+                return CGSize(width: collectionView.frame.width/2 - 5, height: 130)
             }else{
                 print(collectionView.frame.width/2 - 11)
-                return CGSize(width: collectionView.frame.width/2 - 11, height: 80)
+                return CGSize(width: collectionView.frame.width/2 - 5, height: 80)
             }
             
         }

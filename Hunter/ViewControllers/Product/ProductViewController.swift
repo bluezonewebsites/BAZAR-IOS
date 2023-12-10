@@ -40,7 +40,8 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
     
-    
+    var circleMenu = CircleMenu(frame: .zero, normalIcon: "", selectedIcon: "")
+
     let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "full_screen") as! FullScreenViewController
     var product = Product()
     var images = [ProductImage]()
@@ -77,15 +78,18 @@ class ProductViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateData(_:)), name: NSNotification.Name(rawValue: "updateData"), object: nil)
+        followButton.isHidden = true
+        circleMenu.isHidden = true
+        
         setupCircleMenu()
         getData()
         imageSlider.contentScaleMode = .scaleAspectFill
+        
     }
     
 
     
     func setupCircleMenu(){
-        var circleMenu = CircleMenu(frame: .zero, normalIcon: "", selectedIcon: "")
         if MOLHLanguage.isArabic() {
             circleMenu  = CircleMenu(frame: CGRect(x:view.frame.width - 100, y: view.frame.height - 200, width: 50, height: 50),
                             normalIcon:"phone_icon",
@@ -391,7 +395,6 @@ extension ProductViewController{
                 }else {
                     isFollow = false
                 }
-                
                 userProfile.isFollow == 1 ? followButton.setTitle("unfollow".localize, for: .normal) : followButton.setTitle("follow".localize, for: .normal)
             }
         }, userId: product.userId ?? 0)
@@ -399,6 +402,8 @@ extension ProductViewController{
     
     func setData(){
     
+        circleMenu.isHidden =  product.userId == AppDelegate.currentUser.id
+        followButton.isHidden = product.userId == AppDelegate.currentUser.id
         
          var mainImage = ""
         if product.mainImage != ""  {
@@ -535,7 +540,7 @@ extension ProductViewController{
             userNameLbl.text = (product.userName ?? "") + " " + (product.userLastName ?? "")
         }
         
-        
+        print(product.userPic ?? "")
         self.userImageView.setImageWithLoading(url: product.userPic ?? "",placeholder: "logo_photo")
         
         

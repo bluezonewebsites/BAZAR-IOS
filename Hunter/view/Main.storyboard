@@ -663,8 +663,9 @@
                                                                     <constraint firstAttribute="height" constant="30" id="V75-M5-drJ"/>
                                                                     <constraint firstAttribute="width" constant="30" id="ptW-sD-gLG"/>
                                                                 </constraints>
+                                                                <color key="tintColor" name="#9C9C9C"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" image="Close-1"/>
+                                                                <state key="normal" image="xmark.circle.fill" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="closeAction:" destination="arz-sD-MDM" eventType="touchUpInside" id="7fP-el-3IO"/>
                                                                     <action selector="closeBtnAction:" destination="YWp-db-MuD" eventType="touchUpInside" id="vRj-9l-xIe"/>
@@ -1148,7 +1149,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-24-oAO" customClass="EdgeInsetLabel" customModule="NewBazar" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="25.333333333333336" width="50" height="20"/>
+                                                            <rect key="frame" x="15" y="25.333333333333336" width="20" height="20"/>
                                                             <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="mwT-Vt-EhQ"/>
@@ -1890,7 +1891,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a9-pq-9rC" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="33.333333333333336" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="43.333333333333336" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="ju5-h7-UrJ"/>
@@ -2465,7 +2466,7 @@
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="394" height="76.666666666666671"/>
                                                                                                     <subviews>
                                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lTp-zc-9tw">
-                                                                                                            <rect key="frame" x="41.333333333333336" y="0.0" width="2" height="2"/>
+                                                                                                            <rect key="frame" x="51.333333333333336" y="0.0" width="2" height="2"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="2" id="FH5-bZ-gqb"/>
                                                                                                                 <constraint firstAttribute="width" constant="2" id="dtJ-dN-gcn"/>
@@ -2491,7 +2492,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erc-hc-FtG" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="33.333333333333336" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="43.333333333333336" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="hT9-Cm-kb9"/>
@@ -2611,7 +2612,7 @@
                                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                                 </label>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:837-14-u4B:image" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-MP-IlB">
-                                                                                                                                    <rect key="frame" x="31.333333333333339" y="2.6666666666666572" width="15.666666666666668" height="15"/>
+                                                                                                                                    <rect key="frame" x="31.333333333333339" y="2.6666666666666572" width="15.666666666666661" height="15"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="height" constant="15" id="ZXS-AB-304"/>
                                                                                                                                         <constraint firstAttribute="width" constant="15" id="ygn-IL-uwi"/>
@@ -4474,7 +4475,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dt-Ep-aZa" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="36" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="46" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="wRb-pN-L2J"/>
@@ -5033,7 +5034,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z0-nT-fwf" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="33.333333333333336" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="43.333333333333336" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="qJn-7f-wso"/>
@@ -5377,15 +5378,17 @@
     </scenes>
     <designables>
         <designable name="4dt-Ep-aZa">
-            <size key="intrinsicContentSize" width="36" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="46" height="16.333333333333336"/>
         </designable>
         <designable name="7a9-pq-9rC">
-            <size key="intrinsicContentSize" width="33.333333333333336" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="43.333333333333336" height="16.333333333333336"/>
         </designable>
         <designable name="7z0-nT-fwf">
-            <size key="intrinsicContentSize" width="33.333333333333336" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="43.333333333333336" height="16.333333333333336"/>
         </designable>
-        <designable name="FCs-24-oAO"/>
+        <designable name="FCs-24-oAO">
+            <size key="intrinsicContentSize" width="20" height="13"/>
+        </designable>
         <designable name="MUI-H5-TZT">
             <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>
@@ -5399,7 +5402,7 @@
             <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>
         <designable name="erc-hc-FtG">
-            <size key="intrinsicContentSize" width="33.333333333333336" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="43.333333333333336" height="16.333333333333336"/>
         </designable>
     </designables>
     <resources>
@@ -10059,6 +10062,7 @@ U0NTS1NOU1NTWwAAAAAAAAIBAAAAAAAAAGgAAAAAAAAAAAAAAAAAAFNeA
         <image name="svgexport-6 - 2022-06-20T144402.94" width="46" height="46"/>
         <image name="svgexport-6 - 2022-06-20T144402.943" width="49.333332061767578" height="49.333332061767578"/>
         <image name="user3" width="10" height="11"/>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="#0093F5">
             <color red="0.99607843137254903" green="0.59999999999999998" blue="0.0039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -10105,19 +10109,19 @@ U0NTS1NOU1NTWwAAAAAAAAIBAAAAAAAAAGgAAAAAAAAAAAAAAAAAAFNeA
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

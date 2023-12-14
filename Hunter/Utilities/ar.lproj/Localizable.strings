@@ -45,7 +45,7 @@
 "Back" = "رجوع";
 "My Profile" = "الملف الشخصي";
 "Add Ad" = "أضف إعلان";
-"Favourites" = "المفضلات";
+"Favourites" = "المفضلة";
 "My Ads" = "إعلاناتي";
 "My Asks" = "أسئلتي";
 "Change Country" = "تغيير الدولة";
@@ -122,7 +122,7 @@
 "Ad type" = "نوع الإعلان";
 "SELL" = "للبيع";
 "RENT" = "للإيجار";
-"BUYING" = "للشراء";
+"BUYING" = "مطلوب";
 "DONATION" = "للتبرع";
 "Connection type" = "وسائل التواصل";
 "Determine the means by which customers will contact you for this advertisement" = "حدد الوسائل التي سيتصل بك العملاء من خلالها بخصوص هذا الإعلان";
@@ -281,6 +281,7 @@
 "My Profile" = "ملفي الشخصي";
 "Change Photo" = "تغيير الصوره";
 "Ads" = "إعلان";
+"Ads " = "الإعلانات";
 "Rate" = "تقييم";
 "Followers " = "متابعون";
 "Followings " = "يتابع";
@@ -404,6 +405,8 @@
 "reply" = "رد";
 "like( " = "اعجبني( ";
 " )" = " (";
+"Favourite( " = "تفضيل( ";
+" )" = " (";
 "remove" = "حذف";
 "report" = "ابلاغ";
 "add comment to ask" = "اضافة تعليق لسؤال";
@@ -497,3 +500,8 @@ To get free ads" = "سيتم مراجعتة من قبل الإدارة
 "Use an Alternative Mobile Number" = "استخدم رقم هاتف محمول بديل";
 "You have current pending request" = "لديك طلب معلق حاليًا";
 "Your account is Verified" = "تم التحقق من حسابك";
+"From this list, you can block more users or unblock" = "من خلال هذه القائمة، يمكنك حظر المزيد من المستخدمين أو إلغاء الحظر";
+"No Blocked users available" = "لا يوجد مستخديمين محظورين";
+"What is a Bazar application?" = "ما هو تطبيق بازار؟";
+"Buying" = "مطلوب";
+"Donation" = "تبرع";

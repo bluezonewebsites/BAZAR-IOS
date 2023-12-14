@@ -77,6 +77,12 @@ class HomeDetailsViewController: UIViewController {
         subCatigoryContainer.isHidden = isComeToFeatureAds
         feaureContainerView.isHidden = true
         searchTextField.delegate = self
+        
+        if isComeToFeatureAds {
+            typeView.isHidden = true
+        }else {
+            typeView.isHidden = false
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
@@ -85,14 +91,14 @@ class HomeDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
         self.navigationController?.navigationBar.isHidden = false
-        if categoryId == 74 {
-            sell = nil
-            typeLbl.text = "All".localize
-            self.typeView.isHidden = false
-        }else{
-            self.typeView.isHidden = true
-            
-        }
+//        if categoryId == 74 {
+//            sell = nil
+//            typeLbl.text = "All".localize
+//            self.typeView.isHidden = false
+//        }else{
+//            self.typeView.isHidden = true
+//            
+//        }
         
         countryId = AppDelegate.currentCountry.id ?? 6
         
@@ -245,14 +251,14 @@ class HomeDetailsViewController: UIViewController {
         //            // do something with your image
         feaureContainerView.isHidden = true
         
-        if categoryId == 74 {
-            sell = nil
-            typeLbl.text = "All".localize
-            self.typeView.isHidden = false
-        }else{
-            self.typeView.isHidden = true
-            
-        }
+//        if categoryId == 74 {
+//            sell = nil
+//            typeLbl.text = "All".localize
+//            self.typeView.isHidden = false
+//        }else{
+//            self.typeView.isHidden = true
+//            
+//        }
         
         getData()
 
@@ -276,14 +282,14 @@ class HomeDetailsViewController: UIViewController {
         self.subCategoryCollectionView.reloadData()
         subCategoryCollectionView.selectItem(at: [0, subcategoryIndex+1], animated: true, scrollPosition: .centeredHorizontally)
         //            // do something with your image
-        if categoryId == 74 {
-            sell = nil
-            typeLbl.text = "All".localize
-            self.typeView.isHidden = false
-        }else{
-            self.typeView.isHidden = true
-            
-        }
+//        if categoryId == 74 {
+//            sell = nil
+//            typeLbl.text = "All".localize
+//            self.typeView.isHidden = false
+//        }else{
+//            self.typeView.isHidden = true
+//            
+//        }
         
         getData()
         self.getFeatureData()
@@ -325,14 +331,16 @@ class HomeDetailsViewController: UIViewController {
     }
     @IBAction func typeActiion(_ sender: Any) {
         let vc = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: TYPE_VCID) as!  TypeViewController
-        vc.typeBtclosure = {
+        vc.typeBtclosure = { [weak self]
             (value, name) in
+            guard let self else {return}
             self.sell = value
             self.typeLbl.text = name
             self.resetProducts()
             self.getData()
         }
-        self.present(vc, animated: false, completion: nil)
+        vc.selectedType = self.sell ?? -1
+        self.present(vc, animated: true, completion: nil)
         
     }
     @IBAction func countryAction(_ sender: Any) {
@@ -518,14 +526,14 @@ extension HomeDetailsViewController{
             }
         }
        
-        if categoryId == 74 {
-            sell = nil
-            typeLbl.text = "All".localize
-            self.typeView.isHidden = false
-        }else{
-            self.typeView.isHidden = true
-            
-        }
+//        if categoryId == 74 {
+//            sell = nil
+//            typeLbl.text = "All".localize
+//            self.typeView.isHidden = false
+//        }else{
+//            self.typeView.isHidden = true
+//            
+//        }
         self.resetProducts()
         self.getData()
         self.getFeatureData()
@@ -661,14 +669,14 @@ extension HomeDetailsViewController: UICollectionViewDataSource, UICollectionVie
                 self.subCatigoryContainer.isHidden = true
                 subCategoryCollectionView.isHidden = true
             }
-            if categoryId == 74 {
-                sell = nil
-                typeLbl.text = "All".localize
-                self.typeView.isHidden = false
-            }else{
-                self.typeView.isHidden = true
-                
-            }
+//            if categoryId == 74 {
+//                sell = nil
+//                typeLbl.text = "All".localize
+//                self.typeView.isHidden = false
+//            }else{
+//                self.typeView.isHidden = true
+//                
+//            }
             self.resetProducts()
             if isComeToFeatureAds == true {
                 self.getFeatureData()

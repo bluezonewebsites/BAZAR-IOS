@@ -28,7 +28,38 @@ class UserBlockedVC: UIViewController {
         
     }
     
-    
+    func createEmptyView() -> UIView {
+        let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+
+        let messageLabel = UILabel()
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.text = "No Blocked users available".localize
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        messageLabel.font = .systemFont(ofSize: 22)
+
+        emptyView.addSubview(messageLabel)
+
+        // Constraints for the message label
+        messageLabel.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+        messageLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
+        messageLabel.leadingAnchor.constraint(equalTo: emptyView.leadingAnchor, constant: 20).isActive = true
+        messageLabel.trailingAnchor.constraint(equalTo: emptyView.trailingAnchor, constant: -20).isActive = true
+
+        return emptyView
+    }
+
+    func updateTableView() {
+        if blockedUsersList.isEmpty {
+            self.tableView.backgroundView = createEmptyView()
+            self.tableView.separatorStyle = .none  // Optional: To hide the separators
+        } else {
+            self.tableView.backgroundView = nil
+            self.tableView.separatorStyle = .singleLine
+        }
+        self.tableView.reloadData()
+    }
     
     @IBAction func didTapBack(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
@@ -36,6 +67,10 @@ class UserBlockedVC: UIViewController {
     
     
     @IBAction func didTapAddUser(_ sender: UIButton) {
+        
+        let vc = SearchAllUsersVC.instantiate()
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     
@@ -65,7 +100,7 @@ class UserBlockedVC: UIViewController {
             if check == 0 {
                 self.blockedUsersList = blockedusers
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    self.updateTableView()
                     self.animateFirstCell()
                 }
             }else {
@@ -144,4 +179,11 @@ extension UserBlockedVC: UserBlockedDelegate {
     }
 }
 
+extension UserBlockedVC : SearchAllUserDelegate{
+    func didblockedUser() {
+        getBlockedUsers()
+    }
+    
+    
+}
 

@@ -54,6 +54,7 @@ class StoresVC: UIViewController {
         customNavView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         createChangeCountryButton()
             searchTextField.setPlaceHolderColor(.white)
+        badgeLabel.isHidden = true
         if AppDelegate.currentUser.isStore ?? false {
             createStoreView.isHidden = true
         }else{
@@ -117,6 +118,7 @@ class StoresVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getnotifictionCounts()
         NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
     }
     
@@ -272,6 +274,18 @@ extension StoresVC {
                 StaticFunctions.createErrorAlert(msg: message)
             }
         }, countryId: countryId)
+    }
+    
+    private func getnotifictionCounts(){
+        NotificationsController.shared.getNotificationsCount(completion: {
+            count, check, msg in
+            
+            if check == 1{
+                StaticFunctions.createErrorAlert(msg: msg)
+            }else{
+                self.updateBadgeCount(count?.data?.count ?? 0)
+            }
+        })
     }
 }
 extension StoresVC:UITextFieldDelegate{

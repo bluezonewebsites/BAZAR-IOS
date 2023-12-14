@@ -15,7 +15,11 @@ class HomeStoreCollectionViewCell: UICollectionViewCell {
     
     
     func setData(from store:StoreObject){
-        imageView.setImageWithLoading(url: store.coverPhoto ?? "")
+        if store.logo.safeValue.isEmpty {
+            imageView.setImageWithLoading(url: store.coverPhoto.safeValue)
+        }else {
+            imageView.setImageWithLoading(url: store.logo.safeValue)
+        }
         storeTitleLabel.text = store.companyName ?? ""
         storeSubTitleLabel.text = store.bio ?? ""
     }

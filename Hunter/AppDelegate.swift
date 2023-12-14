@@ -33,7 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
 
         let myFatoorahToken = "q3Tkag00mVnNqC2npuUWFzRkZQD5T2tOjSkacpIGLxFLZYFkRDNLrjNMhuGF6Ke7aczsf0ZtuJe3-NdCkHHtnIJDX_1JfidHzf4EqWJABO9JQZ3gN2NZne00JZwSMCQLwO-hAGuJ9huUMNrLtTip5GpFfxc3M2rNupLWAk-wlF5ZC6dyiuLlZc3JVmB4UJ0LJLwFZmZ4clghPmfc_KuEhK_gG5G7nWbB3kVKDDD8T-ktwOH0VUVovVVryGlGPTCAylwF6QHy1XpP-IQSas14LCYonTSDfyILd15fed2cuEWp-dvWZYXEXpoEOAEp3q0ma6KGdnXVH8yf9Wgl2KVNtwUIkelBNgVnIjI_23SU06TgepUq-pPmku9ShkpjDy2OdTF86Isw0oZasHmmUlMjgrTAb9vZWGSFHH4H56YpQ_LEHAxip3Wam3EQ6fevsJUQk2SlHPxFUwUkXPV6hM1Cu45ZX3InxlRadJrXFRcBv67GN7TTnSzlO1BNQn3bhS76YHq4YWJceBCBM2TD5_m5dGO69PalmfcfNKzY8knto-C3iS3tClUfKvALEg6we0VSKlHbh3NIMT4LbD9EzZVNgPCnljoqA5VcHB8O1aiAIfh_eE0RFlYli3NrIVDf7wJTifSmcBUiy8qZ1ZBpyqQCNC0_55-C4UYvj6SMzfvNEAgZa4vG3xHx7RaGNoW3LZB5dVCHT_DqGsJeB9jEeS5AzIxHGL5nGvLNXgUE-V1ptHldBUZ8"
         
-        MFSettings.shared.configure(token: myFatoorahToken, country: .kuwait, environment: .live)
+        
+        let myFatoorahTestToken = "rLtt6JWvbUHDDhsZnfpAhpYk4dxYDQkbcPTyGaKp2TYqQgG7FGZ5Th_WD53Oq8Ebz6A53njUoo1w3pjU1D4vs_ZMqFiz_j0urb_BH9Oq9VZoKFoJEDAbRZepGcQanImyYrry7Kt6MnMdgfG5jn4HngWoRdKduNNyP4kzcp3mRv7x00ahkm9LAK7ZRieg7k1PDAnBIOG3EyVSJ5kK4WLMvYr7sCwHbHcu4A5WwelxYK0GMJy37bNAarSJDFQsJ2ZvJjvMDmfWwDVFEVe_5tOomfVNt6bOg9mexbGjMrnHBnKnZR1vQbBtQieDlQepzTZMuQrSuKn-t5XZM7V6fCW7oP-uXGX-sMOajeX65JOf6XVpk29DP6ro8WTAflCDANC193yof8-f5_EYY-3hXhJj7RBXmizDpneEQDSaSz5sFk0sV5qPcARJ9zGG73vuGFyenjPPmtDtXtpx35A-BVcOSBYVIWe9kndG3nclfefjKEuZ3m4jL9Gg1h2JBvmXSMYiZtp9MR5I6pvbvylU_PP5xJFSjVTIz7IQSjcVGO41npnwIxRXNRxFOdIUHn0tjQ-7LwvEcTXyPsHXcMD8WtgBh-wxR8aKX7WPSsT1O8d8reb2aR7K3rkV3K82K_0OgawImEpwSvp9MNKynEAJQS6ZHe_J_l77652xwPNxMRTMASk1ZsJL"
+        
+        MFSettings.shared.configure(token: myFatoorahTestToken, country: .kuwait, environment: .test)
         // you can change color and title of navigation bar
         if let color = UIColor(named: "#0093F5") {
             let them = MFTheme(navigationTintColor: .white, navigationBarTintColor:color , navigationTitle: "Payment".localize, cancelButtonTitle: "Cancel".localize)
@@ -100,8 +103,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         if let paymentId = url[MFConstants.paymentId] {
             NotificationCenter.default.post(name: .applePayCheck, object: paymentId)
         }
+        print("Opened URL: \(url.absoluteString)")
+//        if  url.absoluteString.contains("profile"){
+//            let storyboard = UIStoryboard.init(name: "Product", bundle: nil)
+//            let nav = storyboard.instantiateViewController(withIdentifier: "product_details") as? ProductViewController
+//            nav?.product.id == 10009
+//            
+//            let scene = UIApplication.shared.connectedScenes.first
+//            if let sd : SceneDelegate = (scene?.delegate as? SceneDelegate) {
+//                sd.window!.rootViewController = nav
+//            }
+//        }
         return true
     }
+    
+    
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {

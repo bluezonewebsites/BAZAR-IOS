@@ -18,12 +18,37 @@ protocol PayingPlanDelegate:AnyObject{
     func didPayingSuccess()
     func passPaymentStatus(from PaymentStatus:String,invoiceId:String,invoiceURL:String,userId:Int,planCategoryId:Int)
 }
-class PayingVC: UIViewController {
+class PayingVC: BottomPopupViewController {
+    override func getPopupHeight() -> CGFloat {
+        return 400
+    }
+    
+    override func getPopupTopCornerRadius() -> CGFloat {
+        return 25
+    }
+    
+    override func getPopupPresentDuration() -> Double {
+        0.3
+    }
+    
+    override func getPopupDismissDuration() -> Double {
+        0.3
+    }
+    
+    override func shouldPopupDismissInteractivelty() -> Bool {
+        true
+    }
+    
+    override func getDimmingViewAlpha() -> CGFloat {
+        0.7
+    }
+    
     
     
     
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var payButton: UIButton!
     
     
@@ -45,11 +70,8 @@ class PayingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         MFSettings.shared.delegate = self
-        collectionView.delegate = self
-        collectionView.dataSource = self
         initiatePayment()
         
-        print(prodId)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,9 +80,7 @@ class PayingVC: UIViewController {
     
     // MARK: - Navigation
     @IBAction func didTapBackButton(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
-    }
-    @IBAction func didTapConfirmPayment(_ sender: UIButton) {
+            dismiss(animated: true)
     }
     
     @IBAction func didTapPay(_ sender: UIButton) {
@@ -144,27 +164,7 @@ class PayingVC: UIViewController {
         return request
     }
 }
-extension PayingVC: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let paymentMethods = paymentMethods else {
-            return 0
-        }
-        print(paymentMethods.count)
-        return paymentMethods.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! PaymentMethodCollectionViewCell
-        if let paymentMethods = paymentMethods, !paymentMethods.isEmpty {
-            let selectedIndex = selectedPaymentMethodIndex ?? -1
-            cell.configure(paymentMethod: paymentMethods[indexPath.row], selected: selectedIndex == indexPath.row)
-        }
-        return cell
-    }
-    
-}
+
 
 extension PayingVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -177,6 +177,51 @@ extension PayingVC: UICollectionViewDelegate {
             }
         }
         collectionView.reloadData()
+    }
+}
+
+
+extension PayingVC : UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let paymentMethods = paymentMethods else {
+            return 0
+        }
+        print(paymentMethods.count)
+        return paymentMethods.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentMethodTableViewCell", for: indexPath) as! PaymentMethodTableViewCell
+        if let paymentMethods = paymentMethods, !paymentMethods.isEmpty {
+            let selectedIndex = selectedPaymentMethodIndex ?? -1
+            cell.configure(paymentMethod: paymentMethods[indexPath.row], selected: selectedIndex == indexPath.row)
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPaymentMethodIndex = indexPath.row
+        
+        self.dismiss(animated: false) { [weak self] in
+            guard let self else {return}
+            if let paymentMethods = self.paymentMethods, !paymentMethods.isEmpty {
+                if let selectedIndex = self.selectedPaymentMethodIndex {
+                    
+                    if paymentMethods[selectedIndex].paymentMethodCode == MFPaymentMethodCode.applePay.rawValue {
+                        self.executeApplePayPayment(paymentMethodId: paymentMethods[selectedIndex].paymentMethodId)
+                    } else if paymentMethods[selectedIndex].isDirectPayment {
+                        self.executeDirectPayment(paymentMethodId: paymentMethods[selectedIndex].paymentMethodId)
+                    } else {
+                        self.executePayment(paymentMethodId: paymentMethods[selectedIndex].paymentMethodId)
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
 
@@ -227,7 +272,7 @@ extension PayingVC{
             switch result {
             case .success(let initiatePaymentResponse):
                 self?.paymentMethods = initiatePaymentResponse.paymentMethods
-                self?.collectionView.reloadData()
+                self?.tableView.reloadData()
             case .failure(let failError):
                 print(failError)
             }

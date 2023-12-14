@@ -638,7 +638,7 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
                         }
                     }
                         
-                        self.navigationController?.pushViewController(vc, animated: true)
+                    self.present(vc, animated: true)
                     }else {
                         self.goToSuccessfullAddAd()
                     }

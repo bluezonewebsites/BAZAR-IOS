@@ -126,7 +126,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="j1b-cL-HQv">
                                                 <rect key="frame" x="0.0" y="0.0" width="121" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ads" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwV-c9-HU9">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ads " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bwV-c9-HU9">
                                                         <rect key="frame" x="0.0" y="0.0" width="121" height="48"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" name="#0093F5"/>
@@ -671,7 +671,7 @@
         <scene sceneID="lJ6-ul-EL3">
             <objects>
                 <viewController id="36G-qn-hC4" customClass="SearchPersonViewController" customModule="NewBazar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="XSB-Tw-4A2">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="XSB-Tw-4A2">
                         <rect key="frame" x="0.0" y="0.0" width="363" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -887,18 +887,18 @@
                                     </tableView>
                                 </subviews>
                             </stackView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="rnl-qM-ieY">
-                                <rect key="frame" x="30" y="-80.666666666666671" width="303" height="161.33333333333334"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="rnl-qM-ieY">
+                                <rect key="frame" x="30" y="-80.666666666666671" width="303" height="161"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noMessagesImage" translatesAutoresizingMaskIntoConstraints="NO" id="JqE-2M-4z6">
-                                        <rect key="frame" x="101.66666666666666" y="0.0" width="100" height="100.33333333333333"/>
+                                        <rect key="frame" x="101.66666666666666" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="L05-Uk-5Bf"/>
                                             <constraint firstAttribute="height" constant="100" id="x1d-c8-2B7"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="x3s-Vr-kLB">
-                                        <rect key="frame" x="20.333333333333343" y="130.33333333333334" width="262.33333333333326" height="31"/>
+                                        <rect key="frame" x="20.333333333333343" y="130" width="262.33333333333326" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no matching results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y3m-8D-be0">
                                                 <rect key="frame" x="52.999999999999986" y="0.0" width="156.66666666666663" height="13.333333333333334"/>
@@ -944,7 +944,7 @@
         <scene sceneID="gft-uc-DMU">
             <objects>
                 <viewController id="LcA-lJ-kX0" customClass="SearchAskViewController" customModule="NewBazar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9HY-cU-EEe">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="9HY-cU-EEe">
                         <rect key="frame" x="0.0" y="0.0" width="363" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1007,18 +1007,18 @@
                                     </collectionView>
                                 </subviews>
                             </stackView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="KAh-BE-C4N">
-                                <rect key="frame" x="30" y="-80.666666666666671" width="303" height="161.33333333333334"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="KAh-BE-C4N">
+                                <rect key="frame" x="30" y="-80.666666666666671" width="303" height="161"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noMessagesImage" translatesAutoresizingMaskIntoConstraints="NO" id="xBN-eN-GnR">
-                                        <rect key="frame" x="101.66666666666666" y="0.0" width="100" height="100.33333333333333"/>
+                                        <rect key="frame" x="101.66666666666666" y="0.0" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="65E-uE-5gH"/>
                                             <constraint firstAttribute="height" constant="100" id="CgK-Y2-kyM"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ab7-zZ-8ab">
-                                        <rect key="frame" x="20.333333333333343" y="130.33333333333334" width="262.33333333333326" height="31"/>
+                                        <rect key="frame" x="20.333333333333343" y="130" width="262.33333333333326" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no matching results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEj-Js-S4S">
                                                 <rect key="frame" x="52.999999999999986" y="0.0" width="156.66666666666663" height="13.333333333333334"/>
@@ -3084,13 +3084,13 @@ bztxO3NNE00YTSVNKE01TTpNQk1FTUpNUgAAAAAAAAIBAAAAAAAAAGgAAAAAAAAAAAAAAAAAAE1VA
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGrayColor">
-            <color red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

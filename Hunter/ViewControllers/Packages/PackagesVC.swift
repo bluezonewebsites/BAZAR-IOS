@@ -331,7 +331,8 @@ class PackagesVC: UIViewController {
         vc.isFeaturedAd = false
         vc.amountDue = planCost
         vc.planCategoryId = categoryPlanId
-        self.navigationController?.pushViewController(vc, animated: true)
+        vc.modalPresentationStyle = .custom
+        self.present(vc, animated: true)
     }
     
     

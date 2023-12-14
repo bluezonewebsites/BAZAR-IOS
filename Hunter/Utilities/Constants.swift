@@ -98,7 +98,8 @@ enum AdType {
 //Constants
 
 class Constants {
-    static let MAIN_DOMAIN = "https://bazar.bluezone-web.com/"
+    
+    static let MAIN_DOMAIN = "https://bazar-kw.com/"
     static var API_KEY:String = "AIzaSyDrkcLvUTdoNRekyjFnGrDyD8D9XMJggpI"
 
     static let DOMAIN = MAIN_DOMAIN + "api/"

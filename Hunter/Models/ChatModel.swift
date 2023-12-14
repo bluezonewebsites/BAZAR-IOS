@@ -133,15 +133,15 @@ struct ChatMessageUser: Codable {
 // MARK: - MessageSuccessfulModel
 struct MessageSuccessfulModel: Codable {
     let message: String?
-    let data: MessageDataModel?
+    let data: [MessageDataModel]?
     let success: Bool?
 }
 
 // MARK: - DataClass
 struct MessageDataModel: Codable {
-    let rid: String?
+    let roomID,rid: Int?
     let sid: Int?
-    let roomID, msg, mtype, image: String?
+    let msg, mtype, image: String?
     let createdAt: String?
     let id: Int?
 

@@ -24,42 +24,20 @@ class AboutVC: ViewController {
         super.viewDidLoad()
 
         fetchData()
-      //  let params : [String: Any]  = ["method":"help"]
-        
-//        AF.request(url, method: .post, encoding:URLEncoding.httpBody , headers: Constants.headerProd)
-//            .responseDecodable(of:AboutSuccessModel.self) { response in
-//                switch response.result {
-//                case .success(let data):
-//                    if MOLHLanguage.currentAppleLanguage() == "en" {
-//                        var condsText = data.data?.descriptionEn
-//                        // Remove multiple consecutive whitespace characters
-//                        print(data.data?[0].conds_en)
-//                        condsText = condsText?.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
-//                        condsText = condsText?.replacingOccurrences(of: "\r\n\r\n", with: "\n")
-//                        print(condsText)
-//                        self.lblData.text = condsText
-//                    }else {
-//                        var condsText = data.data?[0].conds.replacingOccurrences(of: "\t", with: " ") // Replace tabs with spaces
-//                        condsText = condsText?.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
-//                           condsText = condsText?.replacingOccurrences(of: "\r\n", with: "\n")
-//                        print(condsText)
-//                           self.lblData.text = condsText
-//
-//                    }
-//                    if MOLHLanguage.currentAppleLanguage() == "en" {
-//                        self.lblData.text = self.condsTextEn
-//                    }else{
-//                        
-//                        self.lblData.text = self.condsTextAR
-//                    }
-//                    self.lblData.setLineSpacing(lineSpacing: 1, lineHeightMultiple: 1.5)
-//                    self.shight.constant = self.heightForLabel(self.lblData.text!, self.cscroll.frame.width - 40,self.lblData!.font) + 100
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//
-//               }
         }
+
+    func convertHTMLStringToAttributedString(htmlString: String) -> NSAttributedString? {
+        guard let data = htmlString.data(using: .utf8) else {
+            return nil
+        }
+
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+
+        return try? NSAttributedString(data: data, options: options, documentAttributes: nil)
+    }
 
     func fetchData() {
         guard let url = URL(string:Constants.DOMAIN+"about") else {return}
@@ -79,10 +57,24 @@ class AboutVC: ViewController {
         }
     }
     func updateLabel(_ text: String) {
-        DispatchQueue.main.async {
-            self.lblData.text = text
-            self.lblData.setLineSpacing(lineSpacing: 1, lineHeightMultiple: 1.5)
-            self.shight.constant = self.heightForLabel(self.lblData.text!, self.cscroll.frame.width - 40,self.lblData!.font) + 100
+        DispatchQueue.main.async {[weak self] in
+            guard let self else {return}
+            if let attributedString = convertHTMLStringToAttributedString(htmlString: text) {
+                lblData.attributedText = attributedString
+                lblData.numberOfLines = 0
+                lblData.lineBreakMode = .byWordWrapping
+                lblData.font = .systemFont(ofSize: 18)
+                lblData.sizeToFit()
+
+                let contentSizeHeight = self.lblData.frame.size.height + 100 // Add padding if needed
+                self.shight.constant = contentSizeHeight
+
+               // self.shight.constant = self.heightForLabel(self.lblData.text!, self.cscroll.frame.width - 40,self.lblData!.font)
+            }
+
+//            self.lblData.text = text
+//            self.lblData.setLineSpacing(lineSpacing: 1, lineHeightMultiple: 1.5)
+//            self.shight.constant = self.heightForLabel(self.lblData.text!, self.cscroll.frame.width - 40,self.lblData!.font) + 100
         }
     }
 

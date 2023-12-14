@@ -10,7 +10,7 @@
 import UIKit
 import MFSDK
 
-class PaymentMethodCollectionViewCell: UICollectionViewCell {
+class PaymentMethodTableViewCell: UITableViewCell {
     //MARK: Variables
     
     //MARK: Outlets

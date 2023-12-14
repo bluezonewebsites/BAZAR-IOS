@@ -266,7 +266,7 @@ extension MyAdsVC:MyAdsCollectionViewCellDelegate {
             }
                 
                 vc.prodId = products[indexPath.row].id.safeValue
-                self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true)
             
         }else {
             shareContent(text:Constants.DOMAIN + "\(products[indexPath.row].id ?? 0)")

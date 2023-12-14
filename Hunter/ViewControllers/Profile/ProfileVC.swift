@@ -22,6 +22,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak private var followingsCountLabel: UILabel!
     @IBOutlet weak private var locationLabel: UILabel!
     
+    @IBOutlet weak var verifiedImageView: UIImageView!
     @IBOutlet weak var countOfFreeAds: UILabel!
     @IBOutlet weak private var myAdsCollectionView: UICollectionView!
     
@@ -82,7 +83,9 @@ class ProfileVC: UIViewController {
     
     private func bindProfileData(from profileModel:User){
         Constants.countPaidAds = profileModel.availableAdsCountUserInCurrentMonth ?? 0
-
+        
+        verifiedImageView.isHidden = profileModel.verified.safeValue == 1 ? false : true
+        
         if let cover =  profileModel.cover {
             if cover.contains(".png") || cover.contains(".jpg"){
 //                coverImageView.setImageWithLoading(url:profileModel.cover ?? "" )

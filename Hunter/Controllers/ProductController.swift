@@ -22,7 +22,7 @@ class ProductController{
             param["cat_id"] = categoryId
         }
         
-        if categoryId == 1 && sell != nil{
+        if sell != nil{
             guard let sell = sell else{return}
             param["tajeer_or_sell"] = sell
         }

@@ -808,10 +808,14 @@ class ChatVC: ViewController,UITableViewDataSource,UITableViewDelegate,
                 if msgType.contains("IMAGE"){
                     //let imageData = image.jpegData(compressionQuality: 0.2)!
                    // params["mtype[]"] = msgType
-                    for image in images {
-                        let index = UUID().uuidString
-                        multipartFormData.append(image, withName: "images[]",fileName: "file\(index).jpg", mimeType: "image/jpg")
-                    }
+                    for (index, image) in images.enumerated() {
+                                
+                                    multipartFormData.append(image, withName: "images[\(index)]",fileName: "image\(index).jpg", mimeType: "image/jpg")
+                            }
+//                    for image in images {
+//                        let index = UUID().uuidString
+//                        multipartFormData.append(image, withName: "images[]",fileName: "file\(index).jpg", mimeType: "image/jpg")
+//                    }
                    
                 }else if msgType.contains("VIDEO"){
                     //params["mtype[]"] = msgType

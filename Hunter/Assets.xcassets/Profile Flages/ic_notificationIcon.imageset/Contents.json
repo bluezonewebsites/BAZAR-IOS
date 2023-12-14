@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "ic_notificationIcon.png",
+      "filename" : "icons8-notification-bell-24(@1×).png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icons8-notification-bell-48(@2×).png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icons8-notification-bell-72(@3×).png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -39,6 +39,7 @@ class UserBlockedTableViewCell: UITableViewCell {
             self.cImageView.setImageWithLoadingFromMainDomain(url:user.pic ?? "" )
         }
         cNameLbl.text = user.name.safeValue
+        locationLabel.text = ""
     }
 
 }

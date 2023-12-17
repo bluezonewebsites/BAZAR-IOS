@@ -1307,7 +1307,7 @@ extension AddAdvsVC:PayingDelegate{
         PayingController.shared.callBackFeaturedAds(completion: { [weak self] payment, check, message in
             guard let self else {return}
             if check == 0{
-                print(message)
+                print("ADS Paid Successfully",message)
                 goToSuccessfullAddAd()
             }else{
                 print(message)

@@ -202,8 +202,8 @@ extension PayingVC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPaymentMethodIndex = indexPath.row
         
-        self.dismiss(animated: false) { [weak self] in
-            guard let self else {return}
+//        self.dismiss(animated: false) { [weak self] in
+//            guard let self else {return}
             if let paymentMethods = self.paymentMethods, !paymentMethods.isEmpty {
                 if let selectedIndex = self.selectedPaymentMethodIndex {
                     
@@ -216,7 +216,7 @@ extension PayingVC : UITableViewDelegate,UITableViewDataSource{
                     }
                 }
             }
-        }
+//        }
         
     }
     
@@ -249,11 +249,24 @@ extension PayingVC{
                    
                     if invoiceStatus == "Paid"{
                         if isFeaturedAd {
-                        
-                            delegate?.passPaymentStatus(from: executePaymentResponse.invoiceStatus ?? "", invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "----------", prodId:prodId)
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true) {[weak self] in
+                                    guard let self else {return}
+                                    delegate?.passPaymentStatus(from: executePaymentResponse.invoiceStatus ?? "", invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "----------", prodId:prodId)
+                                }
+                            }
+                            
+                            
                         }else {
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true) {[weak self] in
+                                    guard let self else {return}
+                                    planDelegate?.passPaymentStatus(from: executePaymentResponse.invoiceStatus ?? "", invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "----------", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
+                                    
+                                }
+                            }
     //                            planDelegate?.didPayingSuccess()
-                            planDelegate?.passPaymentStatus(from: executePaymentResponse.invoiceStatus ?? "", invoiceId: "\(executePaymentResponse.invoiceID ?? 0)", invoiceURL: "----------", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
+                            
                         }
                     }else{
                         StaticFunctions.createInfoAlert(msg: invoiceStatus)

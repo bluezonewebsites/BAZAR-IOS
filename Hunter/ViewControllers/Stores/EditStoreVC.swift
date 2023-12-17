@@ -115,7 +115,7 @@ class EditStoreVC: UIViewController {
             self.cityName = name
             self.getAreas()
         }
-        self.present(vc, animated: false, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func didTapChooseRegionButton(_ sender: UIButton) {

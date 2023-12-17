@@ -182,7 +182,7 @@ class StoresVC: UIViewController {
 //            self.resetProducts()
 //            self.getData()
         }
-        self.present(coountryVC, animated: false, completion: nil)
+        self.present(coountryVC, animated: true, completion: nil)
     }
     
     

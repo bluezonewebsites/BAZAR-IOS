@@ -8,7 +8,7 @@
 import UIKit
 import MOLH
 
-class CounriesViewController: UIViewController {
+class CounriesViewController: BottomPopupViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var counties = [Country]()
@@ -24,8 +24,34 @@ class CounriesViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    override func getPopupHeight() -> CGFloat {
+        return 500
+    }
+    
+    override func getPopupTopCornerRadius() -> CGFloat {
+        return 25
+    }
+    
+    override func getPopupPresentDuration() -> Double {
+        0.2
+    }
+    
+    override func getPopupDismissDuration() -> Double {
+        0.2
+    }
+    
+    override func shouldPopupDismissInteractivelty() -> Bool {
+        true
+    }
+    
+    override func getDimmingViewAlpha() -> CGFloat {
+        0.7
+    }
+   
+    
     @IBAction func closeAction(_ sender: Any) {
-        self.dismiss(animated: false)
+        self.dismiss(animated: true)
     }
     
     /*

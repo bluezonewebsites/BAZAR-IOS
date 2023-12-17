@@ -52,7 +52,7 @@ class CityViewController: UIViewController {
                 self.cityLbl.text = name
                 self.cityName = name
             }
-            self.present(vc, animated: false, completion: nil)
+            self.present(vc, animated: true, completion: nil)
             
 //        }
 //    )

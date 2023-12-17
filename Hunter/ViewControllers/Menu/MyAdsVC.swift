@@ -153,7 +153,7 @@ extension MyAdsVC : UICollectionViewDelegate,UICollectionViewDataSource , UIColl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let myAdCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as? MyAdsCollectionViewCell else{return UICollectionViewCell()}
         myAdCell.delegate = self
@@ -246,7 +246,7 @@ extension MyAdsVC:MyAdsCollectionViewCellDelegate {
             }
             
             vc.prodId = products[indexPath.row].id.safeValue
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.present(vc, animated: true)
         }else if products[indexPath.row].status == "finished" {
             //TODO: Repost Ads
             self.productId = products[indexPath.item].id ?? 0
@@ -352,7 +352,7 @@ extension MyAdsVC:PayingDelegate {
         PayingController.shared.callBackFeaturedAds(completion: { [weak self] payment, check, message in
             guard let self else {return}
             if check == 0{
-                print(message)
+                print("ADS Paid Successfully",message)
                 if isRepostProduct {
                     //wehen back form repay finishing ads
                     repostAds(with: productId)

@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
             
             self.enableButton()
         }
-        self.present(coountryVC, animated: false, completion: nil)
+        self.present(coountryVC, animated: true, completion: nil)
     }
     
     @IBAction func showPasswordAction(_ sender: UIButton) {

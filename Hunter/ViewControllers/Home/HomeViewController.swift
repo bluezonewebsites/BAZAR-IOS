@@ -227,7 +227,7 @@ class HomeViewController: UIViewController {
             self.getFeatureData()
             
         }
-        self.present(coountryVC, animated: false, completion: nil)
+        self.present(coountryVC, animated: true, completion: nil)
     }
     
     @objc func chooseCategory(_ notification: NSNotification) {

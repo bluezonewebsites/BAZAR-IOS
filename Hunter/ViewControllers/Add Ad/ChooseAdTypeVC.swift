@@ -30,11 +30,11 @@ class ChooseAdTypeVC: UIViewController {
         super.viewDidLoad()
 
         if AppDelegate.currentUser.isStore ?? false {
-            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceFeaturedAds) " + "D.K".localize
-            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceNormalAds) " + "D.K".localize
+            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceFeaturedAds ?? 0.0) " + "D.K".localize
+            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceNormalAds ?? 0.0) " + "D.K".localize
         }else {
-            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceNormalAds) " + "D.K".localize
-            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceFeaturedAds) " + "D.K".localize
+            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceNormalAds ?? 0.0) " + "D.K".localize
+            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceFeaturedAds ?? 0.0) " + "D.K".localize
 
         }
         

@@ -357,7 +357,7 @@ class HomeDetailsViewController: UIViewController {
             self.getData()
             
         }
-        self.present(coountryVC, animated: false, completion: nil)
+        self.present(coountryVC, animated: true, completion: nil)
     }
     @IBAction func goLogin(_ sender: Any) {
         //        basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")

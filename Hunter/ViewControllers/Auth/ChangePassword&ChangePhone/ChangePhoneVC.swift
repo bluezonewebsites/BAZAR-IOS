@@ -139,7 +139,7 @@ class ChangePhoneVC:UIViewController, UITextFieldDelegate{
             self.img_flag.setImageWithLoading(url: country.image ??
                                               "")
         }
-        self.present(coountryVC, animated: false, completion: nil)
+        self.present(coountryVC, animated: true, completion: nil)
     }
     
     @IBAction func go(_ sender: Any) {

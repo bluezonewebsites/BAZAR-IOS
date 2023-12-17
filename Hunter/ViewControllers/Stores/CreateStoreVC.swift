@@ -213,7 +213,7 @@ class CreateStoreVC: UIViewController {
             self.countryNameButton.setTitle(self.countryName, for: .normal)
             self.countryId = country.id ?? 6
         }
-        self.present(coountryVC, animated: false, completion: nil)
+        self.present(coountryVC, animated: true, completion: nil)
     }
     
     @IBAction func didTapShowPasswordButton(_ sender: UIButton) {

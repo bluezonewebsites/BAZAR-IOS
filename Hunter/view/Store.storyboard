@@ -2633,10 +2633,10 @@ To get free ads</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="08O-Ck-7oc" userLabel="Cover">
-                                <rect key="frame" x="0.0" y="0.0" width="393.33333333333331" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="270"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kR5-Kq-jKH">
-                                        <rect key="frame" x="0.0" y="0.0" width="393.33333333333331" height="270"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="270"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="270" id="MIz-Kq-GXs"/>
                                         </constraints>
@@ -2661,7 +2661,7 @@ To get free ads</string>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntg-jy-czY">
-                                        <rect key="frame" x="318.33333333333331" y="50" width="55" height="200"/>
+                                        <rect key="frame" x="318" y="50" width="55" height="200"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FME-gY-Fpp">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="200"/>
@@ -2855,19 +2855,19 @@ To get free ads</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="vrI-s8-TLB">
-                                <rect key="frame" x="0.0" y="320" width="393.33333333333331" height="498"/>
+                                <rect key="frame" x="0.0" y="320" width="393" height="498"/>
                                 <subviews>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6f-8f-epB">
-                                        <rect key="frame" x="0.0" y="0.0" width="393.33333333333331" height="922.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="922.66666666666663"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="KzO-d7-TPF">
-                                                <rect key="frame" x="15" y="10" width="363.33333333333331" height="84.666666666666671"/>
+                                                <rect key="frame" x="15" y="10" width="363" height="84.666666666666671"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="X3h-4c-VTV">
-                                                        <rect key="frame" x="0.0" y="0.0" width="363.33333333333331" height="45.666666666666664"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="363" height="45.666666666666664"/>
                                                         <subviews>
                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SuN-wU-9u5">
-                                                                <rect key="frame" x="0.0" y="0.0" width="363.33333333333331" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="363" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="30" id="zmw-cL-rxT"/>
                                                                 </constraints>
@@ -2876,7 +2876,7 @@ To get free ads</string>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQ8-zy-CIe">
-                                                                <rect key="frame" x="0.0" y="30.000000000000004" width="363.33333333333331" height="15.666666666666668"/>
+                                                                <rect key="frame" x="0.0" y="30.000000000000004" width="363" height="15.666666666666668"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                 <color key="textColor" name="#0093F5"/>
                                                                 <nil key="highlightedColor"/>
@@ -2884,7 +2884,7 @@ To get free ads</string>
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="----" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Nyq-dJ-svG">
-                                                        <rect key="frame" x="0.0" y="60.666666666666686" width="363.33333333333331" height="24"/>
+                                                        <rect key="frame" x="0.0" y="60.666666666666686" width="363" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <color key="textColor" name="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -2892,10 +2892,10 @@ To get free ads</string>
                                                 </subviews>
                                             </stackView>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqM-WW-UvQ">
-                                                <rect key="frame" x="0.0" y="199.66666666666663" width="393.33333333333331" height="90"/>
+                                                <rect key="frame" x="0.0" y="199.66666666666663" width="393" height="90"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-rh-1Nv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="393.33333333333331" height="90"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="90"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSk-DR-vnB">
                                                                 <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="90"/>
@@ -2999,19 +2999,19 @@ To get free ads</string>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdA-HD-ak6">
-                                                                <rect key="frame" x="196.66666666666666" y="0.0" width="98.333333333333343" height="90"/>
+                                                                <rect key="frame" x="196.66666666666666" y="0.0" width="97.999999999999972" height="90"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="NFk-hw-1Uu">
-                                                                        <rect key="frame" x="0.0" y="10" width="98.333333333333329" height="80"/>
+                                                                        <rect key="frame" x="0.0" y="10" width="98" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0X7-Ib-h3V">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="42.666666666666664"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="98" height="42.666666666666664"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                                 <color key="textColor" name="#0093F5"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ0-tX-Z38">
-                                                                                <rect key="frame" x="0.0" y="37.666666666666742" width="98.333333333333329" height="42.333333333333343"/>
+                                                                                <rect key="frame" x="0.0" y="37.666666666666742" width="98" height="42.333333333333343"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -3022,14 +3022,14 @@ To get free ads</string>
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q8T-Ic-UEE">
-                                                                        <rect key="frame" x="97.333333333333343" y="12" width="1" height="66"/>
+                                                                        <rect key="frame" x="97.000000000000028" y="12" width="1" height="66"/>
                                                                         <color key="backgroundColor" red="0.80784313730000001" green="0.83137254900000002" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="1" id="J8E-Sl-6pU"/>
                                                                         </constraints>
                                                                     </view>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1n-Sf-4Mx">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="90"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="90"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                         <connections>
                                                                             <action selector="didTapFollowersButton:" destination="GKQ-C2-D3L" eventType="touchUpInside" id="Hog-gF-06k"/>
@@ -3051,7 +3051,7 @@ To get free ads</string>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b53-So-dmF">
-                                                                <rect key="frame" x="295" y="0.0" width="98.333333333333314" height="90"/>
+                                                                <rect key="frame" x="294.66666666666669" y="0.0" width="98.333333333333314" height="90"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="O5S-dI-A10">
                                                                         <rect key="frame" x="0.0" y="10" width="98.333333333333329" height="80"/>
@@ -3132,7 +3132,7 @@ To get free ads</string>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1kk-u4-Wbp">
-                                                <rect key="frame" x="5" y="437.66666666666663" width="383.33333333333331" height="485"/>
+                                                <rect key="frame" x="5" y="437.66666666666663" width="383" height="485"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="485" id="8lc-tj-rQs"/>
@@ -3186,7 +3186,7 @@ To get free ads</string>
                                                                                             </userDefinedRuntimeAttributes>
                                                                                         </imageView>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qW2-sj-VdJ" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                            <rect key="frame" x="265.66666666666669" y="2.6666666666666661" width="44.333333333333314" height="20"/>
+                                                                                            <rect key="frame" x="255.66666666666666" y="2.6666666666666661" width="54.333333333333343" height="20"/>
                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="height" constant="20" id="ckU-Y2-iXz"/>
@@ -3401,7 +3401,7 @@ To get free ads</string>
                                                 </connections>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="FsW-Wf-skS">
-                                                <rect key="frame" x="8" y="110.66666666666669" width="377.33333333333331" height="73"/>
+                                                <rect key="frame" x="8" y="110.66666666666669" width="377" height="73"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Cqa-Ll-Qo7">
                                                         <rect key="frame" x="21" y="0.0" width="335.33333333333331" height="16"/>
@@ -3525,10 +3525,10 @@ To get free ads</string>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="G0E-SJ-UYw">
-                                                <rect key="frame" x="12" y="305.66666666666663" width="369.33333333333331" height="116"/>
+                                                <rect key="frame" x="12" y="305.66666666666663" width="369" height="116"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMX-Ny-ojf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="369.33333333333331" height="55"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="369" height="55"/>
                                                         <color key="backgroundColor" name="#0093F5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="SZh-ly-Mwe"/>
@@ -3547,7 +3547,7 @@ To get free ads</string>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QVa-wg-i9n">
-                                                        <rect key="frame" x="0.0" y="71" width="369.33333333333331" height="45"/>
+                                                        <rect key="frame" x="0.0" y="71" width="369" height="45"/>
                                                         <subviews>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4r-Pn-S13">
                                                                 <rect key="frame" x="0.0" y="0.0" width="0.0" height="34"/>
@@ -3947,7 +3947,7 @@ To get free ads</string>
             <size key="intrinsicContentSize" width="74" height="34"/>
         </designable>
         <designable name="qW2-sj-VdJ">
-            <size key="intrinsicContentSize" width="44.333333333333336" height="12"/>
+            <size key="intrinsicContentSize" width="54.333333333333336" height="14"/>
         </designable>
         <designable name="smX-qH-VKy">
             <size key="intrinsicContentSize" width="65" height="33"/>
@@ -3980,7 +3980,7 @@ To get free ads</string>
         <image name="instagramSocial" width="23" height="23"/>
         <image name="instgramImage" width="41" height="41"/>
         <image name="locationSocial" width="19" height="26.333333969116211"/>
-        <image name="notificationImage" width="70" height="70"/>
+        <image name="notificationImage" width="48" height="48"/>
         <image name="passwordIcon" width="35" height="35"/>
         <image name="phone2" width="64" height="64"/>
         <image name="phoneIcon" width="35" height="35"/>

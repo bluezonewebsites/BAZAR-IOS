@@ -39,7 +39,7 @@ class ForgetPasswordViewController: UIViewController {
 
                 self.enableButton()
             }
-            self.present(coountryVC, animated: false, completion: nil)
+            self.present(coountryVC, animated: true, completion: nil)
         
     }
     @objc func textDidChange(_ notification: Notification){

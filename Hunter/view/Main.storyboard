@@ -756,7 +756,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="H35-Wu-JvB"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bBn-WQ-Beq" firstAttribute="leading" secondItem="C83-ka-WQE" secondAttribute="leading" id="7Yf-1s-8os"/>
                             <constraint firstAttribute="trailing" secondItem="bBn-WQ-Beq" secondAttribute="trailing" id="Bla-39-Jlr"/>
@@ -896,7 +896,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Q3D-Un-bSN"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="dBq-bm-XVN" secondAttribute="trailing" id="49u-v9-3KR"/>
                             <constraint firstItem="dBq-bm-XVN" firstAttribute="leading" secondItem="YWG-O8-h1Z" secondAttribute="leading" id="gKR-SA-nVM"/>

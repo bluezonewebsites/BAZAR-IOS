@@ -70,7 +70,7 @@ class RegisterViewController: UIViewController {
 
             self.enableButton()
         }
-        self.present(coountryVC, animated: false, completion: nil)
+        self.present(coountryVC, animated: true, completion: nil)
     }
     @objc func textDidChange(_ notification: Notification){
         enableButton()
@@ -130,7 +130,7 @@ class RegisterViewController: UIViewController {
             self.getAreas()
             self.enableButton()
         }
-        self.present(vc, animated: false, completion: nil)
+        self.present(vc, animated: true, completion: nil)
     }
     @IBAction func choosRegionNameAction(_ sender: Any) {
         if cityId == -1{

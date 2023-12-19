@@ -118,7 +118,7 @@ struct Product: Codable{
         case userLastName = "user_last_name"
         case userPic = "user_pic"
         case adType = "ad_type"
-//        case userVerified = "user_verified"
+        case userVerified = "user_verified"
         case countryNameAr = "countries_name_ar"
         case countryNameEn = "countries_name_en"
         case currencyAr = "countries_currency_ar"

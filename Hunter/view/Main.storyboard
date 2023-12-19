@@ -1140,16 +1140,16 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="G13-6Z-cdy">
-                                                    <rect key="frame" x="354" y="35" width="20" height="45.333333333333343"/>
+                                                    <rect key="frame" x="324" y="35" width="50" height="45.333333333333343"/>
                                                     <subviews>
                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwQ-9E-3CN">
-                                                            <rect key="frame" x="7.6666666666666856" y="0.0" width="5" height="14.333333333333334"/>
+                                                            <rect key="frame" x="22.666666666666686" y="0.0" width="5" height="14.333333333333334"/>
                                                             <fontDescription key="fontDescription" name="Tajawal-Medium" family="Tajawal Medium" pointSize="12.300000190734863"/>
                                                             <color key="textColor" red="0.55394845950000005" green="0.58950815570000004" blue="0.61315293029999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCs-24-oAO" customClass="EdgeInsetLabel" customModule="NewBazar" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="25.333333333333336" width="20" height="20"/>
+                                                            <rect key="frame" x="0.0" y="25.333333333333336" width="50" height="20"/>
                                                             <color key="backgroundColor" red="0.2666666667" green="0.2901960784" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="mwT-Vt-EhQ"/>
@@ -1959,7 +1959,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7a9-pq-9rC" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="43.333333333333336" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="33.333333333333336" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="ju5-h7-UrJ"/>
@@ -2528,7 +2528,7 @@
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="394" height="76.666666666666671"/>
                                                                                                     <subviews>
                                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lTp-zc-9tw">
-                                                                                                            <rect key="frame" x="51.333333333333336" y="0.0" width="2" height="2"/>
+                                                                                                            <rect key="frame" x="41.333333333333336" y="0.0" width="2" height="2"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="2" id="FH5-bZ-gqb"/>
                                                                                                                 <constraint firstAttribute="width" constant="2" id="dtJ-dN-gcn"/>
@@ -2554,7 +2554,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erc-hc-FtG" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="43.333333333333336" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="33.333333333333336" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="hT9-Cm-kb9"/>
@@ -2654,10 +2654,10 @@
                                                                                                                     <rect key="frame" x="0.0" y="87.333333333333329" width="374" height="16"/>
                                                                                                                     <subviews>
                                                                                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="B7Z-Al-hJk">
-                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="47" height="16"/>
+                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="49" height="16"/>
                                                                                                                             <subviews>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user3" translatesAutoresizingMaskIntoConstraints="NO" id="h8W-Pr-qvS">
-                                                                                                                                    <rect key="frame" x="0.0" y="0.66666666666665719" width="10" height="15"/>
+                                                                                                                                    <rect key="frame" x="0.0" y="0.66666666666665719" width="12" height="15"/>
                                                                                                                                     <color key="tintColor" name="#0093F5"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="width" constant="12" id="4UG-4p-I2u"/>
@@ -2665,7 +2665,7 @@
                                                                                                                                     </constraints>
                                                                                                                                 </imageView>
                                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkY-NO-GrC">
-                                                                                                                                    <rect key="frame" x="18" y="1.3333333333333437" width="5.3333333333333321" height="13.333333333333336"/>
+                                                                                                                                    <rect key="frame" x="20" y="1.3333333333333437" width="5.3333333333333321" height="13.333333333333336"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="width" constant="100" id="uRv-ca-cc9"/>
                                                                                                                                     </constraints>
@@ -2674,7 +2674,7 @@
                                                                                                                                     <nil key="highlightedColor"/>
                                                                                                                                 </label>
                                                                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:837-14-u4B:image" translatesAutoresizingMaskIntoConstraints="NO" id="2mI-MP-IlB">
-                                                                                                                                    <rect key="frame" x="31.333333333333339" y="0.66666666666665719" width="15.666666666666661" height="15"/>
+                                                                                                                                    <rect key="frame" x="33.333333333333329" y="0.66666666666665719" width="15.666666666666671" height="15"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="height" constant="15" id="ZXS-AB-304"/>
                                                                                                                                         <constraint firstAttribute="width" constant="15" id="ygn-IL-uwi"/>
@@ -2683,17 +2683,17 @@
                                                                                                                             </subviews>
                                                                                                                         </stackView>
                                                                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="88N-8s-Pe1">
-                                                                                                                            <rect key="frame" x="279" y="0.0" width="95" height="16"/>
+                                                                                                                            <rect key="frame" x="287" y="0.0" width="87" height="16"/>
                                                                                                                             <subviews>
-                                                                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="place_black_24dp-gray" translatesAutoresizingMaskIntoConstraints="NO" id="KqS-ue-ANP">
-                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                                                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="place_black_24dp-gray" translatesAutoresizingMaskIntoConstraints="NO" id="KqS-ue-ANP">
+                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="8" height="16"/>
                                                                                                                                     <constraints>
                                                                                                                                         <constraint firstAttribute="height" constant="16" id="Fhx-XG-NAB"/>
                                                                                                                                         <constraint firstAttribute="width" constant="16" id="tiW-Yy-TAw"/>
                                                                                                                                     </constraints>
                                                                                                                                 </imageView>
-                                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Egypt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="TET-tK-thE">
-                                                                                                                                    <rect key="frame" x="24" y="0.0" width="71" height="16"/>
+                                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Egypt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="TET-tK-thE">
+                                                                                                                                    <rect key="frame" x="16" y="0.0" width="71" height="16"/>
                                                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                                                                     <color key="textColor" name="textColor"/>
                                                                                                                                     <nil key="highlightedColor"/>
@@ -4538,7 +4538,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dt-Ep-aZa" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="46" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="36" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="wRb-pN-L2J"/>
@@ -5097,7 +5097,7 @@
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:45 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z0-nT-fwf" customClass="PaddingLabel" customModule="NewBazar" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="43.333333333333336" height="19.999999999999993"/>
+                                                                                                            <rect key="frame" x="8" y="51.666666666666664" width="33.333333333333336" height="19.999999999999993"/>
                                                                                                             <color key="backgroundColor" name="#E2E1E1"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="qJn-7f-wso"/>
@@ -5451,9 +5451,7 @@
         <designable name="7z0-nT-fwf">
             <size key="intrinsicContentSize" width="43.333333333333336" height="16.333333333333336"/>
         </designable>
-        <designable name="FCs-24-oAO">
-            <size key="intrinsicContentSize" width="20" height="13"/>
-        </designable>
+        <designable name="FCs-24-oAO"/>
         <designable name="MUI-H5-TZT">
             <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>

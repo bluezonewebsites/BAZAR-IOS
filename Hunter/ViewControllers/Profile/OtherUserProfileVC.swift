@@ -4,14 +4,20 @@
     //
     //  Created by iOSayed on 01/05/2023.
     //
-
-    import UIKit
-    import Alamofire
-    import MOLH
+import UIKit
+import Alamofire
+import MOLH
 import TransitionButton
+import FirebaseAuth
+import FirebaseDynamicLinks
 
     class OtherUserProfileVC: UIViewController {
 
+        
+        static func instantiate()-> OtherUserProfileVC{
+            let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "OtherUserProfileVC") as! OtherUserProfileVC
+            return profileVC
+        }
         //MARK: IBOutlets
         
         @IBOutlet weak var scrollView: UIScrollView!
@@ -128,13 +134,46 @@ import TransitionButton
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name("UserIDNotification"), object: nil)
         }
         
+        
+        private func shareProfile(){
+            guard let link = URL(string: "https://www.bazar-kw.com/profile/?profile_id=" + "\(OtherUserId)") else { return }
+                    let dynamicLinksDomainURIPrefix = "https://bazaaarprofile.page.link"
+                    guard let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomainURIPrefix) else { return }
+                            linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "https://bazaaarprofile.page.link")
+            // Set social meta tag parameters
+            let socialTags = DynamicLinkSocialMetaTagParameters()
+            socialTags.imageURL = URL(string: Constants.IMAGE_URL+(user.pic.safeValue ))
+            socialTags.title = user.name.safeValue
+            socialTags.descriptionText = user.bio.safeValue
+            linkBuilder.socialMetaTagParameters = socialTags
+            
+            let actionCodeSettings = ActionCodeSettings()
+            actionCodeSettings.url = URL(string: "https://www.bazar-kw.com/profile/?profile_id=" + "\(OtherUserId)")
+            actionCodeSettings.dynamicLinkDomain = "https://bazaaarprofile.page.link"
+            actionCodeSettings.handleCodeInApp = true
+            actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+                    
+                    guard let longDynamicLink = linkBuilder.url else { return }
+                    print(longDynamicLink)
+                    linkBuilder.shorten() { url, warnings, error in
+                        guard let url = url, error == nil else {
+                            
+                            return }
+                        print("The short URL is: \(url)")
+                        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                        activityViewController.popoverPresentationController?.sourceView = self.view
+                       
+                        self.present(activityViewController, animated: true, completion: nil)
+                    }
+        }
 
         @IBAction func BackBtnAction(_ sender: UIButton) {
             navigationController?.popViewController(animated: true)
         }
         
         @IBAction func shareBtnAction(_ sender: UIButton) {
-            shareContent(text: "share Profile of ")
+//            shareContent(text: "share Profile of ")
+            shareProfile()
         }
         
         @IBAction func reportAboutUserBtnAction(_ sender: UIButton) {

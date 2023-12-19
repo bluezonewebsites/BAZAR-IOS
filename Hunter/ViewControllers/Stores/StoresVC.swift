@@ -171,13 +171,15 @@ class StoresVC: UIViewController {
     
     @objc func didTapChangeCountryButton(){
         coountryVC = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: COUNTRY_VCIID) as!  CounriesViewController
-        coountryVC.countryBtclosure = {
+        coountryVC.countryBtclosure = { [weak self]
             (country) in
+            guard let self else {return}
             AppDelegate.currentCountry = country
             self.countryName = MOLHLanguage.currentAppleLanguage() == "en" ? (country.nameEn ?? "") : (country.nameAr ?? "")
 //            self.rightButton.setTitle(self.countryName, for: .normal)
             self.titleLabel.text = self.countryName
             self.countryId = country.id ?? 6
+            self.getStores()
             self.cityId = -1
 //            self.resetProducts()
 //            self.getData()
@@ -230,26 +232,38 @@ extension StoresVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollect
 
 extension StoresVC:FSPagerViewDelegate , FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return sliderList.count
+        return sliderList.count == 0 ? 3 : sliderList.count
     }
 
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.setImageWithLoading(url: sliderList[index].img ?? "")
+        if sliderList.count == 0 {
+            let images = ["shanghai","hongkong","granCanaria"]
+            cell.imageView?.image = UIImage(named: images[index]) ?? UIImage(named: "logo_photo")
+        }else{
+            cell.imageView?.setImageWithLoading(url: sliderList[index].img ?? "")
+
+        }
             return cell
     }
 
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: PRODUCT_VCID) as! ProductViewController
-        vc.modalPresentationStyle = .fullScreen
-        vc.product.id  = sliderList[index].id ?? 0
-        self.navigationController?.pushViewController(vc, animated: true)
+        if sliderList.count == 0 {
+            openURL("https://bazar-kw.com")
+        }else {
+            let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: PRODUCT_VCID) as! ProductViewController
+            vc.modalPresentationStyle = .fullScreen
+            vc.product.id  = sliderList[index].id ?? 0
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
 
 }
 
 extension StoresVC {
     func getStores(){
+        print(countryId)
         ProductController.shared.getStores(completion: { stores, check, message in
             if check == 0{
                 print(stores.count)

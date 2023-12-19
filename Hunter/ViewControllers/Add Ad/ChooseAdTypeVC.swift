@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import MOLH
 
 
 protocol ChooseAdTyDelegate:AnyObject{
@@ -29,16 +30,18 @@ class ChooseAdTypeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if AppDelegate.currentUser.isStore ?? false {
-            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceFeaturedAds ?? 0.0) " + "D.K".localize
-            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceNormalAds ?? 0.0) " + "D.K".localize
+        if AppDelegate.currentUser.isStore ?? false && MOLHLanguage.isArabic(){
+            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceFeaturedAds ?? 0.0) " + AppDelegate.sharedCountry.currencyAr.safeValue
+            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.storePriceNormalAds ?? 0.0) " + AppDelegate.sharedCountry.currencyAr.safeValue
         }else {
-            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceNormalAds ?? 0.0) " + "D.K".localize
-            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceFeaturedAds ?? 0.0) " + "D.K".localize
+            countOfPaidAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceNormalAds ?? 0.0) " + AppDelegate.sharedCountry.currencyEn.safeValue
+            costOfFeaturedAdsLabel.text = "\(AppDelegate.sharedSettings.userPriceFeaturedAds ?? 0.0) " + AppDelegate.sharedCountry.currencyEn.safeValue
 
         }
         
     }
+    
+    
     
 
     // MARK: - IBACtions

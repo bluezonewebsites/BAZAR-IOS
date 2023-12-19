@@ -74,7 +74,7 @@ class ProductController{
                 let productArray = try JSONDecoder().decode(StoresModel.self, from: data)
                 
                 if productArray.statusCode == 200{
-                    
+                    print("count of data ===> \(productArray.data?.count)")
                     completion(productArray.data ?? [], 0,"")
                 }
                 else {

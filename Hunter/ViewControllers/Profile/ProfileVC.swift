@@ -9,9 +9,16 @@ import UIKit
 import MOLH
 import Alamofire
 import MobileCoreServices
+import FirebaseDynamicLinks
+import FirebaseAuth
 
 class ProfileVC: UIViewController {
 
+    static func instantiate()-> ProfileVC{
+        let profileVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
+        return profileVC
+    }
+    
     //MARK: IBOutlets
     @IBOutlet weak private var userImageView: UIImageView!
     @IBOutlet weak private var userFullNameLabel: UILabel!
@@ -34,7 +41,7 @@ class ProfileVC: UIViewController {
     private var EditProfileParams = [String:Any]()
     private var imageType = 0 //profileImage
     private var isUpdateCover = false
-    
+    var user = AppDelegate.currentUser
     //MARK: View LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +85,7 @@ class ProfileVC: UIViewController {
                 self.bindProfileData(from: userProfile)
                // self.getProductsByUser()
             }
-        }, user: AppDelegate.currentUser)
+        }, user: user)
     }
     
     private func bindProfileData(from profileModel:User){
@@ -126,6 +133,41 @@ class ProfileVC: UIViewController {
         imageType = 0 // profile image
         displayImageActionSheet()
     }
+    
+    
+    
+    
+    private func shareProfile(){
+        guard let link = URL(string: "https://www.bazar-kw.com/profile/?profile_id=" + "\(user.id ?? 0)") else { return }
+                let dynamicLinksDomainURIPrefix = "https://bazaaarprofile.page.link"
+                guard let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomainURIPrefix) else { return }
+                        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "https://bazaaarprofile.page.link")
+        // Set social meta tag parameters
+        let socialTags = DynamicLinkSocialMetaTagParameters()
+        socialTags.imageURL = URL(string: Constants.IMAGE_URL+(user.pic.safeValue ))
+        socialTags.title = user.name.safeValue
+        socialTags.descriptionText = user.bio.safeValue
+        linkBuilder.socialMetaTagParameters = socialTags
+        
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://www.bazar-kw.com/profile/?profile_id=" + "\(user.id ?? 0)")
+        actionCodeSettings.dynamicLinkDomain = "https://bazaaarprofile.page.link"
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+                
+                guard let longDynamicLink = linkBuilder.url else { return }
+                print(longDynamicLink)
+                linkBuilder.shorten() { url, warnings, error in
+                    guard let url = url, error == nil else {
+                        
+                        return }
+                    print("The short URL is: \(url)")
+                    let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = self.view
+                   
+                    self.present(activityViewController, animated: true, completion: nil)
+                }
+    }
 
     //MARK: IBActions
     
@@ -149,8 +191,10 @@ class ProfileVC: UIViewController {
     
     
     @IBAction func didTapShareButton(_ sender: UIButton) {
-        shareContent(text: "\(Constants.DOMAIN) \(AppDelegate.currentUser.id ?? 0)")
+//        shareContent(text: "\(Constants.DOMAIN) \(AppDelegate.currentUser.id ?? 0)")
+        shareProfile()
     }
+    
     @IBAction func didTapChangeCoverButton(_ sender: UIButton) {
         isUpdateCover = true
         imageType = 1 //Cover image

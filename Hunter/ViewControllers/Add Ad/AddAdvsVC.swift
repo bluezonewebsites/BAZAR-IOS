@@ -623,6 +623,7 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
                 print(data)
                 if data.statusCode == 200{
                     //completion(true,data.message ?? "")
+                    AppDelegate.defaults.removeObject(forKey: "postSessionData")
                     print(data.message ?? "")
                 if isFeatured == 1 {
                     let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC

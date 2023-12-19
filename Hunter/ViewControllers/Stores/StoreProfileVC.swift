@@ -9,6 +9,10 @@ import UIKit
 import MOLH
 import Alamofire
 import TransitionButton
+import FirebaseDynamicLinks
+import FirebaseAuth
+
+
 
 class StoreProfileVC: UIViewController {
     
@@ -60,7 +64,7 @@ class StoreProfileVC: UIViewController {
     private var imageType = 0 //profileImage
     private var isUpdateCover = false
     private var userModel = User()
-    
+
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -224,7 +228,8 @@ class StoreProfileVC: UIViewController {
         
     }
     @IBAction func didTapShareButton(_ sender: UIButton) {
-        shareContent(text: "\(Constants.DOMAIN) \(AppDelegate.currentUser.id ?? 0)")
+//        shareContent(text: "bazaar://profile/\(AppDelegate.currentUser.id ?? 0)")
+        shareStoreProfile()
     }
     @IBAction func didTapReportButton(_ sender: UIButton) {
         let vc = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "ReportAboutUserVC") as! ReportAboutUserVC
@@ -241,6 +246,37 @@ class StoreProfileVC: UIViewController {
     }
     
     
+    private func shareStoreProfile(){
+        guard let link = URL(string: "https://www.bazar-kw.com/stores/?profile_id=" + "\(userModel.id ?? 0)") else { return }
+                let dynamicLinksDomainURIPrefix = "https://bazaaarstoreprofile.page.link"
+                guard let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomainURIPrefix) else { return }
+                        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "https://bazaaarstoreprofile.page.link")
+        // Set social meta tag parameters
+        let socialTags = DynamicLinkSocialMetaTagParameters()
+        socialTags.imageURL = URL(string: Constants.IMAGE_URL+(userModel.store?.logo.safeValue ?? ""))
+        socialTags.title = userModel.name.safeValue
+        socialTags.descriptionText = userModel.bio.safeValue
+        linkBuilder.socialMetaTagParameters = socialTags
+        
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://www.bazar-kw.com/stores/?profile_id=" + "\(userModel.id ?? 0)")
+        actionCodeSettings.dynamicLinkDomain = "https://bazaaarstoreprofile.page.link"
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+                
+                guard let longDynamicLink = linkBuilder.url else { return }
+                print(longDynamicLink)
+                linkBuilder.shorten() { url, warnings, error in
+                    guard let url = url, error == nil else {
+                        
+                        return }
+                    print("The short URL is: \(url)")
+                    let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = self.view
+                   
+                    self.present(activityViewController, animated: true, completion: nil)
+                }
+    }
     
 }
 

@@ -14,6 +14,7 @@ import GoogleMaps
 import GooglePlaces
 import CircleMenu
 import MFSDK
+import FirebaseDynamicLinks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
@@ -22,9 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
     static var unVerifiedUserUser = User()
     static var sharedSettings = SettingObject()
 
-    static var currentCountry = Country(nameAr: "الكويت", nameEn: "Kuwait", id: 6,code: "965")
+    static var currentCountry = Country(nameAr: "الكويت", nameEn: "Kuwait", id: 6,code: "965",currencyAr: "د.ك",currencyEn: "K.D")
 //    static var currentCountryId = Constants.countryId
 
+    static var sharedCountry = Country()
    
     static var defaults:UserDefaults = UserDefaults.standard
     static var playerId = ""
@@ -96,6 +98,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         
         application.registerForRemoteNotifications()
         Messaging.messaging().delegate = self
+        
+        //MARK: DEEPLINK HANDLING
+        
+        if let url = launchOptions?[.url] as? URL {
+            // TODO: handle URL from here
+            // Example: URL - bazaar://profile/123
+            guard let components = URLComponents(url: url, resolvingAgainstBaseURL: true)else{return (URL(string: "") != nil)}
+            // pathComponents = ["", "profile", "123"]
+            
+//            let pathComponents = components.path.components(separatedBy: "/")
+            let pathComponents = extractCustomComponents(from: url)
+            print(components, "   " , pathComponents)
+
+            
+            // Handle different paths
+            if pathComponents.count >= 2 && pathComponents[0] == "profile" {
+                let profileId = pathComponents[1]
+                redirectToProfile(withId: profileId)
+            }
+        }
+        
         return true
     }
     
@@ -103,22 +126,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         if let paymentId = url[MFConstants.paymentId] {
             NotificationCenter.default.post(name: .applePayCheck, object: paymentId)
         }
+        
+            guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+                let path = components.path else {
+                    return false
+            }
+
+            // Example: URL - bluezonebazaar://profile/123
+            let pathComponents = path.components(separatedBy: "/")
+            // pathComponents = ["", "profile", "123"]
+            
+            // Handle different paths
+            if pathComponents.count > 2 && pathComponents[1] == "profile" {
+                let profileId = pathComponents[2]
+                // Redirect to profile with profileId
+               // redirectToProfile(withId: profileId)
+            }
+        
+
         print("Opened URL: \(url.absoluteString)")
-//        if  url.absoluteString.contains("profile"){
-//            let storyboard = UIStoryboard.init(name: "Product", bundle: nil)
-//            let nav = storyboard.instantiateViewController(withIdentifier: "product_details") as? ProductViewController
-//            nav?.product.id == 10009
-//            
-//            let scene = UIApplication.shared.connectedScenes.first
-//            if let sd : SceneDelegate = (scene?.delegate as? SceneDelegate) {
-//                sd.window!.rootViewController = nav
-//            }
-//        }
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+               // Handle the dynamic link. For example, navigate to appropriate content
+               if let dynamicLinkURL = dynamicLink.url {
+                   print("Open -> \(dynamicLinkURL)")
+                   // Handle the deep link. For example, show the linked content,
+                   // apply a promotional offer, etc.
+               }
+               return true
+           }
         return true
     }
     
-    
-    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+              let incomingURL = userActivity.webpageURL else {
+            return false
+        }
+
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { dynamicLink, error in
+            // Handle the dynamic link. For example, navigate to appropriate content
+            if let dynamicLinkURL = dynamicLink?.url {
+                print(dynamicLinkURL)
+                // Handle the deep link. For example, show the linked content,
+                // apply a promotional offer, etc.
+            }
+        }
+
+        return handled
+    }
+
+   
+
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // refreshedToken is variable. I use it in viewcontroller.
@@ -159,12 +217,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
     func getCounties(){
         CountryController.shared.getCountries(completion: {
             countries, check,msg in
+            AppDelegate.sharedCountry = countries.first { $0.id == AppDelegate.currentCountry.id.safeValue } ?? AppDelegate.currentCountry
+            print(countries.first { $0.id == AppDelegate.currentCountry.id.safeValue })
             Constants.COUNTRIES = countries
         })
     }
     func getCities(){
         CountryController.shared.getCities(completion: {
             countries, check,msg in
+            // Use matchedItem here
             Constants.CITIES = countries
         }, countryId: 6)
     }
@@ -358,5 +419,53 @@ extension AppDelegate : MessagingDelegate {
         
     }
     
+    
+    
+    //MARK: DEEPLINK
+    func extractCustomComponents(from url: URL) -> [String] {
+        let urlString = url.absoluteString
+
+        guard let range = urlString.range(of: "://") else {
+            return []
+        }
+        
+        let parametersString = urlString[range.upperBound...]
+        let components = parametersString.components(separatedBy: "/")
+        
+        return components.filter { !$0.isEmpty }
+    }
+    
+    func redirectToProfile(withId id: String) {
+        // Ensure you have access to a root view controller or navigation controller
+//        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//              let tabBarController = scene.windows.first?.rootViewController as? UITabBarController,
+//              let navigationController = tabBarController.selectedViewController as? UINavigationController else {
+//            return
+//        }
+        guard let rootViewController = getRootViewController() else {
+                return
+            }
+        // Instantiate the profile view controller
+        let profileVC = StoreProfileVC.instantiate()
+        profileVC.otherUserId = Int(id) ?? 0
+
+        // Perform the navigation
+            if let navigationController = rootViewController as? UINavigationController {
+                navigationController.pushViewController(profileVC, animated: true)
+            } else if let tabBarController = rootViewController as? UITabBarController,
+                      let navigationController = tabBarController.selectedViewController as? UINavigationController {
+                navigationController.pushViewController(profileVC, animated: true)
+            } else {
+                // Adjust this part as per your app's view hierarchy
+                rootViewController.present(profileVC, animated: true)
+            }
+    }
+    func getRootViewController() -> UIViewController? {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let nav = storyboard.instantiateViewController(withIdentifier: "TabBarVC")
+        
+        
+        return nav
+    }
     
 }

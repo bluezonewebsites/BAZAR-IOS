@@ -10,8 +10,16 @@ import UIKit
 import MOLH
 import MediaSlideshow
 import CircleMenu
+import FirebaseDynamicLinks
+import FirebaseAuth
 
 class ProductViewController: UIViewController {
+    
+    static func instantiate()-> ProductViewController{
+        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "product_details") as! ProductViewController
+        
+        return productVC
+    }
     
     @IBOutlet weak var callLbl: UILabel!
     @IBOutlet weak var chatBtn: UIView!
@@ -73,6 +81,7 @@ class ProductViewController: UIViewController {
                 }
         self.navigationController?.navigationBar.isHidden = true
         setupSlider()
+        userVerifieddImage.isHidden = true
         sellImage.isHidden = true
         // Do any additional setup after loading the view.
         NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
@@ -272,11 +281,13 @@ class ProductViewController: UIViewController {
         
     }
     @IBAction func shareAction(_ sender: Any) {
-        let textToShare = ["\(product.name ?? "")" + "\ndownload Bazar app from apple store" + " https://apps.apple.com/us/app/Bazar/id1589937521" ]
-        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
-        //activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-        self.present(activityViewController, animated: true, completion: nil)
+//        let textToShare = ["\(product.name ?? "")" + "\ndownload Bazar app from apple store" + " https://apps.apple.com/us/app/Bazar/id1589937521" ]
+//        let activityViewController = UIActivityViewController(activityItems: textToShare, applicationActivities: nil)
+//        activityViewController.popoverPresentationController?.sourceView = self.view
+//        //activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+//        self.present(activityViewController, animated: true, completion: nil)
+        
+        shareStoreProfile()
     }
     @IBAction func callAction(_ sender: Any) {
         let callPhone = "+\(product.phone ?? "")"
@@ -299,6 +310,46 @@ class ProductViewController: UIViewController {
         
         
     }
+    
+
+    
+    
+    private func shareStoreProfile(){
+        guard let link = URL(string: "https://www.bazar-kw.com/prod/?ad_id=" + "\(product.id ?? 0)") else { return }
+                let dynamicLinksDomainURIPrefix = "https://bazaaarad.page.link"
+                guard let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomainURIPrefix) else { return }
+                        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "https://bazaaarad.page.link")
+        // Set social meta tag parameters
+        let socialTags = DynamicLinkSocialMetaTagParameters()
+        socialTags.imageURL = URL(string: Constants.IMAGE_URL+(product.mainImage ?? ""))
+        socialTags.title = product.name.safeValue
+        socialTags.descriptionText = product.description.safeValue
+        linkBuilder.socialMetaTagParameters = socialTags
+        
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://www.bazar-kw.com/prod/?ad_id=" + "\(product.id ?? 0)")
+        actionCodeSettings.dynamicLinkDomain = "https://bazaaarad.page.link"
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+                
+                guard let longDynamicLink = linkBuilder.url else { return }
+                print(longDynamicLink)
+                linkBuilder.shorten() { url, warnings, error in
+                    guard let url = url, error == nil else {
+                        
+                        return }
+                    print("The short URL is: \(url)")
+                    let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+                    activityViewController.popoverPresentationController?.sourceView = self.view
+                   
+                    self.present(activityViewController, animated: true, completion: nil)
+                }
+    }
+    
+    
+    
+    
+    
     func whatsappShareText(_ num: String = "",_ link: String = "")
     {
         let escapedString = link.addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)

@@ -22,7 +22,7 @@ class FollowTVCell: UITableViewCell {
             if let verified = data.userVerified , let toID = data.toID  {
                 
                 if let pic = data.userPic {
-                    img.setImageWithLoading(url: pic)
+                    img.setImageWithLoadingFromMainDomain(url: pic)
                 }else {
                     img.image = UIImage(named:"logo_photo")
                 }

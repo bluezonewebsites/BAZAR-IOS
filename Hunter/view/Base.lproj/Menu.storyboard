@@ -66,19 +66,31 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="75X-YD-uvT">
-                                                                <rect key="frame" x="98" y="22.666666666666664" width="63" height="41"/>
+                                                                <rect key="frame" x="98" y="15.666666666666664" width="73.666666666666686" height="54.999999999999993"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guest" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixi-iP-K8P">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="Localize" value="YES"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hdl-cx-F5e">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="73.666666666666671" height="25"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guest" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixi-iP-K8P">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="40.666666666666664" height="25"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="Localize" value="YES"/>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verification" translatesAutoresizingMaskIntoConstraints="NO" id="qEm-tv-slM">
+                                                                                <rect key="frame" x="48.666666666666657" y="0.0" width="25" height="25"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="qEm-tv-slM" secondAttribute="height" multiplier="1:1" id="OiN-DU-9IO"/>
+                                                                                    <constraint firstAttribute="height" constant="25" id="swd-cc-64i"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                    </stackView>
                                                                     <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1-1-2022" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S82-U2-sjh">
-                                                                        <rect key="frame" x="0.0" y="23.000000000000007" width="63" height="18"/>
+                                                                        <rect key="frame" x="0.0" y="30.000000000000007" width="73.666666666666671" height="25"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -1088,6 +1100,7 @@
                         <outlet property="userImageContainerView" destination="ZWo-bR-MTP" id="eJ7-by-evx"/>
                         <outlet property="userImageView" destination="yYO-Kv-O7Z" id="oKR-FO-iBY"/>
                         <outlet property="userNameLabel" destination="Ixi-iP-K8P" id="37U-vk-aNi"/>
+                        <outlet property="verficationImage" destination="qEm-tv-slM" id="hf4-Qg-fTi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gcI-cr-ttW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

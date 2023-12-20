@@ -139,7 +139,7 @@ import FirebaseDynamicLinks
             guard let link = URL(string: "https://www.bazar-kw.com/profile/?profile_id=" + "\(OtherUserId)") else { return }
                     let dynamicLinksDomainURIPrefix = "https://bazaaarprofile.page.link"
                     guard let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomainURIPrefix) else { return }
-                            linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "https://bazaaarprofile.page.link")
+                            linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "com.bazaaar.app")
             // Set social meta tag parameters
             let socialTags = DynamicLinkSocialMetaTagParameters()
             socialTags.imageURL = URL(string: Constants.IMAGE_URL+(user.pic.safeValue ))

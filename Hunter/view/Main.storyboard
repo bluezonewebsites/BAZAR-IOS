@@ -812,8 +812,9 @@
                                                                     <constraint firstAttribute="width" constant="30" id="8oR-2a-swT"/>
                                                                     <constraint firstAttribute="height" constant="30" id="qHm-E2-qaj"/>
                                                                 </constraints>
+                                                                <color key="tintColor" name="#707070"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" image="Close-1"/>
+                                                                <state key="normal" image="x.circle.fill" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="closeAction:" destination="XnN-7w-fAe" eventType="touchUpInside" id="wNq-7d-0qQ"/>
                                                                     <action selector="closeBtnAction:" destination="YWp-db-MuD" eventType="touchUpInside" id="SPW-QU-8Ia"/>
@@ -951,8 +952,9 @@
                                                                     <constraint firstAttribute="width" constant="30" id="T0V-bh-FxV"/>
                                                                     <constraint firstAttribute="height" constant="30" id="yUs-4b-DXk"/>
                                                                 </constraints>
+                                                                <color key="tintColor" name="#707070"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" image="Close-1"/>
+                                                                <state key="normal" image="x.circle.fill" catalog="system"/>
                                                                 <connections>
                                                                     <action selector="closeAction:" destination="bT1-18-lQA" eventType="touchUpInside" id="cQy-RM-UHF"/>
                                                                     <action selector="closeBtnAction:" destination="YWp-db-MuD" eventType="touchUpInside" id="925-Vc-yUF"/>
@@ -1035,7 +1037,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NhE-aX-Ylf"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="lfr-7n-mu2" secondAttribute="bottom" id="Bgz-zX-E7I"/>
                             <constraint firstItem="lfr-7n-mu2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NhE-aX-Ylf" secondAttribute="top" constant="20" id="CW6-lc-hLn"/>
@@ -5443,13 +5445,13 @@
     </scenes>
     <designables>
         <designable name="4dt-Ep-aZa">
-            <size key="intrinsicContentSize" width="46" height="16.333333333333336"/>
+            <size key="intrinsicContentSize" width="36" height="14.333333333333334"/>
         </designable>
         <designable name="7a9-pq-9rC">
-            <size key="intrinsicContentSize" width="43.333333333333336" height="16.333333333333336"/>
+            <size key="intrinsicContentSize" width="33.333333333333336" height="14.333333333333334"/>
         </designable>
         <designable name="7z0-nT-fwf">
-            <size key="intrinsicContentSize" width="43.333333333333336" height="16.333333333333336"/>
+            <size key="intrinsicContentSize" width="33.333333333333336" height="14.333333333333334"/>
         </designable>
         <designable name="FCs-24-oAO"/>
         <designable name="MUI-H5-TZT">
@@ -5465,7 +5467,7 @@
             <size key="intrinsicContentSize" width="24" height="14"/>
         </designable>
         <designable name="erc-hc-FtG">
-            <size key="intrinsicContentSize" width="43.333333333333336" height="16.333333333333336"/>
+            <size key="intrinsicContentSize" width="33.333333333333336" height="14.333333333333334"/>
         </designable>
     </designables>
     <resources>

@@ -18,6 +18,7 @@ class MenuVC: UIViewController {
     
     //MARK: IBOutlet
     
+    @IBOutlet weak var verficationImage: UIImageView!
     @IBOutlet weak var userImageContainerView: UIView!
     @IBOutlet weak var userImageView: UIImageView!
     
@@ -37,6 +38,7 @@ class MenuVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        verficationImage.isHidden = true
         //        ConfigureUI()
         userImageContainerView.layer.cornerRadius = userImageContainerView.frame.height / 2
         userImageView.layer.cornerRadius = userImageView.frame.height / 2
@@ -79,6 +81,7 @@ class MenuVC: UIViewController {
         if StaticFunctions.isLogin() {
             //logged in
             userNameLabel.text = AppDelegate.currentUser.name ?? ""
+            verficationImage.isHidden =   AppDelegate.currentUser.verified.safeValue == 1 ? false : true
             if AppDelegate.currentUser.isStore ?? false {
                 if let logo =  AppDelegate.currentUser.store?.logo {
                     userImageView.setImageWithLoading(url:logo,placeholder: "logo_photo")

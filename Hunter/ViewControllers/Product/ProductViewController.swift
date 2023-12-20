@@ -318,7 +318,7 @@ class ProductViewController: UIViewController {
         guard let link = URL(string: "https://www.bazar-kw.com/prod/?ad_id=" + "\(product.id ?? 0)") else { return }
                 let dynamicLinksDomainURIPrefix = "https://bazaaarad.page.link"
                 guard let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomainURIPrefix) else { return }
-                        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "https://bazaaarad.page.link")
+                        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "com.bazaaar.app")
         // Set social meta tag parameters
         let socialTags = DynamicLinkSocialMetaTagParameters()
         socialTags.imageURL = URL(string: Constants.IMAGE_URL+(product.mainImage ?? ""))

@@ -7,7 +7,7 @@
 
 import UIKit
 import MOLH
-class StateViewController: UIViewController {
+class StateViewController: BottomPopupViewController {
     
     var citiesBtclosure : (( Country) -> Void)? = nil
     var cities = [Country]()
@@ -28,8 +28,32 @@ class StateViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func getPopupHeight() -> CGFloat {
+        return 500
+    }
+    
+    override func getPopupTopCornerRadius() -> CGFloat {
+        return 25
+    }
+    
+    override func getPopupPresentDuration() -> Double {
+        0.3
+    }
+    
+    override func getPopupDismissDuration() -> Double {
+        0.3
+    }
+    
+    override func shouldPopupDismissInteractivelty() -> Bool {
+        true
+    }
+    
+    override func getDimmingViewAlpha() -> CGFloat {
+        0.7
+    }
+    
     @IBAction func closeAction(_ sender: Any) {
-        self.dismiss(animated: false)
+        self.dismiss(animated: true)
 
     }
     

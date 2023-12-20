@@ -385,6 +385,10 @@ extension MyAdsVC:PayingDelegate {
 
 
 extension MyAdsVC:SuccessAddingVCDelegate{
+    func didTapUploadNewAds() {
+        
+    }
+    
     
     func navigateToMyAdsPage (){
         if let vc = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: MYADS_VCID) as? MyAdsVC {

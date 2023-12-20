@@ -9,6 +9,7 @@ import UIKit
 
 protocol SuccessAddingVCDelegate: AnyObject {
     func didTapMyAdsButton()
+    func didTapUploadNewAds()
 }
 
 class SuccessAddingVC: UIViewController {
@@ -44,7 +45,12 @@ class SuccessAddingVC: UIViewController {
     
     @IBAction func didTapuploadNewAds(_ sender: UIButton) {
         //TODO:   handle this case going to AddAdsVC on tapBar
-        dismiss(animated: false)
+//        dismiss(animated: false)
+        dismiss(animated: false) { [weak self] in
+            guard let self else {return}
+            self.delegate?.didTapUploadNewAds()
+        }
+       
     }
     @IBAction func didTapGoToMyAds(_ sender: UIButton) {
         delegate?.didTapMyAdsButton()

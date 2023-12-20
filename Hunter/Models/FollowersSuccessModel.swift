@@ -23,7 +23,8 @@ struct FollowersSuccessData: Codable {
      let countriesNameAr, countriesNameEn, citiesNameAr, citiesNameEn: String?
      let regionsNameAr, regionsNameEn: String?
      var isFollow: Int?
-
+     var isStore:Bool?
+    
      enum CodingKeys: String, CodingKey {
          case id
          case userID = "user_id"
@@ -41,6 +42,7 @@ struct FollowersSuccessData: Codable {
          case regionsNameAr = "regions_name_ar"
          case regionsNameEn = "regions_name_en"
          case isFollow = "is_follow"
+         case isStore = "is_store"
      }
     }
 

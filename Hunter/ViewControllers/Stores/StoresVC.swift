@@ -15,6 +15,9 @@ class StoresVC: UIViewController {
         let controller = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoresVC" ) as! StoresVC
         return controller
     }
+    
+    @IBOutlet weak var storesCollectionViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var CollectionView: UICollectionView!
     @IBOutlet weak var countryNameLabel: UILabel!
     @IBOutlet weak var cityBtn: UIButton!
@@ -42,6 +45,7 @@ class StoresVC: UIViewController {
     //MARK: - App Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+//        CollectionView.isScrollEnabled = false
         NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(changeCountryName(_:)), name: NSNotification.Name("changeCountryName"), object: nil)
         searchTextField.delegate = self
@@ -118,12 +122,14 @@ class StoresVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
         getnotifictionCounts()
         NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        navigationController?.navigationBar.isHidden = false
         NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
     }
     
@@ -267,9 +273,17 @@ extension StoresVC {
         ProductController.shared.getStores(completion: { stores, check, message in
             if check == 0{
                 print(stores.count)
-                self.storesList.removeAll()
-                self.storesList.append(contentsOf: stores)
-                self.CollectionView.reloadData()
+                DispatchQueue.main.async {
+                    if stores.count < 4 {
+                        self.storesCollectionViewHeightConstraint.constant = 350
+                    }else {
+                        self.storesCollectionViewHeightConstraint.constant = (CGFloat(Double(stores.count)) * 200)
+                    }
+                    self.storesList.removeAll()
+                    self.storesList.append(contentsOf: stores)
+                    self.CollectionView.reloadData()
+                }
+              
             }else{
                 StaticFunctions.createErrorAlert(msg: message)
             }

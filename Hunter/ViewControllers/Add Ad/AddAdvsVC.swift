@@ -420,11 +420,44 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
         self.present(vc, animated: false, completion: nil)    }
     
     @IBAction func cityBtnAction(_ sender: UIButton) {
-        cityDropDwon.show()
+//        cityDropDwon.show()
+        let vc = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: CITIES_VCIID) as!  CitiesViewController
+        vc.countryId = self.countryId
+        vc.citiesBtclosure = {[weak self]
+            (city) in
+            guard let self else {return}
+            let name =  MOLHLanguage.currentAppleLanguage() == "en" ? (city.nameEn ?? "") : (city.nameAr ?? "")
+            self.cityButton.setTitle(name, for: .normal)
+            self.cityId = city.id ?? -1
+            if regionsIDsList.count > 0 {
+                self.regionId = regionsIDsList[0]
+            }
+            print("CITYID To Ads",self.cityId)
+            self.regionButton.setTitle("", for: .normal)
+
+            self.getRegions(cityId: self.cityId)
+            
+        }
+        self.present(vc, animated: true, completion: nil)
     }
     
     @IBAction func regionBtnAction(_ sender: UIButton) {
-        regionsDropDwon.show()
+//        regionsDropDwon.show()
+        if cityId == -1{
+            StaticFunctions.createErrorAlert(msg: "choose city first".localize)
+            return
+        }
+        let vc = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: STATE_VCID) as!  StateViewController
+        vc.countryId = self.cityId
+        vc.citiesBtclosure = {[weak self]
+            (region) in
+            guard let self else {return}
+            let name =  MOLHLanguage.currentAppleLanguage() == "en" ? (region.nameEn ?? "") : (region.nameAr ?? "")
+            self.regionButton.setTitle(name, for: .normal)
+            self.regionId = region.id ?? -1
+            print("REGION ID For ADs " , regionId)
+        }
+        self.present(vc, animated: true, completion: nil)
     }
     
     
@@ -623,7 +656,7 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
                 print(data)
                 if data.statusCode == 200{
                     //completion(true,data.message ?? "")
-                    AppDelegate.defaults.removeObject(forKey: "postSessionData")
+
                     print(data.message ?? "")
                 if isFeatured == 1 {
                     let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
@@ -688,15 +721,13 @@ extension AddAdvsVC : UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AdvsImagesCollectionViewCell", for: indexPath) as? AdvsImagesCollectionViewCell else {return UICollectionViewCell()}
-        //        mainImageKey = Array(selectedMedia.keys)[selectedIndexPath.item]
         cell.indexPath = indexPath
         cell.delegate = self
-        cell.configureCell(images:  Array(images.values), selectedIndex: selectedIndexPath, mainImageKey: mainImageKey, imagekeyOfIndex: Array(images.keys)[indexPath.row])
-        //        if mainImageKey == Array(images.keys)[indexPath.row] {
-        //            cell.isSelected = true
-        //        }else {
-        //            cell.isSelected = false
-        //        }
+        if images.count > 0{
+            cell.configureCell(images:  Array(images.values), selectedIndex: selectedIndexPath, mainImageKey: mainImageKey, imagekeyOfIndex: Array(images.keys)[indexPath.row])
+        }
+       
+       
         print(mainImageKey)
         return cell
     }
@@ -909,6 +940,10 @@ extension AddAdvsVC {
             guard let self = self else{return}
             self.regionsList.removeAll()
             self.regionsIDsList.removeAll()
+//            if regions.count > 0 {
+//                regionId = regions[0].id.safeValue
+//                print("First Region ID is = ",regionId)
+//            }
             for region in regions {
                 if  MOLHLanguage.currentAppleLanguage() == "en" {
                     
@@ -1042,7 +1077,11 @@ extension AddAdvsVC {
         if let subCatId = subCatsIDsList.firstIndex(of: subCatID) {
             subCatButton.setTitle(subCatsList[subCatId], for: .normal)
         }else{
-            subCatButton.setTitle(subCatsList[0], for: .normal)
+            if subCatsList.count > 0 {
+                subCatButton.setTitle(subCatsList[0], for: .normal)
+            }else {
+                subCatButton.setTitle("There are no sub-Category".localize, for: .normal)
+            }
         }
         subCatDropDwon.selectionAction = { [weak self] (index: Int, item: String) in
             guard let self = self else {return}
@@ -1201,6 +1240,21 @@ extension AddAdvsVC {
         return (nil, nil, nil, nil, nil, nil, nil, nil, nil,nil,nil,nil)
     }
     
+    private func clearAllADsData(){
+        images.removeAll()
+        descTextView.text = ""
+        advsTitleTF.text = ""
+        priceTF.text = ""
+        cityId = AppDelegate.currentUser.cityId ?? 0
+        regionId = AppDelegate.currentUser.regionId ?? 0
+        selectedMedia.removeAll()
+        selectedMediaKeys.removeAll()
+        mainImageKey = ""
+        selectedImages.removeAll()
+        collectionView.reloadData()
+        
+        
+    }
     
     // Function to clear session data
     func clearSessionData() {
@@ -1323,6 +1377,10 @@ extension AddAdvsVC:PayingDelegate{
 
 
 extension AddAdvsVC:SuccessAddingVCDelegate{
+    func didTapUploadNewAds() {
+        clearAllADsData()
+    }
+    
     
     func navigateToMyAdsPage (){
         if let vc = UIStoryboard(name: MENU_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: MYADS_VCID) as? MyAdsVC {
@@ -1348,9 +1406,11 @@ extension AddAdvsVC:SuccessAddingVCDelegate{
         
     }
     func didTapMyAdsButton() {
-        dismiss(animated: true) {
+        dismiss(animated: true) { [weak self] in
+            guard let self else {return}
             // Then navigate to the "my ads" page
             self.navigateToMyAdsPage()
+            self.clearAllADsData()
         }
     }
     

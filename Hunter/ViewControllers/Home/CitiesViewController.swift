@@ -35,11 +35,11 @@ class CitiesViewController: BottomPopupViewController {
     }
     
     override func getPopupPresentDuration() -> Double {
-        0.1
+        0.3
     }
     
     override func getPopupDismissDuration() -> Double {
-        0.1
+        0.3
     }
     
     override func shouldPopupDismissInteractivelty() -> Bool {

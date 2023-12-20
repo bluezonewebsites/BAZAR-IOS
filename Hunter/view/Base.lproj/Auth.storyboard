@@ -2234,19 +2234,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ibd-cN-SKi">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="59" width="383" height="759"/>
                                 <subviews>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sBt-hx-GdN">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="443"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="383" height="443"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-j3-aZT">
-                                                <rect key="frame" x="20" y="0.0" width="353" height="443"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-j3-aZT">
+                                                <rect key="frame" x="20" y="0.0" width="343" height="443"/>
                                                 <subviews>
                                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="CMU-mD-Qpn">
-                                                        <rect key="frame" x="26.666666666666657" y="0.0" width="300" height="150"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="changePasswordBG" translatesAutoresizingMaskIntoConstraints="NO" id="87q-dr-zgI">
-                                                                <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
                                                             </imageView>
                                                         </subviews>
                                                         <constraints>
@@ -2259,7 +2259,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LM7-kW-1xN">
-                                                        <rect key="frame" x="5" y="184" width="343" height="175"/>
+                                                        <rect key="frame" x="0.0" y="184" width="343" height="175"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="itO-hE-ioB">
                                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="175"/>
@@ -2495,7 +2495,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <button opaque="NO" clipsSubviews="YES" alpha="0.5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gSv-ik-UrQ" customClass="TransitionButton" customModule="TransitionButton">
-                                                        <rect key="frame" x="76.666666666666686" y="393" width="200" height="50"/>
+                                                        <rect key="frame" x="0.0" y="393" width="343" height="50"/>
                                                         <color key="backgroundColor" name="#0093F5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="k9p-at-Kaw"/>
@@ -4308,10 +4308,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

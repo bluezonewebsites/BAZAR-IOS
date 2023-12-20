@@ -57,7 +57,8 @@ class followersVC: UIViewController {
                     print(e)
                     switch e.result {
                     case let .success(data):
-                        if let data = data.data?.data {
+                        if var data = data.data?.data {
+//                            data.removeAll { $0.toID == AppDelegate.currentUser.id.safeValue }
                             self.data.append(contentsOf: data)
                         }
                         
@@ -76,7 +77,8 @@ class followersVC: UIViewController {
                     print(e)
                     switch e.result {
                     case let .success(data):
-                        if let data = data.data {
+                        if var data = data.data {
+//                            data.removeAll { $0.userID == AppDelegate.currentUser.id.safeValue }
                             self.data.append(contentsOf: data)
                         }
                         
@@ -140,20 +142,43 @@ extension followersVC : UITableViewDelegate , UITableViewDataSource {
         let inx = indexPath.row
         
         
-         let vc = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: OTHER_USER_PROFILE_VCID) as! OtherUserProfileVC
+        
+         let otherProfileVC = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: OTHER_USER_PROFILE_VCID) as! OtherUserProfileVC
+        
+        let myProfileVC = ProfileVC.instantiate()
+        
+        let storeProfileVC = StoreProfileVC.instantiate()
+        
         if Constants.followIndex == 0 {
             guard let id = data[inx].toID else {return}
             print(id)
-            vc.OtherUserId = id
+            
+            if AppDelegate.currentUser.id.safeValue == id && data[inx].isStore ?? false {
+                storeProfileVC.otherUserId = id
+                navigationController?.pushViewController(storeProfileVC, animated: true)
+            }else if AppDelegate.currentUser.id.safeValue == id {
+                myProfileVC.user.id = id
+                navigationController?.pushViewController(myProfileVC, animated: true)
+            }else {
+                otherProfileVC.OtherUserId = id
+                navigationController?.pushViewController(otherProfileVC, animated: true)
+            }
+
         }else {
             guard let id = data[inx].userID else {return}
             print(id)
-            vc.OtherUserId = id
+            if AppDelegate.currentUser.id.safeValue == id && data[inx].isStore ?? false {
+                storeProfileVC.otherUserId = id
+                navigationController?.pushViewController(storeProfileVC, animated: true)
+            }else if AppDelegate.currentUser.id.safeValue == id {
+                myProfileVC.user.id = id
+                navigationController?.pushViewController(myProfileVC, animated: true)
+            }else {
+                otherProfileVC.OtherUserId = id
+                navigationController?.pushViewController(otherProfileVC, animated: true)
+            }
         }
          
-         navigationController?.pushViewController(vc, animated: true)
- //        user.other_id = "\(id)"
- //        goNav("otherProfilev","Profile")
     }
     }
     

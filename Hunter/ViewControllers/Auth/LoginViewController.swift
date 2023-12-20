@@ -135,12 +135,26 @@ extension LoginViewController : UITextFieldDelegate{
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if (textField == phoneTF ){
-            let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
-            let compSepByCharInSet = string.components(separatedBy: aSet)
-            let numberFiltered = compSepByCharInSet.joined(separator: "")
-            return string == numberFiltered
-        }
+//        if (textField == phoneTF ){
+//            let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+//            let compSepByCharInSet = string.components(separatedBy: aSet)
+//            let numberFiltered = compSepByCharInSet.joined(separator: "")
+//            return string == numberFiltered
+//        }
+        if textField == phoneTF {
+                // Ensure only numbers are entered
+                let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+                let compSepByCharInSet = string.components(separatedBy: aSet)
+                let numberFiltered = compSepByCharInSet.joined(separator: "")
+                
+                // Calculate the new length of the text
+                let currentText = textField.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+                // Allow change only if new length is less than or equal to countPhoneNumber
+                return updatedText.count <= countPhoneNumber && string == numberFiltered
+            }
         return true
 //        if textField == phoneTF{
 //            let maxLength = countPhoneNumber

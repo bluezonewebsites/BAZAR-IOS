@@ -89,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,MOLHResetable {
         
         
         FirebaseApp.configure()
+        
         UNUserNotificationCenter.current().delegate = self
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(

@@ -250,7 +250,7 @@ class StoreProfileVC: UIViewController {
         guard let link = URL(string: "https://www.bazar-kw.com/stores/?profile_id=" + "\(userModel.id ?? 0)") else { return }
                 let dynamicLinksDomainURIPrefix = "https://bazaaarstoreprofile.page.link"
                 guard let linkBuilder = DynamicLinkComponents(link: link, domainURIPrefix: dynamicLinksDomainURIPrefix) else { return }
-                        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "https://bazaaarstoreprofile.page.link")
+                        linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "com.bazaaar.app")
         // Set social meta tag parameters
         let socialTags = DynamicLinkSocialMetaTagParameters()
         socialTags.imageURL = URL(string: Constants.IMAGE_URL+(userModel.store?.logo.safeValue ?? ""))
@@ -359,7 +359,7 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
 //                    }
 //                }
 //            }
-            storeCoverImageView.setImageWithLoading(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "coverBG" )
+            storeCoverImageView.setImageWithLoadingFromMainDomain(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "coverBG" )
 
             if let userPic =  profileModel.store?.logo {
                 Constants.otherUserPic = userPic
@@ -367,7 +367,7 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
                 
                 if userPic.contains(".png") || userPic.contains(".jpg"){
                     print(userPic)
-                    storeProfileImageView.setImageWithLoading(url:userPic,placeholder: "logo_photo")
+                    storeProfileImageView.setImageWithLoadingFromMainDomain(url:userPic,placeholder: "logo_photo")
                 }
             }else{
                 if let userPic =  profileModel.pic {
@@ -375,7 +375,7 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
                     Constants.otherUserIsStore = profileModel.isStore ?? false
                     if userPic.contains(".png") || userPic.contains(".jpg"){
                         print(userPic)
-                        storeProfileImageView.setImageWithLoading(url:userPic,placeholder: "logo_photo")
+                        storeProfileImageView.setImageWithLoadingFromMainDomain(url:userPic,placeholder: "logo_photo")
                     }
                 }
             }

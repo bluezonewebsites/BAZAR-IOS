@@ -110,10 +110,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="518" height="18"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPs-RV-m4E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="18"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="18"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sell" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWe-Q6-Daf">
-                                                                <rect key="frame" x="13.333333333333334" y="2.0000000000000009" width="19.333333333333329" height="14.333333333333336"/>
+                                                                <rect key="frame" x="8" y="2.0000000000000009" width="34" height="14.333333333333336"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <color key="textColor" red="0.98039215690000003" green="0.98000001910000001" blue="0.98000001910000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -122,10 +122,10 @@
                                                         </subviews>
                                                         <color key="backgroundColor" name="#0093F5"/>
                                                         <constraints>
-                                                            <constraint firstItem="cWe-Q6-Daf" firstAttribute="centerX" secondItem="lPs-RV-m4E" secondAttribute="centerX" id="AtA-cm-Daf"/>
                                                             <constraint firstAttribute="height" constant="18" id="Ygj-pO-N7w"/>
+                                                            <constraint firstAttribute="trailing" secondItem="cWe-Q6-Daf" secondAttribute="trailing" constant="8" id="ZwB-O0-NLh"/>
                                                             <constraint firstItem="cWe-Q6-Daf" firstAttribute="centerY" secondItem="lPs-RV-m4E" secondAttribute="centerY" id="bsi-e4-duY"/>
-                                                            <constraint firstAttribute="width" constant="46" id="yv8-9X-L5E"/>
+                                                            <constraint firstItem="cWe-Q6-Daf" firstAttribute="leading" secondItem="lPs-RV-m4E" secondAttribute="leading" constant="8" id="nU9-Lt-Ban"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

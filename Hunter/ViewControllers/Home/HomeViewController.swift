@@ -47,7 +47,12 @@ class HomeViewController: UIViewController {
     
     var coountryVC = CounriesViewController()
     var countryId = AppDelegate.currentCountry.id ?? 6
-    var countryName = MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn : AppDelegate.currentCountry.nameAr
+//    var countryName  MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn : AppDelegate.currentCountry.nameAr
+    var countryName : String =  MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn.safeValue : AppDelegate.currentCountry.nameAr.safeValue{
+        didSet{
+            titleLabel.text = countryName
+        }
+    }
     var categoryId = -1
     var subcategoryId = -1
     var page = 1
@@ -73,7 +78,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(changeCountryName(_:)), name: NSNotification.Name("changeCountryName"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(changeCountryName(_:)), name: NSNotification.Name("changeCountryName"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(countryDidChange), name: .countryDidChange, object: nil)
+
         navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.isHidden = false
@@ -92,15 +99,14 @@ class HomeViewController: UIViewController {
 
     }
     override func viewWillAppear(_ animated: Bool) {
-//        NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
         self.navigationController?.navigationBar.isHidden = false
-//        NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
         getnotifictionCounts()
        
         countryId = AppDelegate.currentCountry.id ?? 6
         
-         countryName = MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn : AppDelegate.currentCountry.nameAr
+        countryName = MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn.safeValue : AppDelegate.currentCountry.nameAr.safeValue
 //        countryLbl.text = countryName
+//        titleLabel.text = countryName
         getData()
         getFeatureData()
         getStores()
@@ -109,7 +115,9 @@ class HomeViewController: UIViewController {
     }
     
     
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
    
     //MARK: Methods
     
@@ -210,6 +218,8 @@ class HomeViewController: UIViewController {
         self.getFeatureData()
     }
     
+    
+    
     @objc func didTapChangeCountryButton(){
 //        basicNavigation(storyName: CATEGORRY_STORYBOARD, segueId: CATEGORIES_VCID)
         coountryVC = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: COUNTRY_VCIID) as!  CounriesViewController
@@ -225,12 +235,26 @@ class HomeViewController: UIViewController {
             self.resetProducts()
             self.getData()
             self.getFeatureData()
+            self.getStores()
             
         }
         self.present(coountryVC, animated: true, completion: nil)
     }
     
-    @objc func chooseCategory(_ notification: NSNotification) {
+    @objc func countryDidChange(notification: Notification) {
+        if let country = notification.userInfo?["country"] as? Country {
+            // Update your UI or data
+            self.countryName = MOLHLanguage.currentAppleLanguage() == "en" ? (country.nameEn ?? "") : (country.nameAr ?? "")
+//            self.rightButton.setTitle(self.countryName, for: .normal)
+            self.titleLabel.text = self.countryName
+            self.countryId = country.id ?? 6
+            self.cityId = -1
+            self.featureContainerView.isHidden = true
+            self.resetProducts()
+            self.getData()
+            self.getFeatureData()
+            
+        }
     }
     
     //MARK: IBActions

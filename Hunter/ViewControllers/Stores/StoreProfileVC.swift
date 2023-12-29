@@ -253,7 +253,12 @@ class StoreProfileVC: UIViewController {
                         linkBuilder.androidParameters = DynamicLinkAndroidParameters(packageName: "com.bazaaar.app")
         // Set social meta tag parameters
         let socialTags = DynamicLinkSocialMetaTagParameters()
-        socialTags.imageURL = URL(string: Constants.IMAGE_URL+(userModel.store?.logo.safeValue ?? ""))
+        if ((userModel.cover.safeValue.contains("image"))){
+            socialTags.imageURL = URL(string: Constants.MAIN_DOMAIN+(userModel.cover.safeValue))
+
+        }else{
+            socialTags.imageURL = URL(string: Constants.IMAGE_URL+(userModel.cover.safeValue))
+        }
         socialTags.title = userModel.name.safeValue
         socialTags.descriptionText = userModel.bio.safeValue
         linkBuilder.socialMetaTagParameters = socialTags
@@ -359,7 +364,13 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
 //                    }
 //                }
 //            }
-            storeCoverImageView.setImageWithLoadingFromMainDomain(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "coverBG" )
+            if profileModel.cover.safeValue.contains("image"){
+                storeCoverImageView.setImageWithLoadingFromMainDomain(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "coverBG" )
+
+            }else {
+                storeCoverImageView.setImageWithLoading(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "coverBG" )
+
+            }
 
             if let userPic =  profileModel.store?.logo {
                 Constants.otherUserPic = userPic
@@ -367,7 +378,7 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
                 
                 if userPic.contains(".png") || userPic.contains(".jpg"){
                     print(userPic)
-                    storeProfileImageView.setImageWithLoadingFromMainDomain(url:userPic,placeholder: "logo_photo")
+                    storeProfileImageView.setImageWithLoading(url:userPic)
                 }
             }else{
                 if let userPic =  profileModel.pic {
@@ -375,7 +386,7 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
                     Constants.otherUserIsStore = profileModel.isStore ?? false
                     if userPic.contains(".png") || userPic.contains(".jpg"){
                         print(userPic)
-                        storeProfileImageView.setImageWithLoadingFromMainDomain(url:userPic,placeholder: "logo_photo")
+                        storeProfileImageView.setImageWithLoading(url:userPic)
                     }
                 }
             }
@@ -463,11 +474,29 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
             
         }
         
+        private func updateCollectionViewHeight() {
+                let totalItems = collectionView.numberOfItems(inSection: 0)
+                let numberOfRows = ceil(CGFloat(totalItems) / 2) // Adjust as per your layout
+                let totalRowHeight = numberOfRows * 280 // rowHeight is height of each item
+                let totalSpacingHeight = (numberOfRows - 1) * 10 // Adjust as per your layout
+
+                let totalHeight = totalRowHeight + totalSpacingHeight
+            collectionViewheightConstraint.constant = totalHeight
+
+                view.layoutIfNeeded()
+            }
+        
+        private func reloadData() {
+                collectionView.reloadData()
+                updateCollectionViewHeight()
+            }
+        
         private func getProductsByUser(){
 //             guard let countryId = AppDelegate.currentUser.countryId else{return}
              
-             ProfileController.shared.getProductsByUser(completion: {
+            ProfileController.shared.getProductsByUser(completion: { [weak self]
                  products, check, msg in
+                guard let self else {return}
                  print(products.count)
                  if check == 0{
                      
@@ -487,8 +516,10 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
                            print("Message: \(msg)")
                      DispatchQueue.main.async {
                          print(products.count)
-                         self.collectionViewheightConstraint.constant = CGFloat(products.count / 2 * 295)
-                         self.collectionView.reloadData()
+//                         self.collectionViewheightConstraint.constant = CGFloat(products.count / 2 * 295)
+//                         self.collectionView.isHidden = false
+//                         self.collectionView.reloadData()
+                         self.reloadData()
                      }
                      
                  }else{

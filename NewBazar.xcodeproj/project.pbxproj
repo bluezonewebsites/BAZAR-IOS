@@ -116,6 +116,7 @@
 		C80CC9262A6D6FBA00B56F54 /* MsgRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80CC9232A6D6E4400B56F54 /* MsgRecordCell.xib */; };
 		C80CC9302A6DBE8100B56F54 /* FavCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80CC92E2A6DBE8100B56F54 /* FavCell.swift */; };
 		C80CC9312A6DBE8100B56F54 /* FavCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C80CC92F2A6DBE8100B56F54 /* FavCell.xib */; };
+		C813E5E62B341D500012A8B8 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C813E5E52B341D500012A8B8 /* AppSettings.swift */; };
 		C8191F972A4055030057AA28 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8191F962A4055030057AA28 /* PaddingLabel.swift */; };
 		C8191F992A40748D0057AA28 /* FavouritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8191F982A40748D0057AA28 /* FavouritesVC.swift */; };
 		C8191F9D2A40765C0057AA28 /* FavouritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8191F9B2A40765C0057AA28 /* FavouritesCollectionViewCell.swift */; };
@@ -403,6 +404,7 @@
 		C80CC9232A6D6E4400B56F54 /* MsgRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MsgRecordCell.xib; sourceTree = "<group>"; };
 		C80CC92E2A6DBE8100B56F54 /* FavCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCell.swift; sourceTree = "<group>"; };
 		C80CC92F2A6DBE8100B56F54 /* FavCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavCell.xib; sourceTree = "<group>"; };
+		C813E5E52B341D500012A8B8 /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		C8191F962A4055030057AA28 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		C8191F982A40748D0057AA28 /* FavouritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesVC.swift; sourceTree = "<group>"; };
 		C8191F9B2A40765C0057AA28 /* FavouritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -845,6 +847,7 @@
 				C8AC4CB62A2884B000AE6356 /* Storage Manager */,
 				65DD120A29E6846B00A3B8DD /* view */,
 				65DD11F629E6845D00A3B8DD /* AppDelegate.swift */,
+				C813E5E52B341D500012A8B8 /* AppSettings.swift */,
 				65DD11F829E6845D00A3B8DD /* SceneDelegate.swift */,
 				65DD11FA29E6845D00A3B8DD /* ViewController.swift */,
 				65DD11FF29E6845E00A3B8DD /* Assets.xcassets */,
@@ -1684,6 +1687,7 @@
 				65B873B72AB09C3D0020BD23 /* HomeNavigationController.swift in Sources */,
 				C8A2BED82A3B5FA700A05E77 /* FollowersCell.swift in Sources */,
 				656FB05929FD5D6C00751C6C /* CitiesViewController.swift in Sources */,
+				C813E5E62B341D500012A8B8 /* AppSettings.swift in Sources */,
 				65DD121E29E6915A00A3B8DD /* Constants.swift in Sources */,
 				65DD122B29E6915A00A3B8DD /* AddingCustomFont.swift in Sources */,
 				659C3BB82A69DBCB00FFA360 /* SearchBaseViewController.swift in Sources */,
@@ -1899,7 +1903,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hunter/Hunter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 4W85KLPQDW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hunter/Info.plist;
@@ -1939,7 +1943,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hunter/Hunter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 4W85KLPQDW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hunter/Info.plist;

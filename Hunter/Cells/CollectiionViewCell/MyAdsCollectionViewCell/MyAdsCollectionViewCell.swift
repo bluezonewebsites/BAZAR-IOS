@@ -143,7 +143,7 @@ class MyAdsCollectionViewCell: UICollectionViewCell {
  
         }
         
-        if product.status == "unpaid_feature" {
+        if product.status.safeValue.contains("unpaid") {
             shareLabel.text = "Pay Now".localize
         }else if product.status == "finished" {
             shareLabel.text = "Repost".localize

@@ -1004,3 +1004,9 @@ extension Optional where Wrapped == Int {
     }
     
 }
+
+
+extension Notification.Name{
+    static let countryDidChange = Notification.Name("countryDidChange")
+
+}

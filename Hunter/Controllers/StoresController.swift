@@ -173,7 +173,7 @@ class StoresController {
         }, link: Constants.HOME_STORES_URL,param:params)
     }
     
-    func getSliders(completion: @escaping([SliderObject], Int, String)->(),countryId:Int){
+    func getSliders(completion: @escaping(Slider?, Int, String)->(),countryId:Int){
         
         let params = [
             "country_id": countryId
@@ -186,16 +186,16 @@ class StoresController {
                 
                 if productArray.statusCode == 200{
                     
-                    completion(productArray.data?.prods ?? [SliderObject](), 0,"")
+                    completion(productArray.data , 0,"")
                 }
                 else {
-                    completion([SliderObject](),1,productArray.message ?? "")
+                    completion(nil,1,productArray.message ?? "")
                 }
                 
             } catch (let jerrorr){
                 
                 print(jerrorr)
-                completion([SliderObject](),1,SERVER_ERROR)
+                completion(nil,1,SERVER_ERROR)
                 
                 
             }

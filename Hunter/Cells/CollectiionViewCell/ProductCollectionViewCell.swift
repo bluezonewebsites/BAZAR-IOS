@@ -35,6 +35,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     func setData(product: Product){
         
+        
         nameLbl.text = product.name
         priceLbl.text = "\(product.price ?? 0)"
         

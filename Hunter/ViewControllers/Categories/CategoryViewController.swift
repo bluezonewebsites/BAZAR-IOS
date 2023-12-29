@@ -47,12 +47,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         if collectionView == listMainCategory{
             return categories.count
         }else{
-            if categoryIndex == (categories.count-1){
-                return cities.count
-                
-            }else{
-                return sideCatgeory.count
-            }
+            return sideCatgeory.count
         }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -66,21 +61,21 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             
             return cell
         }else{
-            if  categoryIndex != (categories.count-1){
+//            if  categoryIndex != (categories.count-1){
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CatSideCell", for: indexPath) as! SideCategoryCollectionViewCell
                 cell.setData(category: sideCatgeory[indexPath.row])
                 
                 return cell
-            }
-            else{
-               
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ask_cell", for: indexPath) as! AskSubCategoryCollectionViewCell
-                    cell.setData(city: cities[indexPath.row])
-                    
-                    return cell
-               
-            }
+//            }
+//            else{
+//               
+//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ask_cell", for: indexPath) as! AskSubCategoryCollectionViewCell
+//                    cell.setData(city: cities[indexPath.row])
+//                    
+//                    return cell
+//               
+//            }
             //ask_cell
         }
     }
@@ -91,13 +86,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
         if collectionView == listMainCategory{
             return CGSize(width: 110, height: 82)
         }else {
-            if  categoryIndex != (categories.count-1){
                 return CGSize(width: collectionView.frame.width/2 - 5, height: 130)
-            }else{
-                print(collectionView.frame.width/2 - 11)
-                return CGSize(width: collectionView.frame.width/2 - 5, height: 80)
-            }
-            
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -106,8 +95,8 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
             self.categoryIndex = indexPath.row
             self.getSubCategory()
             
-        }else{
-            if categoryIndex != (categories.count-1){
+        } else{
+//            if categoryIndex != (categories.count-1){
 //            NotificationCenter.default.post(name: NSNotification.Name(rawValue:"chooseCategory"), object: nil, userInfo: ["cat_index": categoryIndex, "sub_cat_index": indexPath.row, "subCategories": sideCatgeory])
                 print("categoryIndex" , categoryIndex)
                 print("sub_cat_index" , indexPath.row)
@@ -122,16 +111,17 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                 homeDetailsVC.modalPresentationStyle = .fullScreen
                 self.navigationController?.pushViewController(homeDetailsVC, animated: true)
 //            self.navigationController?.popViewController(animated: true)
-            }else{
-                if StaticFunctions.isLogin(){
-                let vc = UIStoryboard(name: CATEGORRY_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: ASK_CITY_VCID) as! AsksViewController
-                vc.cityId = cities[indexPath.row].id ?? 46
-                self.navigationController?.pushViewController(vc, animated: true)
-                }else{
-                    basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
-                }
-                
-            }
+            
+//            }else{
+//                if StaticFunctions.isLogin(){
+//                let vc = UIStoryboard(name: CATEGORRY_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: ASK_CITY_VCID) as! AsksViewController
+//                vc.cityId = cities[indexPath.row].id ?? 46
+//                self.navigationController?.pushViewController(vc, animated: true)
+//                }else{
+//                    basicPresentation(storyName: Auth_STORYBOARD, segueId: "login_nav")
+//                }
+//                
+//            }
             
         }
     }
@@ -158,6 +148,7 @@ extension CategoryViewController{
             categories, check, msg in
             self.sideCatgeory.removeAll()
             
+            print(categories.count)
             self.sideCatgeory = categories
             
             if categories.count > 0 {

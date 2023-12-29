@@ -75,6 +75,7 @@ class HomeDetailsViewController: UIViewController {
         featuredLabelContainerView.isHidden = !isComeToFeatureAds
         filterContainerView.isHidden = isComeToFeatureAds
         subCatigoryContainer.isHidden = isComeToFeatureAds
+        subCatigoryContainer.isHidden = true
         feaureContainerView.isHidden = true
         searchTextField.delegate = self
         

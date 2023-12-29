@@ -99,35 +99,6 @@ class PayingVC: BottomPopupViewController {
     }
     
    
-    
-//    private func getPaymetStatus(){
-//        let paymentStatusRequest = MFPaymentStatusRequest(invoiceID: invoiceId)
-////        let paymentStatusRequest = MFPaymentStatusRequest(id: "id", keyType: .invoiceId)
-//        MFPaymentRequest.shared.getPaymentStatus(paymentStatus: paymentStatusRequest, apiLanguage: .english) { [weak self] (response) in
-//            guard let self else {return}
-//                switch response {
-//                    case .success(let paymentStatusResponse):
-//                    
-//                  
-//                    if paymentStatusResponse.invoiceStatus ?? "" == "Paid"{
-//                        if isFeaturedAd {
-//                        
-//                            delegate?.passPaymentStatus(from: paymentStatusResponse.invoiceStatus ?? "", invoiceId: "\(paymentStatusResponse.invoiceID ?? 0)", invoiceURL: "", prodId:prodId)
-//                        }else {
-////                            planDelegate?.didPayingSuccess()
-//                            planDelegate?.passPaymentStatus(from: paymentStatusResponse.invoiceStatus ?? "", invoiceId: "\(paymentStatusResponse.invoiceID ?? 0)", invoiceURL: "", userId: AppDelegate.currentUser.id ?? 0, planCategoryId:planCategoryId )
-//                        }
-//                    }else{
-//                        StaticFunctions.createInfoAlert(msg: paymentStatusResponse.invoiceStatus ?? "")
-//                        print(" Status is : ======>  \(paymentStatusResponse.invoiceStatus ?? "")")
-//                    }
-//                    case .failure(let failError):
-//                        print("\(failError)")
-//                }
-//        }
-//    }
-    
-    
     func sendPayment() {
         let request = getSendPaymentRequest()
         
@@ -256,7 +227,6 @@ extension PayingVC{
                                 }
                             }
                             
-                            
                         }else {
                             DispatchQueue.main.async {
                                 self.dismiss(animated: true) {[weak self] in
@@ -311,30 +281,8 @@ extension PayingVC{
     
     func executeDirectPayment(paymentMethodId: Int) {
         let request = getExecutePaymentRequest(paymentMethodId: paymentMethodId)
-//        let card = getCardInfo()
-        
-//        MFPaymentRequest.shared.executeDirectPayment(request: request, cardInfo: card, apiLanguage: .english) { [weak self] (response, invoiceId) in
-//            
-//            switch response {
-//            case .success(let directPaymentResponse):
-//                if let cardInfoResponse = directPaymentResponse.cardInfoResponse, let card = cardInfoResponse.cardInfo {
-//                  //  self?.resultTextView.text = "Status: with card number: \(card.number ?? "")"
-//                }
-//                if let invoiceId = invoiceId {
-////                    self?.errorCodeLabel.text = "Success with invoice id \(invoiceId)"
-//                } else {
-////                    self?.errorCodeLabel.text = "Success"
-//                }
-//            case .failure(let failError):
-////                self?.resultTextView.text = "Error: \(failError.errorDescription)"
-//                if let invoiceId = invoiceId {
-////                    self?.errorCodeLabel.text = "Fail: \(failError.statusCode) with invoice id \(invoiceId)"
-//                } else {
-////                    self?.errorCodeLabel.text = "Fail: \(failError.statusCode)"
-//                }
-//            }
-//        }
     }
+    
     func executeApplePayPayment(paymentMethodId: Int) {
         let request = getExecutePaymentRequest(paymentMethodId: paymentMethodId)
         

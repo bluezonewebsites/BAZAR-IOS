@@ -14,7 +14,6 @@ class UserSearchCell: UITableViewCell {
     @IBOutlet weak var locatioonLbl: UILabel!
     @IBOutlet weak var verifiesImage: UIImageView!
     @IBOutlet weak var blockBtn: UIButton!
-    @IBOutlet weak var followIcon: UIImageView!
     var blockBtclosure : (() -> Void)? = nil
 
     
@@ -50,7 +49,7 @@ class UserSearchCell: UITableViewCell {
         
         if(AppDelegate.currentUser.id  == user.id){
             blockBtn.isHidden = true
-            followIcon.isHidden = true
+//            followIcon.isHidden = true
         }else{
             blockBtn.isHidden = false
         }

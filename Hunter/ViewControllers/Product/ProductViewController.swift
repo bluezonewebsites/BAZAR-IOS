@@ -12,6 +12,7 @@ import MediaSlideshow
 import CircleMenu
 import FirebaseDynamicLinks
 import FirebaseAuth
+import AVFoundation
 
 class ProductViewController: UIViewController {
     
@@ -482,12 +483,36 @@ extension ProductViewController{
                 // prodC.sources_urls.append("\(user.newUrl)\(timg)")
                 sliderImages.append(Constants.IMAGE_URL + image)
                 if media_type == "VIDEO"{
+                    let asset = AVAsset(url: URL(string:Constants.IMAGE_URL + image)!)
+                               let orientationInfo = videoOrientation(from: asset)
+
+                               switch orientationInfo.orientation {
+                               case .up:
+                                   // Apply no transformation
+                                   print("UP")
+                                   break
+                               case .left:
+                                   // Apply left rotation
+                                   print("LEFT")
+                                   break
+                               case .right:
+                                   // Apply right rotation
+                                   print("RIGHT")
+                                   break
+                               case .down:
+                                   // Apply upside-down rotation
+                                   print("DOWN")
+                                   break
+                               default:
+                                   break
+                               }
                     
                     if image != "" {
                         print(image)
                         dataSource.sources.append(
                             
                             .av(AVSource(url: URL(string:Constants.IMAGE_URL + image)!, autoplay: true)))
+                        
                         
                     }
                 }else{
@@ -536,8 +561,10 @@ extension ProductViewController{
             
         }
 //        self.viewsLabel.text = "\(product.views ?? 0)"    
+        self.descriptionLbl.numberOfLines = 0
         self.descriptionLbl.text = product.description
         self.descriptionLbl.sizeToFit()
+        view.layoutIfNeeded()
         if product.userVerified == 1{
             userVerifieddImage.isHidden = false
         }else{
@@ -784,4 +811,28 @@ extension ProductViewController : FanMenuDelegate {
     func didTapButton1() {
         print("Hello Button 1")
     }
+}
+
+
+extension ProductViewController {
+    func videoOrientation(from asset: AVAsset) -> (orientation: UIImage.Orientation, isPortrait: Bool) {
+        guard let track = asset.tracks(withMediaType: AVMediaType.video).first else {
+            return (.up, false)
+        }
+
+        let size = track.naturalSize
+        let transform = track.preferredTransform
+
+        // Check the orientation and return the corresponding values
+        if size.width == transform.tx && size.height == transform.ty {
+            return (.left, true)
+        } else if transform.tx == 0 && transform.ty == 0 {
+            return (.right, true)
+        } else if transform.tx == 0 && transform.ty == size.width {
+            return (.down, false)
+        } else {
+            return (.up, false)
+        }
+    }
+
 }

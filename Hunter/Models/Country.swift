@@ -42,13 +42,14 @@ struct Country:Codable{
     var currencyAr:String?
     var code: String?
     
-    init(nameAr: String? = nil, nameEn: String? = nil, id: Int? = nil, code: String? = nil,currencyAr: String? = nil,currencyEn: String? = nil) {
+    init(nameAr: String? = nil, nameEn: String? = nil, id: Int? = nil, code: String? = nil,currencyAr: String? = nil,currencyEn: String? = nil, image: String? = nil) {
         self.nameAr = nameAr
         self.nameEn = nameEn
         self.id = id
         self.code = code
         self.currencyAr = currencyAr
         self.currencyEn = currencyEn
+        self.image = image
         
     }
     

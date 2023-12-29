@@ -3240,20 +3240,22 @@
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="Localize" value="YES"/>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
-                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-cS-oZZ">
+                                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MwY-cS-oZZ">
                                                                                 <rect key="frame" x="330" y="0.0" width="30" height="30"/>
                                                                                 <subviews>
                                                                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHW-dp-ef5">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <color key="tintColor" systemColor="tableBackgroundColor"/>
                                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                                        <state key="normal" image="delete_chat"/>
+                                                                                        <state key="normal" image="icons-trash">
+                                                                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        </state>
                                                                                         <connections>
                                                                                             <action selector="didTapDeleteMainImage:" destination="Nzo-dc-bqn" eventType="touchUpInside" id="Lxw-C7-Ohb"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="bottom" secondItem="dHW-dp-ef5" secondAttribute="bottom" id="0yf-XZ-Muq"/>
                                                                                     <constraint firstItem="dHW-dp-ef5" firstAttribute="leading" secondItem="MwY-cS-oZZ" secondAttribute="leading" id="1lR-Uu-PHZ"/>
@@ -5945,8 +5947,8 @@
         <image name="checkbox" width="22" height="22"/>
         <image name="chevron.forward" catalog="system" width="97" height="128"/>
         <image name="closeButtonImage" width="40" height="40"/>
-        <image name="delete_chat" width="35" height="35"/>
         <image name="ic_cross_white" width="24" height="24"/>
+        <image name="icons-trash" width="13" height="14.666666984558105"/>
         <image name="imageadd" width="125" height="125"/>
         <image name="info" width="128" height="128"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
@@ -6014,6 +6016,9 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tableBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

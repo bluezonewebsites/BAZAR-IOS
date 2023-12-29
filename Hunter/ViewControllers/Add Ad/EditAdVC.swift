@@ -426,35 +426,70 @@ class EditAdVC:UIViewController, PickupMediaPopupEditAdsVCDelegate  {
 //MARK: fileprivate Methods
 extension EditAdVC{
     
-    fileprivate  func getData(){
-        ProductController.shared.getProducts(completion: {
-            product, check, msg in
-            
-            if check == 0{
+//    fileprivate  func getData(){
+//        ProductController.shared.getProducts(completion: {
+//            product, check, msg in
+//            
+//            if check == 0{
+//                self.product = product.data
+//                self.productsImages = product.images
+//                print(product.images)
+//                for i in product.images{
+////                    self.images.append(i.image ?? "")
+//                    guard let imageURL = URL(string: i.image ?? "" ) else { return }
+//                    if i.image?.contains(".mp4") == true {
+//                        self.dataSource.append(.image(self.generateThumbnailImage(url: imageURL)))
+//                        
+//                    }else{
+//                        self.dataSource.append(.url(imageURL))
+//                    }
+//                    
+//                }
+//                print(self.dataSource)
+//                self.setData()
+//                
+//            }else{
+//                StaticFunctions.createErrorAlert(msg: msg)
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//            
+//        }, id: productId)
+//    }
+    fileprivate func getData() {
+        ProductController.shared.getProducts(completion: { product, check, msg in
+            // Check if the operation was successful
+            if check == 0 {
                 self.product = product.data
                 self.productsImages = product.images
                 print(product.images)
-                for i in product.images{
-//                    self.images.append(i.image ?? "")
-                    guard let imageURL = URL(string: i.image ?? "" ) else { return }
-                    if i.image?.contains(".mp4") == true {
-                        self.dataSource.append(.image(self.generateThumbnailImage(url: imageURL)))
-                        
-                    }else{
-                        self.dataSource.append(.url(imageURL))
+
+                for imageInfo in product.images {
+                    // Safely unwrap the image URL
+                    if let imageUrlString = imageInfo.pimage, let imageURL = URL(string: Constants.IMAGE_URL+imageUrlString) {
+                        print(imageUrlString)
+                        // Handle .mp4 files differently
+                        if imageUrlString.contains(".mp4") {
+                            // Assuming generateThumbnailImage(url:) returns an image or nil
+                             let thumbnailImage = self.generateThumbnailImage(url: imageURL)
+                                self.dataSource.append(.image(thumbnailImage))
+                            
+                        } else {
+                            self.dataSource.append(.url(imageURL))
+                        }
+                    } else {
+                        print("Invalid URL or nil found in product images.")
                     }
-                    
                 }
                 print(self.dataSource)
+                // Call setData() after processing all images
                 self.setData()
-                
-            }else{
+            } else {
                 StaticFunctions.createErrorAlert(msg: msg)
                 self.navigationController?.popViewController(animated: true)
             }
-            
         }, id: productId)
     }
+
     
     fileprivate func setData(){
         self.titleLabel.text = product.name

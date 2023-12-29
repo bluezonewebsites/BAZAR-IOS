@@ -228,7 +228,7 @@ extension MyAdsVC:MyAdsCollectionViewCellDelegate {
     }
     
     func shareAdCell(buttonDidPressed indexPath: IndexPath) {
-        if products[indexPath.row].status == "unpaid_feature" {
+        if products[indexPath.row].status.safeValue.contains("unpaid"){
             //GO To Pay
             
             let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC

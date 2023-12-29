@@ -566,16 +566,13 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
             vc.delegate = self
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
-            
-            
-            //            createAds()
         }
         
         
         
     }
     
-    func createAds(isFeatured:Int) {
+    func createAds(isFeatured:Int,normalPaid:Int) {
         
         params = [
             "uid":AppDelegate.currentUser.id ?? 0,
@@ -595,8 +592,12 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
             "phone":"\(phone)","wts":phone,"descr":descTextView.text!,
             "has_chat":hasChat,"has_wts":hasWhats,"has_phone":hasPhone,
             "tajeer_or_sell":"\(tajeer)",
-            "is_feature" : isFeatured
+//            "is_feature" : isFeatured
         ]
+        
+        if isFeatured == 1 {
+            params["is_feature"] = isFeatured
+        }
         var type = ""
         var index = ""
         var image = Data()
@@ -658,7 +659,7 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
                     //completion(true,data.message ?? "")
 
                     print(data.message ?? "")
-                if isFeatured == 1 {
+                if isFeatured == 1 || normalPaid == 1 {
                     let vc = UIStoryboard(name: ADVS_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "PayingVC") as! PayingVC
                         vc.delegate  = self
                         vc.isFeaturedAd = true
@@ -671,7 +672,6 @@ class AddAdvsVC: UIViewController , PickupMediaPopupVCDelegate {
                             vc.amountDue = "\(cost)"
                         }
                     }
-                        
                     self.present(vc, animated: true)
                     }else {
                         self.goToSuccessfullAddAd()
@@ -1327,15 +1327,20 @@ extension AddAdvsVC:UITextViewDelegate {
 }
 extension AddAdvsVC : ChooseAdTyDelegate {
     func didTapNormalAd() {
+        print("Strore Count Ads ===>",AppDelegate.currentUser.availableAdsCountStoreInCurrentMonth ?? 0)
+        print("User Count Ads ===>",AppDelegate.currentUser.availableAdsCountUserInCurrentMonth ?? 0)
+
         guard let isStore = AppDelegate.currentUser.isStore  else  {return}
         if !isStore && AppDelegate.currentUser.availableAdsCountUserInCurrentMonth ?? 0 <= 0 {
-            StaticFunctions.createErrorAlert(msg: "Sorry, You have exhausted your free ads this month".localize)
+//            StaticFunctions.createErrorAlert(msg: "Sorry, You have exhausted your free ads this month".localize)
+            createAds(isFeatured:0,normalPaid: 1)
         }else if isStore && AppDelegate.currentUser.availableAdsCountStoreInCurrentMonth ?? 0 <= 0 {
-            StaticFunctions.createErrorAlert(msg: "Sorry, You have exhausted your free ads this month".localize)
+//            StaticFunctions.createErrorAlert(msg: "Sorry, You have exhausted your free ads this month".localize)
+            createAds(isFeatured:0,normalPaid: 1)
         }
         else{
             if StaticFunctions.isLogin() {
-                createAds(isFeatured:0)
+                createAds(isFeatured:0,normalPaid: 0)
             }else{
                 StaticFunctions.createErrorAlert(msg: "Please Login First".localize)
             }
@@ -1348,7 +1353,7 @@ extension AddAdvsVC : ChooseAdTyDelegate {
     
     func didTapFeaturedAd() {
         if StaticFunctions.isLogin() {
-            createAds(isFeatured: 1)
+            createAds(isFeatured: 1,normalPaid: 0)
         }else{
             StaticFunctions.createErrorAlert(msg: "Please Login First".localize)
         }

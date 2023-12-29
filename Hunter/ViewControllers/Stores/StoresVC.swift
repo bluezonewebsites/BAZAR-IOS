@@ -10,6 +10,15 @@ import FSPagerView
 import MOLH
 import WoofTabBarController
 
+protocol StoresVCDelegate:AnyObject{
+    func didChangeCounty()
+}
+
+enum SliderType {
+    case normalSlider(NormalSlider)
+    case prods(SliderObject)
+}
+
 class StoresVC: UIViewController {
     static func instantiate()->StoresVC{
         let controller = UIStoryboard(name: "Store", bundle: nil).instantiateViewController(withIdentifier:"StoresVC" ) as! StoresVC
@@ -32,14 +41,19 @@ class StoresVC: UIViewController {
         }
     }
 
-
+    weak var delegate:StoresVCDelegate?
     let titleLabel = UILabel()
     var coountryVC = CounriesViewController()
     var countryName = MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn : AppDelegate.currentCountry.nameAr
     var countryId = AppDelegate.currentCountry.id ?? 6
     var cityId = -1
     var storesList = [StoreObject]()
-    var sliderList = [SliderObject]()
+    
+    //MARK: Sliders Variables
+    var unifiedSliderData = [UnifiedSliderData]()
+    
+    var sliderProdsList = [SliderObject]()
+    var normalSliderList = [NormalSlider]()
     let badgeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
 
     //MARK: - App Life Cycle
@@ -47,7 +61,9 @@ class StoresVC: UIViewController {
         super.viewDidLoad()
 //        CollectionView.isScrollEnabled = false
         NotificationCenter.default.post(name: NSNotification.Name("ShowTabBar"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(changeCountryName(_:)), name: NSNotification.Name("changeCountryName"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(changeCountryName(_:)), name: NSNotification.Name("changeCountryName"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(countryDidChange), name: .countryDidChange, object: nil)
+
         searchTextField.delegate = self
         pagerView.delegate = self
         pagerView.dataSource = self
@@ -174,12 +190,23 @@ class StoresVC: UIViewController {
 //        navigationItem.rightBarButtonItems = []
         navigationItem.leftBarButtonItems = [countryButton]
     }
-    
+    @objc func countryDidChange(notification: Notification) {
+        if let country = notification.userInfo?["country"] as? Country {
+            AppDelegate.currentCountry = country
+            self.countryName = MOLHLanguage.currentAppleLanguage() == "en" ? (country.nameEn ?? "") : (country.nameAr ?? "")
+//            self.rightButton.setTitle(self.countryName, for: .normal)
+            self.titleLabel.text = self.countryName
+            self.countryId = country.id ?? 6
+            self.getStores()
+            self.cityId = -1
+        }
+    }
     @objc func didTapChangeCountryButton(){
         coountryVC = UIStoryboard(name: MAIN_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: COUNTRY_VCIID) as!  CounriesViewController
         coountryVC.countryBtclosure = { [weak self]
             (country) in
             guard let self else {return}
+//            AppSettings.shared.currentCountry = country // Set this when the country changes
             AppDelegate.currentCountry = country
             self.countryName = MOLHLanguage.currentAppleLanguage() == "en" ? (country.nameEn ?? "") : (country.nameAr ?? "")
 //            self.rightButton.setTitle(self.countryName, for: .normal)
@@ -193,6 +220,9 @@ class StoresVC: UIViewController {
         self.present(coountryVC, animated: true, completion: nil)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
     @objc func changeCountryName(_ notification:Notification){
         titleLabel.text = MOLHLanguage.currentAppleLanguage() == "en" ? AppDelegate.currentCountry.nameEn : AppDelegate.currentCountry.nameAr
@@ -236,33 +266,66 @@ extension StoresVC:UICollectionViewDelegate,UICollectionViewDataSource,UICollect
     
 }
 
-extension StoresVC:FSPagerViewDelegate , FSPagerViewDataSource {
+//extension StoresVC:FSPagerViewDelegate , FSPagerViewDataSource {
+//    func numberOfItems(in pagerView: FSPagerView) -> Int {
+//        return sliderList.count == 0 ? 3 : sliderList.count
+//    }
+//
+//    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+//        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+//            cell.imageView?.setImageWithLoading(url: sliderList[index].img ?? "")
+//            return cell
+//    }
+//
+//    func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
+//        if sliderList.count == 0 {
+//            openURL("https://bazar-kw.com")
+//        }else {
+//            let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: PRODUCT_VCID) as! ProductViewController
+//            vc.modalPresentationStyle = .fullScreen
+//            vc.product.id  = sliderList[index].id ?? 0
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+//        
+//    }
+//
+//}
+extension StoresVC: FSPagerViewDelegate, FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return sliderList.count == 0 ? 3 : sliderList.count
+        return unifiedSliderData.count
     }
 
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        if sliderList.count == 0 {
-            let images = ["shanghai","hongkong","granCanaria"]
-            cell.imageView?.image = UIImage(named: images[index]) ?? UIImage(named: "logo_photo")
-        }else{
-            cell.imageView?.setImageWithLoading(url: sliderList[index].img ?? "")
-
+        let slider = unifiedSliderData[index]
+        switch slider.type{
+            
+        case .normalSlider(_):
+                cell.imageView?.setImageWithLoadingFromMainDomain(url: slider.imageUrl.safeValue)
+        case .prods(_):
+            if slider.imageUrl.safeValue.contains("/image"){
+                cell.imageView?.setImageWithLoadingFromMainDomain(url: slider.imageUrl.safeValue)
+            }else{
+                cell.imageView?.setImageWithLoading(url: slider.imageUrl.safeValue)
+            }
         }
-            return cell
+        return cell
     }
-
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
-        if sliderList.count == 0 {
-            openURL("https://bazar-kw.com")
-        }else {
+        let selectedSlider = unifiedSliderData[index]
+
+        switch selectedSlider.type {
+        case .prods(let prod):
             let vc = UIStoryboard(name: PRODUCT_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: PRODUCT_VCID) as! ProductViewController
             vc.modalPresentationStyle = .fullScreen
-            vc.product.id  = sliderList[index].id ?? 0
+            vc.product.id = prod.id
             self.navigationController?.pushViewController(vc, animated: true)
+
+        case .normalSlider(let normalSlider):
+            if let url = normalSlider.link, let urlObj = URL(string: url) {
+                UIApplication.shared.open(urlObj)
+            }
         }
-        
     }
 
 }
@@ -291,17 +354,28 @@ extension StoresVC {
     }
     
     
-    func getSliders(){
-        StoresController.shared.getSliders(completion: { sliders, check, message in
-            if check == 0{
-                print(sliders.count)
-                self.sliderList.removeAll()
-                self.sliderList.append(contentsOf: sliders)
-                self.pagerView.reloadData()
-            }else{
+    func getSliders() {
+        StoresController.shared.getSliders(completion: {[weak self] sliders, check, message in
+            guard let self = self else { return }
+            if check == 0 {
+                if let prods = sliders?.prods, let normalSliders = sliders?.normalSliders {
+                    self.prepareSlidersData(from: prods, and: normalSliders)
+                    self.pagerView.reloadData()
+                }
+            } else {
                 StaticFunctions.createErrorAlert(msg: message)
             }
         }, countryId: countryId)
+    }
+    
+    private func prepareSlidersData(from prods:[SliderObject], and normalSliders:[NormalSlider]){
+        
+        unifiedSliderData = normalSliders.map({ slider in
+            return UnifiedSliderData(type: .normalSlider(slider), imageUrl: slider.image, link: slider.link, id: slider.id.safeValue)
+        }) + prods.map({ prod in
+            return UnifiedSliderData(type: .prods(prod), imageUrl: prod.img ?? prod.prodsImage.safeValue, link: nil, id: prod.id.safeValue)
+        })
+        
     }
     
     private func getnotifictionCounts(){

@@ -6,6 +6,7 @@
 
 import UIKit
 import Alamofire
+import NVActivityIndicatorView
 
 class OtherUserProductVC: UIViewController {
     var products = [SpecialProdModel]()
@@ -16,14 +17,17 @@ class OtherUserProductVC: UIViewController {
     
     @IBOutlet weak var lst: UICollectionView!
     
+    @IBOutlet weak var loadingindecator: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingindecator.type = .ballPulse
+        loadingindecator.color = UIColor(named: "#0EBFB1") ?? .yellow
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.handleUserIDNotification(_:)), name:NSNotification.Name(rawValue: "passUserID"), object: nil)
         lst.register(UINib(nibName: "OtherUserProductCell", bundle: nil), forCellWithReuseIdentifier: "OtherUserProductCell")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             print(self.self.otherUserID , "Country:  " , self.otherUserCountryId)
             self.products.removeAll()
-            self.get(page: self.page)
+//            self.get(page: self.page)
         }
       
     }
@@ -31,7 +35,7 @@ class OtherUserProductVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: NSNotification.Name("hideTabBar"), object: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
             print(self.self.otherUserID , "Country:  " , self.otherUserCountryId)
             self.products.removeAll()
             self.get(page: self.page)
@@ -53,13 +57,16 @@ class OtherUserProductVC: UIViewController {
         lst.reloadData()
     }
     func get(page:Int){
+        loadingindecator.startAnimating()
        // products.data?.data?.removeAll()
         let params : [String: Any]  = ["uid":otherUserID,"country_id":AppDelegate.currentUser.countryId ?? 0, "page":page,"status":"published"]
         print("parameters for get my advs ======> ", params)
         guard let url = URL(string: Constants.DOMAIN+"prods_by_user") else{return}
         AF.request(url, method: .post, parameters: params)
-            .responseDecodable(of: SpecialProductModel.self) { e in
+            .responseDecodable(of: SpecialProductModel.self) {[weak self] e in
                 print("my advs response =======> " , e)
+                guard let self else {return}
+                loadingindecator.stopAnimating()
                 switch e.result {
                 case let .success(data):
                     print(data.data?.data)
@@ -95,7 +102,6 @@ extension OtherUserProductVC :UICollectionViewDelegate,UICollectionViewDataSourc
         let inx = indexPath.row
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OtherUserProductCell", for: indexPath) as! OtherUserProductCell
             cell.configure(data: products[inx])
-            cell.flipX()
         return cell
     }
     

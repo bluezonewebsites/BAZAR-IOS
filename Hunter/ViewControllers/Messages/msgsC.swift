@@ -262,7 +262,7 @@ class msgsC: UIViewController , UICollectionViewDelegate , UICollectionViewDataS
             case .success(let data):
                 if let data = data.data {
                     print(data)
-                    self.roomsData = data
+                    self.roomsData = data.reversed()
                     if data.count > 0 {
                             DispatchQueue.main.async {
                                 self.selectAndDeleteViewContainer.isHidden = false

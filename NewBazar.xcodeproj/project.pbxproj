@@ -184,7 +184,6 @@
 		C86678BF29FFA12B0019AE81 /* Advs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86678BE29FFA12B0019AE81 /* Advs.storyboard */; };
 		C86B4AAC2A8929D40018D178 /* HomeStoreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B4AAB2A8929D40018D178 /* HomeStoreCollectionViewCell.swift */; };
 		C86B4AAE2A8933050018D178 /* HomeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B4AAD2A8933050018D178 /* HomeDetailsViewController.swift */; };
-		C87158422B30F0D700B4EFC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C87158412B30F0D700B4EFC9 /* GoogleService-Info.plist */; };
 		C87A717A2A87D88A00222085 /* FeaturesProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87A71792A87D88A00222085 /* FeaturesProductsCollectionViewCell.swift */; };
 		C87DD3A32A48599300B6B0FB /* ChangePhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87DD3A22A48599300B6B0FB /* ChangePhoneVC.swift */; };
 		C87DD3A52A485C7000B6B0FB /* SuccessVerifiationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87DD3A42A485C7000B6B0FB /* SuccessVerifiationModel.swift */; };
@@ -270,6 +269,8 @@
 		C8CCE33C2A19E29200FFAFB2 /* LocalizedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CCE33B2A19E29200FFAFB2 /* LocalizedImage.swift */; };
 		C8CCE33E2A19E33B00FFAFB2 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CCE33D2A19E33B00FFAFB2 /* ProfileController.swift */; };
 		C8CCE3402A19E81100FFAFB2 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CCE33F2A19E81100FFAFB2 /* Profile.swift */; };
+		C8D0CB762B40B0C100AE78FF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C8D0CB752B40B0C100AE78FF /* GoogleService-Info.plist */; };
+		C8D0CB782B40C41B00AE78FF /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D0CB772B40C41B00AE78FF /* EmptyStateView.swift */; };
 		C8D258442B0F517600A8DE04 /* UserBlockedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D258432B0F517600A8DE04 /* UserBlockedTableViewCell.swift */; };
 		C8D258462B0F51D500A8DE04 /* UserBlockedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D258452B0F51D500A8DE04 /* UserBlockedVC.swift */; };
 		C8D258482B0F985000A8DE04 /* UsersBlockedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D258472B0F985000A8DE04 /* UsersBlockedModel.swift */; };
@@ -473,7 +474,6 @@
 		C86678BE29FFA12B0019AE81 /* Advs.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Advs.storyboard; sourceTree = "<group>"; };
 		C86B4AAB2A8929D40018D178 /* HomeStoreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeStoreCollectionViewCell.swift; sourceTree = "<group>"; };
 		C86B4AAD2A8933050018D178 /* HomeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailsViewController.swift; sourceTree = "<group>"; };
-		C87158412B30F0D700B4EFC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C87A71792A87D88A00222085 /* FeaturesProductsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesProductsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C87DD3A22A48599300B6B0FB /* ChangePhoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneVC.swift; sourceTree = "<group>"; };
 		C87DD3A42A485C7000B6B0FB /* SuccessVerifiationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessVerifiationModel.swift; sourceTree = "<group>"; };
@@ -562,6 +562,8 @@
 		C8CCE33B2A19E29200FFAFB2 /* LocalizedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedImage.swift; sourceTree = "<group>"; };
 		C8CCE33D2A19E33B00FFAFB2 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		C8CCE33F2A19E81100FFAFB2 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		C8D0CB752B40B0C100AE78FF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C8D0CB772B40C41B00AE78FF /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		C8D258432B0F517600A8DE04 /* UserBlockedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBlockedTableViewCell.swift; sourceTree = "<group>"; };
 		C8D258452B0F51D500A8DE04 /* UserBlockedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBlockedVC.swift; sourceTree = "<group>"; };
 		C8D258472B0F985000A8DE04 /* UsersBlockedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersBlockedModel.swift; sourceTree = "<group>"; };
@@ -852,7 +854,7 @@
 				65DD11FA29E6845D00A3B8DD /* ViewController.swift */,
 				65DD11FF29E6845E00A3B8DD /* Assets.xcassets */,
 				65DD120129E6845E00A3B8DD /* LaunchScreen.storyboard */,
-				C87158412B30F0D700B4EFC9 /* GoogleService-Info.plist */,
+				C8D0CB752B40B0C100AE78FF /* GoogleService-Info.plist */,
 				65DD120429E6845E00A3B8DD /* Info.plist */,
 			);
 			path = Hunter;
@@ -1282,6 +1284,7 @@
 			children = (
 				C8CC468D2A387F4500C90476 /* RoundedNavigationBar.swift */,
 				C8B1CF6D2B161F6000577C04 /* CustomFanMenu.swift */,
+				C8D0CB772B40C41B00AE78FF /* EmptyStateView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -1406,7 +1409,6 @@
 				C8CC468B2A3874B800C90476 /* ProfileProductsCollectionViewCell.xib in Resources */,
 				65FC22132A1172BA0077F1A2 /* Product.storyboard in Resources */,
 				651F53CA2ADC04AF00D48890 /* Bahij_TheSansArabic-SemiLight.ttf in Resources */,
-				C87158422B30F0D700B4EFC9 /* GoogleService-Info.plist in Resources */,
 				C84D28FD2A6D0A990026F125 /* MsgContactSenderCell.xib in Resources */,
 				C86678BF29FFA12B0019AE81 /* Advs.storyboard in Resources */,
 				65DD121F29E6915A00A3B8DD /* Localizable.strings in Resources */,
@@ -1447,6 +1449,7 @@
 				C8A547D82A594BF100031FE9 /* ProductsShimmerView.xib in Resources */,
 				C8A2BEBA2A3A55B400A05E77 /* OtherUserProductCell.xib in Resources */,
 				C8B7C9422A97B724008D87FA /* Store.storyboard in Resources */,
+				C8D0CB762B40B0C100AE78FF /* GoogleService-Info.plist in Resources */,
 				C8A2BED92A3B5FA700A05E77 /* FollowersCell.xib in Resources */,
 				C85A5C522A5FC88F0074AF4D /* FavouritesTableViewCell.xib in Resources */,
 			);
@@ -1618,6 +1621,7 @@
 				65F33D092A229D4100A1A889 /* AskRepliesViewController.swift in Sources */,
 				65B5505B2A1C863F002D2264 /* SearchController.swift in Sources */,
 				C843137E2A2B26C7008D24BD /* ChangeCountryVC.swift in Sources */,
+				C8D0CB782B40C41B00AE78FF /* EmptyStateView.swift in Sources */,
 				65FC22152A1172D30077F1A2 /* ProductCommentTableViewCell.swift in Sources */,
 				C85FFCB82A260AAE000C426D /* ProfileProductsCollectionViewCell.swift in Sources */,
 				C86B4AAC2A8929D40018D178 /* HomeStoreCollectionViewCell.swift in Sources */,
@@ -1903,7 +1907,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hunter/Hunter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4W85KLPQDW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hunter/Info.plist;
@@ -1925,7 +1929,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.3;
+				MARKETING_VERSION = 4.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluezone.bazaar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1943,7 +1947,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hunter/Hunter.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4W85KLPQDW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Hunter/Info.plist;
@@ -1965,7 +1969,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.3;
+				MARKETING_VERSION = 4.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluezone.bazaar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

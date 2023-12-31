@@ -18,6 +18,7 @@ import Alamofire
 
 class profileRatesVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var lst: UITableView!
     var data = RateData()
     var ratedUserId = 0
@@ -32,9 +33,14 @@ class profileRatesVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     var userPicture = [String]()
     
     
+    lazy var emptyStateView: EmptyStateView = {
+        let emptyView = EmptyStateView()
+        return emptyView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadUserRates(_:)), name: NSNotification.Name("getRate"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleUserIDNotification(_:)), name: .userIDNotification, object: nil)
                 
@@ -48,6 +54,8 @@ class profileRatesVC: UIViewController,UITableViewDataSource,UITableViewDelegate
 //        addObserver("loadRatings", #selector(getRate))
         getRate()
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,6 +71,14 @@ class profileRatesVC: UIViewController,UITableViewDataSource,UITableViewDelegate
             // Use the userID here
             print(userID)
           //  self.ratedUserId = userID
+        }
+    }
+    
+    func updateBacgroundTableView(){
+        if data.data?.isEmpty ?? false {
+            emptyView.isHidden = false
+        } else {
+            emptyView.isHidden = true
         }
     }
     
@@ -87,8 +103,9 @@ class profileRatesVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         let params : [String: Any]  = ["uid":ratedUserId]
         print(params)
         guard let url = URL(string: Constants.DOMAIN+"get_rate_user")else{return}
-        AF.request(url, method: .post, parameters: params).responseDecodable(of:RateSuccessModel.self){res in
+        AF.request(url, method: .post, parameters: params).responseDecodable(of:RateSuccessModel.self){[weak self ]res in
             print(res.value)
+            guard let self else {return}
             switch res.result {
                 
             case .success(let data):
@@ -96,7 +113,7 @@ class profileRatesVC: UIViewController,UITableViewDataSource,UITableViewDelegate
                     self.data = rateData
                     DispatchQueue.main.async {
                         self.lst.reloadData()
-
+                        self.updateBacgroundTableView()
                     }
                 }
             case .failure(let error):

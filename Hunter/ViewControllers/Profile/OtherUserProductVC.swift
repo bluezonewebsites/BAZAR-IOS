@@ -8,12 +8,17 @@ import UIKit
 import Alamofire
 import NVActivityIndicatorView
 
+protocol PagerViewHeightDelegate: AnyObject {
+    func updatePagerViewHeight(height: CGFloat)
+}
+
 class OtherUserProductVC: UIViewController {
     var products = [SpecialProdModel]()
     var page = 1
     var lastPage = 0
     var otherUserID = "0"
     var otherUserCountryId = 0
+    weak var heightDelegate: PagerViewHeightDelegate?
     
     @IBOutlet weak var lst: UICollectionView!
     
@@ -78,8 +83,11 @@ class OtherUserProductVC: UIViewController {
                         self.lastPage = lastPage
                     }
                     print("My advs Data  =======> ",self.products)
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async {[weak self] in
+                        guard let self else {return}
                         self.lst.reloadData()
+                        let contentHeight = calculateTotalContentHeight()
+                        heightDelegate?.updatePagerViewHeight(height: contentHeight)
                     }
                 case let .failure(error):
                     print(error.localizedDescription)
@@ -88,6 +96,26 @@ class OtherUserProductVC: UIViewController {
         
         
     }
+    private func calculateTotalContentHeight() -> CGFloat {
+            let totalItems = lst.numberOfItems(inSection: 0)
+            let numberOfRows = ceil(CGFloat(totalItems) / 2) // Adjust as per your layout
+        print("numberOfRows -> \(numberOfRows) , totalItems -> \(totalItems) ")
+            let totalRowHeight = numberOfRows * 170 // rowHeight is height of each item
+            let totalSpacingHeight = (numberOfRows - 1) * 10 // Adjust as per your layout
+            let totalHeight = totalRowHeight + totalSpacingHeight
+            return totalHeight
+        }
+    
+//   private func calculateTotalContentHeight() -> CGFloat {
+//        let itemCount = lst.numberOfItems(inSection: 0)
+//        let rowHeight: CGFloat = 170 // Replace with your cell height
+//        let spacing: CGFloat = 10 // Replace with your spacing value
+//
+//        // Calculate total height based on item count, row height, and spacing
+//        let totalHeight = CGFloat(itemCount) * rowHeight + CGFloat(itemCount - 1) * spacing
+//
+//        return totalHeight
+//    }
     
 }
 extension OtherUserProductVC :UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {

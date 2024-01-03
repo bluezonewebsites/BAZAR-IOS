@@ -60,10 +60,11 @@ class FollowersAndFollowingsVC: UIViewController {
     
     
     private func getFollowers(){
-        FollowersController.shared.getFollowers(completion: { followers, message in
+        FollowersController.shared.getFollowers(completion: {[weak self] followers, message in
+            guard let self else {return}
             if var followers = followers {
                 print(followers.count)
-                followers.removeAll { $0.userID == AppDelegate.currentUser.id.safeValue }
+                followers.removeAll { $0.userID == self.userId }
                 self.data = followers
                 self.tableView.reloadData()
             }else {
@@ -76,7 +77,7 @@ class FollowersAndFollowingsVC: UIViewController {
         FollowersController.shared.getFollowings(completion: { followings, message in
             if var followings = followings {
                 print(followings.count)
-                followings.removeAll { $0.toID == AppDelegate.currentUser.id.safeValue }
+                followings.removeAll { $0.toID == self.userId  }
                 self.data.append(contentsOf: followings)
                 self.tableView.reloadData()
             }else {

@@ -37,7 +37,7 @@ import FirebaseDynamicLinks
         @IBOutlet weak var pages: UIView!
         @IBOutlet weak var addRateButton: UIButton!
         @IBOutlet weak var followButton: UIButton!
-        
+        @IBOutlet weak var pagerViewHeightConstraint: NSLayoutConstraint!
         @IBOutlet weak var chatButton: TransitionButton!
         
         var OtherUserId = 0
@@ -448,6 +448,7 @@ import FirebaseDynamicLinks
             }else{
                 let OtherUserProductVC = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "OtherUserProductVC") as! OtherUserProductVC
                 OtherUserProductVC.otherUserID = "\(OtherUserId)"
+                OtherUserProductVC.heightDelegate = self
                 OtherUserProductVC.otherUserCountryId = otherUserCountryId ?? 6
                 return OtherUserProductVC
  //                getViewController("OtherUserProductVC",PROFILE_STORYBOARD)
@@ -492,5 +493,19 @@ import FirebaseDynamicLinks
 extension OtherUserProfileVC : AddRateForUsersVCDelegate{
     func reloadData() {
         
+    }
+}
+
+extension OtherUserProfileVC : PagerViewHeightDelegate {
+    func updatePagerViewHeight(height: CGFloat) {
+        // Update the height constraint of your pager view
+        // You might need to store a reference to the height constraint
+        
+        DispatchQueue.main.async { [weak self ] in
+            guard let self else {return}
+            print(height)
+            pagerViewHeightConstraint.constant = height
+        }
+        view.layoutIfNeeded()
     }
 }

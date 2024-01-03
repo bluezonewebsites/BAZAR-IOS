@@ -28,7 +28,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak private var followersCountLabel: UILabel!
     @IBOutlet weak private var followingsCountLabel: UILabel!
     @IBOutlet weak private var locationLabel: UILabel!
-    
+    @IBOutlet weak var collectionViewheightConstraint: NSLayoutConstraint!
     @IBOutlet weak var verifiedImageView: UIImageView!
     @IBOutlet weak var countOfFreeAds: UILabel!
     @IBOutlet weak private var myAdsCollectionView: UICollectionView!
@@ -259,6 +259,23 @@ class ProfileVC: UIViewController {
     
 }
 extension ProfileVC {
+    
+    private func updateCollectionViewHeight() {
+            let totalItems = myAdsCollectionView.numberOfItems(inSection: 0)
+            let numberOfRows = ceil(CGFloat(totalItems) / 2) // Adjust as per your layout
+            let totalRowHeight = numberOfRows * 280 // rowHeight is height of each item
+            let totalSpacingHeight = (numberOfRows - 1) * 10 // Adjust as per your layout
+
+            let totalHeight = totalRowHeight + totalSpacingHeight
+        collectionViewheightConstraint.constant = totalHeight
+
+            view.layoutIfNeeded()
+        }
+    
+    private func reloadData() {
+        myAdsCollectionView.reloadData()
+            updateCollectionViewHeight()
+        }
     
    private func getProductsByUser(){
         guard let userId = AppDelegate.currentUser.id , let countryId = AppDelegate.currentUser.countryId else{return}

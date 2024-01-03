@@ -146,7 +146,7 @@ class StoreProfileVC: UIViewController {
         let vc = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "FollowersAndFollowingsVC") as! FollowersAndFollowingsVC
         Constants.followOtherUserId = AppDelegate.currentUser.id ?? 0
         Constants.followIndex = 0
-        vc.userId = AppDelegate.currentUser.id ?? 0
+        vc.userId = userModel.id.safeValue
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -155,7 +155,7 @@ class StoreProfileVC: UIViewController {
         let vc = UIStoryboard(name: PROFILE_STORYBOARD, bundle: nil).instantiateViewController(withIdentifier: "FollowersAndFollowingsVC") as! FollowersAndFollowingsVC
         Constants.followOtherUserId = AppDelegate.currentUser.id ?? 0
         Constants.followIndex = 0
-        vc.userId = AppDelegate.currentUser.id ?? 0
+        vc.userId = userModel.id.safeValue
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -365,10 +365,10 @@ extension StoreProfileVC:UICollectionViewDelegate , UICollectionViewDataSource,U
 //                }
 //            }
             if profileModel.cover.safeValue.contains("image"){
-                storeCoverImageView.setImageWithLoadingFromMainDomain(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "coverBG" )
+                storeCoverImageView.setImageWithLoadingFromMainDomain(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "cover" )
 
             }else {
-                storeCoverImageView.setImageWithLoading(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "coverBG" )
+                storeCoverImageView.setImageWithLoading(url:profileModel.cover ?? profileModel.store?.coverPhoto  ?? "" ,placeholder: "cover" )
 
             }
 
